@@ -1,0 +1,82 @@
+{% extends 'include/base.html' %}
+
+{% block title %}
+Actualizar Reclamo
+{% endblock title %}
+
+{% load static %}<!--cargo carpeta static '-->
+
+{% block content %}
+
+{% include 'include/header.html' %}
+<div class="grid-container">
+    <div class="grid-x grid-center-x">
+        <h1 class="cell large 6"></h1>
+    </div>
+</div>
+
+<div class='grid-container full'>
+    
+    <form class="grid-x grid-center-x " method= "POST">{% csrf_token %}
+
+        <div class='grid-container'>
+            <div class='grid-x'>
+                <div class="cell">
+                Actualizar Nota de Seguimiento:
+                {{form.detalle}}
+                </div>
+            </div>
+            <div class='grid-x'>
+                <div class="Cell">
+                    Horario de reactivacion: 
+                    <p>{{form.reactivar}}</p>
+                    <p>{{form.reactivar_hora}}</p>
+                    <p><b>Por el momento formato: DD/MM/YYYY HH:MM:SS (ej: 01/12/2001 20:20:00)</b></p>
+                    
+                </div>
+            </div>
+            <div class='grid-x'>
+                <div class="cell">
+                Prioridad:
+                {{form.prioridad}}
+                </div>
+            </div>
+        <button class="success button"  type="submit">update</button>
+        </div>
+    </form>
+</div>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#id_reactivar").focus(function () {
+            $(this).prop('type', 'date');
+
+        });
+
+        $("#id_reactivar").focusout(function () {
+            $(this).prop('type', 'text');
+
+        });
+
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#id_reactivar_hora").focus(function () {
+            $(this).prop('type', 'time');
+
+        });
+
+        $("#id_reactivar_hora").focusout(function () {
+            $(this).prop('type', 'text');
+
+        });
+
+    });
+</script>
+
+
+{% endblock content %}

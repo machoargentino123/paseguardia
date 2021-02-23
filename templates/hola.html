@@ -1,0 +1,30 @@
+{% extends 'include/base.html' %}
+
+{% block title %}
+Actualizar Reclamo
+{% endblock title %}
+
+
+
+
+{% load static %}<!--cargo carpeta static '-->
+{% block content %}
+{% include 'include/header.html' %}
+<h1>Hola mundo</h1>
+
+
+<p>{{fecha}}</p>
+
+
+<p>{{valor}}</p>
+
+<ul>
+{%for i in lista%}
+    <li>{{i}}</li>
+{% endfor %}
+</ul>
+
+
+
+
+{% endblock content %}

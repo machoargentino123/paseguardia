@@ -1,0 +1,39 @@
+{% load static %}<!--cargo carpeta static '-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
+
+    <!--Ojo que la ruta en static va con -->
+    <title>
+        <!-- inicio Bloque de titulo -->
+        {% block title %}
+        {% endblock title %}
+        <!--FIN BLOQUE DE TITULO -->
+
+    </title>
+</head>
+<body>
+
+    {% block content %}
+    {% endblock content %}
+
+
+
+
+
+<!--Cargo las librerias de javascript '-->
+<script src="{% static 'js/vendor/vendor.js' %}"></script>
+<script src="{% static 'js/vendor/foundation.js' %}"></script>
+<script src="{% static 'js/vendor/foundation-datepicker.js' %}"></script>
+<script src="{% static 'js/vendor/foundation-datepicker.min.js' %}"></script>
+<script>
+    $(document).foundation();
+</script>
+</body>
+
+
+</html>

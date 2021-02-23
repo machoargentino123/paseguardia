@@ -1,0 +1,128 @@
+{% extends 'include/base.html' %}
+
+{% block title %}
+Lista de Reclamos.
+{% endblock title %}
+
+{% load static %}<!--cargo carpeta static '-->
+{% block content %}
+
+{% include 'include/header.html' %}
+<div class='grid-container'>
+  <div class='grid-x'>
+      <h1 class= "cell">Hay {{object_list.count}} tickets</h1>
+  </div>
+
+  <div class = 'grid-x'>
+      <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
+
+        <div class="cell large-2">
+          <button  class="success button" type="submit" id="kword" name="kword" value="1">
+          Celula1
+          </button>
+        </div>
+        <div class="cell large-2">
+          <button  class="success button" type="submit" id="kword" name="kword" value="2">
+          Celula2
+          </button>
+        </div>
+        <div class="cell large-2">
+          <button  class="success button" type="submit" id="kword" name="kword" value="3">
+          Celula3
+          </button>
+        </div>
+        <div class="cell large-2">
+          <button  class="success button" type="submit" id="kword" name="kword" value="4">
+          Celula4
+          </button>
+        </div>
+        <div class="cell large-2">
+          <button  class="success button" type="submit" id="kword" name="kword" value="">
+          Todos
+          </button>
+        </div>
+        <div class="cell large-2">
+          <button  class="success button" type="submit" id="kword" name="kword" value="filtrar">
+          Sin actualizar
+          </button>
+        </div>
+      </form>
+  </div>
+
+  <div class = 'grid-x'>
+      <div class="cell large-2">
+        <a type="button" class="success button" href="{% url 'pasaje_app:csv1'%}">
+            CSV Cel1
+        </a>
+      </div>
+      <div class="cell large-2">
+        <a type="button" class="success button" href="{% url 'pasaje_app:csv2'%}">
+            CSV Cel2
+        </a>
+      </div>
+      <div class="cell large-2">
+        <a type="button" class="success button" href="{% url 'pasaje_app:csv3'%}">
+            CSV Cel3
+        </a>
+      </div>
+      <div class="cell large-2">
+        <a type="button" class="success button" href="{% url 'pasaje_app:csv4'%}">
+            CSV Cel4
+        </a>
+      </div>
+      <div class="cell large-2">
+        <a type="button" class="success button" href="{% url 'pasaje_app:csvall'%}">
+            CSV All
+        </a>
+      </div>
+</div>
+
+<div class="grid-container">
+        <div class="cell grid-x">
+            <table>
+                <thead>
+                  <tr>
+                    <th width="50">Nro Tkt</th>
+                    <th width="50">Celula</th>
+                    <th width="50">Bendeja</th>
+                    <th width="50">Cliente</th>
+                    <th width="50">Referencia</th>
+                    <th width="50">Estado</th>
+                    <th width="50">reactivar</th>
+                    <th width="50">Prioridad</th>
+                    <th width="50">Detalle</th>
+                    <th width="50">Editar</th>
+                    <th width="50">Eliminar</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                    <!--Listado con variable por defecto object_list.</strong>-->
+                  {% for i in lista %}
+                    {% if i.tkt.id %}
+                        <tr>
+                        <td>{{ i.tkt.id }}</td>
+                        <td>{{ i.tkt.celula_n }}</td>
+                        <td>{{ i.tkt.grupo_asignado }}</td>
+                        <td>{{ i.tkt.razon_social }}</td>
+                        <td>{{ i.tkt.ci }}</td>
+                        <td>{{ i.tkt.estado }}</td>
+                        <td>{{ i.reactivar }} {{i.reactivar_hora}}</td>
+                        <td>{{ i.get_prioridad_display }}</td>
+                        <td>{{ i.detalle }}</td>
+                        <td><a href="{% url 'pasaje_app:actualizar' i.orderid %}" class="success button ">Editar</td>
+                        <td><a href="http://remedyaverias:47085/arsys/forms/remedyaverias/SHR%3ALandingConsole/Default+Administrator+View/?mode=search&F304255500=HPD%3AHelp+Desk&F1000000076=FormOpen&F303647600=SearchTicketWithQual&F304255610=%271000000161%27%3D%22{{i.tkt.id}}%22&server=remedyaverias" target="_blank"  class="warning button" >tkt remedy</td>
+                        </tr>
+                    {% endif%}
+                  {% endfor %}
+
+                </tbody>
+
+              </table>
+        </div>
+</div>
+
+
+
+
+{% endblock content %}
