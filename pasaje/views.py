@@ -108,11 +108,13 @@ class PruebaView():
 class ExportCSVAll(CSVExportView):
 
     fields = ('tkt__id',
+              'tkt__celula_n',
               'tkt__grupo_asignado',
               'tkt__razon_social',
               'tkt__ci',
               'tkt__status_reason_hidden',
               'reactivar',
+              'reactivar_hora',
               'prioridad',
               'detalle',
               )
@@ -132,11 +134,13 @@ class ExportCSVCel1(CSVExportView):
         self.grupo = 1
 
     fields = ('tkt__id',
+              'tkt__celula_n',
               'tkt__grupo_asignado',
               'tkt__razon_social',
               'tkt__ci',
               'tkt__status_reason_hidden',
               'reactivar',
+              'reactivar_hora',
               'prioridad',
               'detalle',
               )
@@ -144,7 +148,6 @@ class ExportCSVCel1(CSVExportView):
     filename = 'data-export.csv'
 
     def get_queryset(self):
-        print(self.grupo)
         queryset = Tablaseguimiento.objects.select_related().filter(
             tkt__celula_n = self.grupo
         )
@@ -158,11 +161,13 @@ class ExportCSVCel2(CSVExportView):
         self.grupo = 2
 
     fields = ('tkt__id',
+              'tkt__celula_n',
               'tkt__grupo_asignado',
               'tkt__razon_social',
               'tkt__ci',
               'tkt__status_reason_hidden',
               'reactivar',
+              'reactivar_hora',
               'prioridad',
               'detalle',
               )
@@ -170,7 +175,6 @@ class ExportCSVCel2(CSVExportView):
     filename = 'data-export.csv'
 
     def get_queryset(self):
-        print(self.grupo)
         queryset = Tablaseguimiento.objects.select_related().filter(
             tkt__celula_n = self.grupo
         )
@@ -184,11 +188,13 @@ class ExportCSVCel3(CSVExportView):
         self.grupo = 3
 
     fields = ('tkt__id',
+              'tkt__celula_n',
               'tkt__grupo_asignado',
               'tkt__razon_social',
               'tkt__ci',
               'tkt__status_reason_hidden',
               'reactivar',
+              'reactivar_hora',
               'prioridad',
               'detalle',
               )
@@ -196,7 +202,6 @@ class ExportCSVCel3(CSVExportView):
     filename = 'data-export.csv'
 
     def get_queryset(self):
-        print(self.grupo)
         queryset = Tablaseguimiento.objects.select_related().filter(
             tkt__celula_n = self.grupo
         )
@@ -209,11 +214,13 @@ class ExportCSVCel4(CSVExportView):
         self.grupo = 4
 
     fields = ('tkt__id',
+              'tkt__celula_n',
               'tkt__grupo_asignado',
               'tkt__razon_social',
               'tkt__ci',
               'tkt__status_reason_hidden',
               'reactivar',
+              'reactivar_hora',
               'prioridad',
               'detalle',
               )
