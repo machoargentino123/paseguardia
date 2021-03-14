@@ -11,23 +11,30 @@ Panel de Monitoreo
 <div class='grid-container'>
     <div class = 'grid-x'>
         <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
-            <p>Fecha de hoy: {{fecha}}</p>
-
-            <p>Reclamos totales: {{total}}</p>
-
+            <div class = 'grid-x'>
+                <p>Fecha de hoy: {{fecha}}</p>
+            </div>
+            <div class = 'grid-x'>
+                <p>Reclamos totales: {{total}}</p>
+            </div>
             <p>Reclamos Celula 1: {{cel1}}</p>
-
-            <p>Reclamos Celula 2: {{cel2}}</p>
-
-            <p>Reclamos Celula 3: {{cel3}}</p>
-
-            <p>Reclamos Celula 4: {{cel4}}</p>
-
-            <p>{{valor}}</p>
-            
-            <button  class="success button" type="submit" id="kword" name="kword" value="Acabas de modificar la variable valor">
-                Boton Prueba
-            </button>
+            <div class = 'grid-x'>
+                <p>Reclamos Celula 2: {{cel2}}</p>
+            </div>
+            <div class = 'grid-x'>
+                <p>Reclamos Celula 3: {{cel3}}</p>
+            </div>
+            <div class = 'grid-x'>
+                <p>Reclamos Celula 4: {{cel4}}</p>
+            </div>
+            <div class = 'grid-x'>
+                <p>{{valor}}</p>
+            </div>
+            <div class = 'grid-x'>
+                <button  class="success button" type="submit" id="kword" name="kword" value="Acabas de modificar la variable valor">
+                    Boton Prueba
+                </button>
+            </div>
         </form>
     </div>
 
