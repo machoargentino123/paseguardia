@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from csv_export.views import CSVExportView
 
 from django.shortcuts import render,redirect
