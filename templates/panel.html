@@ -25,10 +25,11 @@ Panel de Monitoreo
 
 
 
-
-<button  class="success button" type="submit" id="kword" name="kword" value="34567s">
-    Boton Prueba
-</button>
+<form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
+    <button  class="success button" type="submit" id="kword" name="kword" value="34567s">
+        Boton Prueba
+    </button>
+</form>
 
 
 <!-- Actualizar cada 120 segundos -->
