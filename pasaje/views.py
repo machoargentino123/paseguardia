@@ -240,10 +240,10 @@ class PanelMonitoreo():
         total = CsvImportado1.objects.count()
         cel1 = CsvImportado1.objects.filter(
             celula_n = 1
-        )
+        ).count()
         cel2 = CsvImportado1.objects.filter(
             celula_n = 2
-        )
+        ).count()
         fecha = date.today()
         valor = 4
 
