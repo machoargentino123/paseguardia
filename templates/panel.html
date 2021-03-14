@@ -12,19 +12,26 @@ Panel de Monitoreo
     <div class = 'grid-x'>
         <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
 
-            <div class = 'grid-x'>
-                <p>Fecha de hoy: {{fecha}}</p>
-            </div>
-            <div class='grid-container'>
-                <div class = 'grid-x'>
-                    <div class="cell large-3">
-                        <div class="callout success ">
-                            <h5>Reclamos totales:</h5>
-                            <p> {{total}}</p>
-                        </div>
+            <div class='grid-x grid-margin-x'>
+            
+                <div class="cell large-3">
+                    <div class="callout success ">
+                        <h5>Reclamos totales:</h5>
+                        <p> {{total}}</p>
+                    </div>
+                </div>
+                <div class='cell large-3'>
+                    <div class="callout success ">
+
+                    </div>
+                </div>
+                <div class='cell large-3'>
+                    <div class="callout success ">
+                        <p>Fecha de hoy: {{fecha}}</p>
                     </div>
                 </div>
             </div>
+
 
             <div class = 'grid-x grid-margin-x'>
                 <div class="cell large-3">
