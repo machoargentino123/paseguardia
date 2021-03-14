@@ -104,7 +104,6 @@ class PruebaView():
 
 
 #exporta todo a CSV 
-
 class ExportCSVAll(CSVExportView):
 
     fields = ('tkt__id',
@@ -124,10 +123,7 @@ class ExportCSVAll(CSVExportView):
     def get_queryset(self):
         queryset = Tablaseguimiento.objects.select_related().all()
         return queryset
-
-
 #Exporta a CSV lo de la celula 1
-
 class ExportCSVCel1(CSVExportView):
 
     def __init__(self):
@@ -152,10 +148,7 @@ class ExportCSVCel1(CSVExportView):
             tkt__celula_n = self.grupo
         )
         return queryset
-
-
 #Exporta a CSV lo de la celula 2
-
 class ExportCSVCel2(CSVExportView):
     def __init__(self):
         self.grupo = 2
@@ -179,10 +172,7 @@ class ExportCSVCel2(CSVExportView):
             tkt__celula_n = self.grupo
         )
         return queryset
-
-
 #Exporta a CSV lo de la celula 3
-
 class ExportCSVCel3(CSVExportView):
     def __init__(self):
         self.grupo = 3
@@ -206,9 +196,7 @@ class ExportCSVCel3(CSVExportView):
             tkt__celula_n = self.grupo
         )
         return queryset
-
 #Exporta a CSV lo de la celula 4
-
 class ExportCSVCel4(CSVExportView):
     def __init__(self):
         self.grupo = 4
@@ -233,6 +221,7 @@ class ExportCSVCel4(CSVExportView):
             tkt__celula_n = self.grupo
         )
         return queryset
+
 
 class PanelMonitoreo():
 
@@ -266,7 +255,7 @@ class PanelMonitoreo():
                    'cel4' : cel4,
                    'fecha': fecha,
                    'valor': valor,
-                   
+
                    }
 
 
