@@ -239,10 +239,10 @@ class PanelMonitoreo():
     def index(request):
         total = CsvImportado1.objects.count()
         cel1 = CsvImportado1.objects.filter(
-            tkt__celula_n = 1
+            celula_n = 1
         )
         cel2 = CsvImportado1.objects.filter(
-            tkt__celula_n = 2
+            celula_n = 2
         )
         fecha = date.today()
         valor = 4
