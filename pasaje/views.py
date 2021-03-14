@@ -246,7 +246,7 @@ class PanelMonitoreo():
 
         fecha = datetime.now()
 
-        valor = self.request.GET.get('kword', '')
+        valor = request.GET.get('kword', '')
         if valor == '':
             valor = 'sin valor'
 
