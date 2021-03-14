@@ -16,53 +16,64 @@ Panel de Monitoreo
             </div>
             <div class = 'grid-x'>
                 <div class="cell large-2">
-                    <p>Reclamos totales: {{total}}</p>
+                    <div class="callout success ">
+                        <h5>Reclamos totales:</h5>
+                        <p> {{total}}</p>
+                    </div>
                 </div>
             </div>
+
             <div class = 'grid-x'>
                 <div class="cell large-2">
-                    <p>Reclamos Celula 1: {{cel1}}</p>
-                </div>
+                    <div class="callout success ">
+                        <h5>Reclamos Celula 1:</h5>
+                        <p>{{cel1}}</p>
+                    </div>
+                </div>               
             </div>
             
             <div class = 'grid-x'>
                 <div class="cell large-2">
-                    <p>Reclamos Celula 2: {{cel2}}</p>
-                </div>
+                    <div class="callout success ">
+                        <h5>Reclamos Celula 2:</h5>
+                        <p>{{cel2}}</p>
+                    </div>
+                </div>               
+            </div>
+
+            <div class = 'grid-x'>
+                <div class="cell large-2">
+                    <div class="callout success ">
+                        <h5>Reclamos Celula 3:</h5>
+                        <p>{{cel3}}</p>
+                    </div>
+                </div>               
             </div>
             <div class = 'grid-x'>
-                <p>Reclamos Celula 3: {{cel3}}</p>
+                <div class="cell large-2">
+                    <div class="callout success ">
+                        <h5>Reclamos Celula 4:</h5>
+                        <p>{{cel4}}</p>
+                    </div>
+                </div>               
             </div>
-            <div class = 'grid-x'>
-                <p>Reclamos Celula 4: {{cel4}}</p>
-            </div>
+
             <div class = 'grid-x'>
                 <p>{{valor}}</p>
             </div>
+
             <div class = 'grid-x'>
                 <button  class="success button" type="submit" id="kword" name="kword" value="Acabas de modificar la variable valor">
                     Boton Prueba
                 </button>
             </div>
+
         </form>
     </div>
 
 </div>
 
 
-<div class='grid-container'>
-    <div class = 'grid-x'>
-        <div class="callout success ">
-            <h5>This is a success  callout</h5>
-            <p>It has an easy to override visual style, and is appropriately subdued.</p>
-            <a href="#">It's dangerous to go alone, take this.</a>
-        </div>
-    </div>
-</div>
-
-<script>
-     @include callout-style($medium-gray);
-</script>
 <!-- Actualizar cada 120 segundos -->
 <script language="javascript">
     setTimeout(function(){
