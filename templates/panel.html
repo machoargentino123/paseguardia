@@ -8,28 +8,30 @@ Panel de Monitoreo
 
 {% block content %}
 {% include 'include/header.html' %}
+<div class='grid-container'>
+    <div class = 'grid-x'>
+        <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
+            <p>Fecha de hoy: {{fecha}}</p>
 
-<p>Fecha de hoy: {{fecha}}</p>
+            <p>Reclamos totales: {{total}}</p>
 
-<p>Reclamos totales: {{total}}</p>
+            <p>Reclamos Celula 1: {{cel1}}</p>
 
-<p>Reclamos Celula 1: {{cel1}}</p>
+            <p>Reclamos Celula 2: {{cel2}}</p>
 
-<p>Reclamos Celula 2: {{cel2}}</p>
+            <p>Reclamos Celula 3: {{cel3}}</p>
 
-<p>Reclamos Celula 3: {{cel3}}</p>
+            <p>Reclamos Celula 4: {{cel4}}</p>
 
-<p>Reclamos Celula 4: {{cel4}}</p>
+            <p>{{valor}}</p>
+            
+            <button  class="success button" type="submit" id="kword" name="kword" value="Acabas de modificar la variable valor">
+                Boton Prueba
+            </button>
+        </form>
+    </div>
 
-<p>{{valor}}</p>
-
-
-
-<form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
-    <button  class="success button" type="submit" id="kword" name="kword" value="34567s">
-        Boton Prueba
-    </button>
-</form>
+</div>
 
 
 <!-- Actualizar cada 120 segundos -->
