@@ -233,3 +233,21 @@ class ExportCSVCel4(CSVExportView):
             tkt__celula_n = self.grupo
         )
         return queryset
+
+class PanelMonitoreo():
+
+    def index(request):
+        total = CsvImportado1.objects.count()
+        cel1 = CsvImportado1.objects.filter(
+            tkt__celula_n = "1"
+        ).count()
+        fecha = date.today()
+        valor = 4
+
+        context = {'total' : total, 
+                   'fecha' : fecha,
+                   'valor' : valor,
+                   }
+
+
+        return render(request,'panel.html',context) 

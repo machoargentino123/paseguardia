@@ -15,4 +15,5 @@ urlpatterns = [
     path('csv2/',views.ExportCSVCel2.as_view(), name="csv2"),
     path('csv3/',views.ExportCSVCel3.as_view(), name="csv3"),
     path('csv4/',views.ExportCSVCel4.as_view(), name="csv4"),
+    path('panel/',views.PanelMonitoreo.index, name="panel"),
 ]   
