@@ -234,7 +234,7 @@ class PanelMonitoreo():
 
         cel2 = CsvImportado1.objects.filter(
             celula_n = 2
-        ).count()
+            ).count()
 
         cel4 = CsvImportado1.objects.filter(
             celula_n = 3
@@ -244,7 +244,7 @@ class PanelMonitoreo():
             celula_n = 4
         ).count()
 
-        fecha = date.today()
+        fecha = datetime.now()
 
         valor = 4
 
