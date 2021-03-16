@@ -85,6 +85,15 @@ class ListaView3(ListView):
             )
         return lista
     
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        datos = super(ListaView3, self).get_context_data(**kwargs)
+        # Get the blog from id and add it to the context
+        print('####################')
+        print(datos)
+        print('####################')
+        return datos
+    
 
 
 class ActualizarTkt(UpdateView):
