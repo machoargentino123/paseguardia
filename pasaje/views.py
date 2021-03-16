@@ -80,7 +80,11 @@ class ListaView3(ListView):
    
     def get_queryset(self):
         
-        palabra_clave = self.request.GET.get('kword', '')
+        palabra_clave = self.kwargs['pk']
+        print('#####################################')
+        print(palabra_clave)
+        print('#####################################')
+
 
         lista = CsvImportado1.objects.filter(
                tkt__celula_n = palabra_clave, 

@@ -8,6 +8,7 @@ urlpatterns = [
     path('',views.InicioView.as_view(), name= "Inicio"),
     path('listar/',views.ListaView.as_view(), name= "Listar"),
     path('guardia/',views.ListaView2.as_view(), name= "Guardia"),
+    path('celula/<pk>',views.ListaView3.index, name="celula"),
     path('actualizar/<pk>',views.ActualizarTkt.as_view(), name="actualizar"),
     path('hola/',views.PruebaView.index, name="hola"),
     path('csvall/',views.ExportCSVAll.as_view(), name="csvall"),
@@ -16,4 +17,5 @@ urlpatterns = [
     path('csv3/',views.ExportCSVCel3.as_view(), name="csv3"),
     path('csv4/',views.ExportCSVCel4.as_view(), name="csv4"),
     path('panel/',views.PanelMonitoreo.index, name="panel"),
+    
 ]   
