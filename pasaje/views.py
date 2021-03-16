@@ -80,9 +80,11 @@ class ListaView3(ListView):
    
     def get_queryset(self):
         valor =self.kwargs['pk'] # recupera el dato del PK.
+
+
         lista = CsvImportado1.objects.filter(
-               celula_n = valor, 
-            )
+            celula_n = valor, 
+            )  
         return lista
     
 
@@ -247,13 +249,31 @@ class PanelMonitoreo():
             celula_n = 2
             ).count()
 
-        cel4 = CsvImportado1.objects.filter(
+        cel3 = CsvImportado1.objects.filter(
             celula_n = 3
         ).count()
 
-        cel3 = CsvImportado1.objects.filter(
+        cel4  CsvImportado1.objects.filter(
             celula_n = 4
         ).count()
+
+
+        cela1 = CsvImportado1.objects.filter(
+            celula_n = 1
+            ).count()
+
+        cela2 = CsvImportado1.objects.filter(
+            celula_n = 2
+            ).count()
+        
+        cela3 = CsvImportado1.objects.filter(
+            celula_n = 3
+             ).count()
+            
+        cela4 = CsvImportado1.objects.filter(
+            celula_n = 4
+            ).count()
+
 
         fecha = datetime.now()
 
@@ -270,6 +290,10 @@ class PanelMonitoreo():
                    'cel2' : cel2,
                    'cel3' : cel3,
                    'cel4' : cel4,
+                   'cela1' : cela1,
+                   'cela2' : cela2,
+                   'cela3' : cela3,
+                   'cela4' : cela4,
                    'fecha': fecha,
                    'valor': valor,
                    }
