@@ -79,7 +79,7 @@ class ListaView3(ListView):
     paginate = 200
    
     def get_queryset(self):
-        valor = self.request.request.GET.get('kword', '')
+        valor = self.request.GET.get('kword', '')
         print(valor)
         lista = CsvImportado1.objects.filter(
                celula_n = 2, 
