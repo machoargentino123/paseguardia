@@ -253,7 +253,7 @@ class PanelMonitoreo():
             celula_n = 3
         ).count()
 
-        cel4  CsvImportado1.objects.filter(
+        cel4 = CsvImportado1.objects.filter(
             celula_n = 4
         ).count()
 
