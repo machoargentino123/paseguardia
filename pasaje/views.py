@@ -79,10 +79,7 @@ class ListaView3(ListView):
     paginate = 200
    
     def get_queryset(self):
-        valor =self.kwargs['pk']
-        print("#############################################")
-        print(valor)
-        print("#############################################")
+        valor =self.kwargs['pk'] # recupera el dato del PK.
         lista = CsvImportado1.objects.filter(
                celula_n = valor, 
             )
