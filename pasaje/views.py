@@ -281,6 +281,13 @@ class PanelMonitoreo():
 
         fecha = datetime.now()
 
+        valor = request.GET.get('kword', '')
+        if valor == '':
+            valor = 'sin valor'
+        
+        
+        
+
 
         context = {'total': total, 
                    'cel1' : cel1,
