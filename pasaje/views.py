@@ -79,20 +79,12 @@ class ListaView3(ListView):
     paginate = 200
    
     def get_queryset(self):
-        
+        valor = self.request.request.GET.get('kword', '')
+        print(valor)
         lista = CsvImportado1.objects.filter(
                celula_n = 2, 
             )
         return lista
-    
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        datos = super(ListaView3, self).get_context_data(**kwargs)
-        # Get the blog from id and add it to the context
-        print('####################')
-        print(datos)
-        print('####################')
-        return datos
     
 
 
