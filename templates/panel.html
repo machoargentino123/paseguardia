@@ -11,9 +11,7 @@ Panel de Monitoreo
 <div class='grid-container'>
     <div class = 'grid-x'>
         <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
-
-
-
+            
             <div class = 'grid-x grid-margin-x'>
                 <div class="cell large-3">
                     <div class="callout success ">
@@ -47,7 +45,7 @@ Panel de Monitoreo
                 <div class="cell large-3">
                     <div class="callout success ">
                         <h5>Reclamos Celula 2:</h5>
-                        <p>{{cel2}}</p>
+                        <button type="submit" id="kword" name="kword" value="2">{{cel2}}</button>
                     </div>
                 </div>               
 

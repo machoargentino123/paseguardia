@@ -73,7 +73,20 @@ class ListaView2(ListView):
             print(type(lista[0]))
             return lista
     
+class ListaView3(ListView):
+    context_object_name = 'lista'
+    template_name = 'celula.html'
+    paginate = 200
+   
+    def get_queryset(self):
+        
+        palabra_clave = self.request.GET.get('kword', '')
 
+        lista = CsvImportado1.objects.filter(
+               tkt__celula_n = palabra_clave, 
+            )
+        return lista
+    
 
 
 class ActualizarTkt(UpdateView):
@@ -249,6 +262,10 @@ class PanelMonitoreo():
         valor = request.GET.get('kword', '')
         if valor == '':
             valor = 'sin valor'
+        
+        
+        
+
 
         context = {'total': total, 
                    'cel1' : cel1,
@@ -257,7 +274,6 @@ class PanelMonitoreo():
                    'cel4' : cel4,
                    'fecha': fecha,
                    'valor': valor,
-
                    }
 
 
