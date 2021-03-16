@@ -259,30 +259,27 @@ class PanelMonitoreo():
 
 
         cela1 = CsvImportado1.objects.filter(
-            celula_n = 1
+            celula_n = 1,
+            tipo_incidencia = 'User Service Restoration',
             ).count()
 
         cela2 = CsvImportado1.objects.filter(
-            celula_n = 2
+            celula_n = 2,
+            tipo_incidencia = 'User Service Restoration',
             ).count()
         
         cela3 = CsvImportado1.objects.filter(
-            celula_n = 3
+            celula_n = 3,
+            tipo_incidencia = 'User Service Restoration',
              ).count()
             
         cela4 = CsvImportado1.objects.filter(
-            celula_n = 4
+            celula_n = 4,
+            tipo_incidencia = 'User Service Restoration',
             ).count()
 
 
         fecha = datetime.now()
-
-        valor = request.GET.get('kword', '')
-        if valor == '':
-            valor = 'sin valor'
-        
-        
-        
 
 
         context = {'total': total, 
