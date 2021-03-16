@@ -81,7 +81,7 @@ class ListaView3(ListView):
     def get_queryset(self):
         
         lista = CsvImportado1.objects.filter(
-               tkt__celula_n = '2', 
+               tkt__celula_n = 2, 
             )
         return lista
     
