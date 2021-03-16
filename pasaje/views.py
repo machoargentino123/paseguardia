@@ -84,7 +84,7 @@ class ListaView3(ListView):
         print(valor)
         print("#############################################")
         lista = CsvImportado1.objects.filter(
-               celula_n = 2, 
+               celula_n = valor, 
             )
         return lista
     
