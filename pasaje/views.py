@@ -40,11 +40,7 @@ class Asincrono():
         json_payload = {
             "message" : "Hello World"
         }
-        async_task(
-            "pasaje.tasks.sleep_and_print",
-            5,
-            hook = "pasaje.tasks.after_sleeping",
-            )
+        async_task("pasaje.tasks.sleep_and_print", 5, hook = "pasaje.tasks.after_sleeping")
         return JsonResponse(json_payload)
 
 
