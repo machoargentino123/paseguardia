@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'pasaje',
     'datetimepicker',
+    'django_q',
 ]
 
 
@@ -55,6 +56,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'guardias.urls'
+
+Q_CLUSTER = {
+    "name": "guardias",
+    "orm": "default",  # Use Django's ORM + database for broker
+}
+
 
 TEMPLATES = [
     {
