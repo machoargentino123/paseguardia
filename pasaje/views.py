@@ -1,5 +1,5 @@
 from datetime import date, datetime
-import asyncio
+from django_q.tasks import async_task
 from csv_export.views import CSVExportView
 
 from django.shortcuts import render,redirect
@@ -19,10 +19,38 @@ from .forms import TktForm
 from django.urls import reverse_lazy
 
 
+"""
+Async_task realiza tareas asincronas 
+tiene:
+modulo o funcion que va a ejecutar.
+argumentos
+hook, donde 
+"""
+
+#esta es llamada desde tasks.py y a su vez la llama el django-q desde el cluster
 def imprimir():
     print("#####################")
     print("desde views")
     print("#####################")
+
+
+
+class PruebaView():
+
+    def index(request):
+        async_task(
+            "pasaje.tasks.sleep_and_print",
+            5,
+            hook = "hook_after_sleeping"
+        )
+        lista = Tablaseguimiento.objects.all()
+        fecha = date.today()
+        valor = 3
+        context = {'lista' : lista, 
+                   'fecha' : fecha,
+                   'valor' : valor,
+                   }
+        return render(request,'hola.html',context) 
 
 
 class InicioView(TemplateView):
