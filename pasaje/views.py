@@ -17,8 +17,7 @@ from django.views.generic import (TemplateView,
 from .models import CsvImportado1,Tablaseguimiento
 from .forms import TktForm
 from django.urls import reverse_lazy
-# dejaste aca 
-from .tasks import sleep_and_print, hook_after_sleeping
+
 
 
 """
