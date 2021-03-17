@@ -60,8 +60,8 @@ ROOT_URLCONF = 'guardias.urls'
 Q_CLUSTER = {
     "name": "guardias",
     'workers': 1,
-    'timeout': 10,
-    'retry': 20,
+    'timeout': 40,
+    'retry': 50,
     'workers': 1,
     'recycle': 500,
     'ack_failures': True,
