@@ -1,5 +1,5 @@
 from datetime import date, datetime
-from .tasks import sleep_and_print, hook_after_sleeping
+
 from django_q.tasks import async_task
 from csv_export.views import CSVExportView
 from django.shortcuts import render,redirect
@@ -17,6 +17,7 @@ from django.views.generic import (TemplateView,
 from .models import CsvImportado1,Tablaseguimiento
 from .forms import TktForm
 from django.urls import reverse_lazy
+from .tasks import sleep_and_print, hook_after_sleeping
 
 
 """
