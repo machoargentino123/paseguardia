@@ -32,16 +32,21 @@ def imprimir():
     print("desde views")
     print("#####################")
 
-def index(request):
-    json_payload = {
-        "message" : "Hello World"
-    }
-    async_task(
-        "pasaje.tasks.sleep_and_print",
-        5,
-        hook = "hook_after_sleeping"
-        )
-    return JsonResponse(json_payload)
+
+class Asincrono():
+    def index(request):
+        json_payload = {
+            "message" : "Hello World"
+        }
+        async_task(
+            "pasaje.tasks.sleep_and_print",
+            5,
+            hook = "hook_after_sleeping"
+            )
+        return JsonResponse(json_payload)
+
+
+
 class PruebaView():
 
     def index(request):
