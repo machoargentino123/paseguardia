@@ -1,9 +1,8 @@
 from datetime import date, datetime
 from django_q.tasks import async_task
 from csv_export.views import CSVExportView
-
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 from django.views.generic import (TemplateView, 
@@ -33,16 +32,20 @@ def imprimir():
     print("desde views")
     print("#####################")
 
-
-
+def index(request):
+    json_payload = {
+        "message" : "Hello World"
+    }
+    async_task(
+        "pasaje.tasks.sleep_and_print",
+        5,
+        hook = "hook_after_sleeping"
+        )
+    return JsonResponse(json_payload)
 class PruebaView():
 
     def index(request):
-        async_task(
-            "pasaje.tasks.sleep_and_print",
-            5,
-            hook = "hook_after_sleeping"
-        )
+
         lista = Tablaseguimiento.objects.all()
         fecha = date.today()
         valor = 3
