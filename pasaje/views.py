@@ -42,9 +42,9 @@ class Asincrono():
             "message" : "Hello World"
         }
         async_task(
-            ".tasks.sleep_and_print",
+            "pasaje.tasks.sleep_and_print",
             5,
-            hook = ".tasks.hook_after_sleeping"
+            hook = "pasaje.tasks.hook_after_sleeping",
             )
         return JsonResponse(json_payload)
 
