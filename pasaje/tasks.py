@@ -10,8 +10,11 @@ def prueba():
 
 def sleep_and_print(secs):
     print("#####################")
+    print("vas a entrar a un sleep de 35 segundos")
+    print("#####################")
     sleep(secs)
-    print("Tarea sleep y print")
+    print("#####################")
+    print("SALIO DEL SLEEP Tarea sleep y print")
     print("#####################")
 
 
