@@ -59,6 +59,9 @@ ROOT_URLCONF = 'guardias.urls'
 
 Q_CLUSTER = {
     "name": "guardias",
+    'timeout': 60,
+    'retry': 65,
+    'workers': 1,
     "orm": "default",  # Use Django's ORM + database for broker
 }
 
