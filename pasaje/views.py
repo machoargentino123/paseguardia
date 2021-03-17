@@ -1,4 +1,5 @@
 from datetime import date, datetime
+import asyncio
 from csv_export.views import CSVExportView
 
 from django.shortcuts import render,redirect
@@ -17,6 +18,18 @@ from .models import CsvImportado1,Tablaseguimiento
 from .forms import TktForm
 from django.urls import reverse_lazy
 
+
+# loop = asyncio.get_event_loop()
+
+# def heavy_operation(args):
+#   pass
+
+# class asincrona():
+#     arguments = ['var1', 'var2']
+#     loop.run_in_executor(None,heavy_operation,arguments)
+#         print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+#     print("Tarea programada")
+#     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
 
 class InicioView(TemplateView):
@@ -80,7 +93,6 @@ class ListaView3(ListView):
    
     def get_queryset(self):
         valor =self.kwargs['pk'] # recupera el dato del PK.
-
 
         lista = CsvImportado1.objects.filter(
             celula_n = valor, 
