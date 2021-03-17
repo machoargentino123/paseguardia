@@ -17,6 +17,7 @@ from django.views.generic import (TemplateView,
 from .models import CsvImportado1,Tablaseguimiento
 from .forms import TktForm
 from django.urls import reverse_lazy
+# dejaste aca 
 from .tasks import sleep_and_print, hook_after_sleeping
 
 
@@ -41,9 +42,9 @@ class Asincrono():
             "message" : "Hello World"
         }
         async_task(
-            "tasks.sleep_and_print",
+            ".tasks.sleep_and_print",
             5,
-            hook = "tasks.hook_after_sleeping"
+            hook = ".tasks.hook_after_sleeping"
             )
         return JsonResponse(json_payload)
 
