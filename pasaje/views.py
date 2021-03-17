@@ -19,17 +19,10 @@ from .forms import TktForm
 from django.urls import reverse_lazy
 
 
-# loop = asyncio.get_event_loop()
-
-# def heavy_operation(args):
-#   pass
-
-# class asincrona():
-#     arguments = ['var1', 'var2']
-#     loop.run_in_executor(None,heavy_operation,arguments)
-#         print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-#     print("Tarea programada")
-#     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+def imprimir():
+    print("#####################")
+    print("desde views")
+    print("#####################")
 
 
 class InicioView(TemplateView):

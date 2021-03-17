@@ -1,4 +1,7 @@
+from .views import imprimir
+
 def prueba():
-    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-    print("Tarea programada")
-    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    print("#####################")
+    print("tarea")
+    imprimir()
+    print("#####################")
