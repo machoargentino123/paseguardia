@@ -9,9 +9,11 @@ def prueba():
 
 
 def sleep_and_print(secs):
+     print("#####################")
     sleep(secs)
     print("Tarea sleep y print")
+     print("#####################")
 
 
-def hook_after_sleeping(task):
+def after_sleeping(task):
     print(task.result)
