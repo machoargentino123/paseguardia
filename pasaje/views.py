@@ -133,11 +133,8 @@ class ListaView3(ListView):
    
     def get_queryset(self):
         valor =self.kwargs['pk'] # recupera el dato del PK.
-
-        lista = CsvImportado10.objects.filter(
-            celula_n = valor, 
-            )  
-        return lista
+        lista1 = CsvImportado1.objects.all().values('id','grupo_asignado','status_reason_hidden','tipo_incidencia')  
+        return lista1
     
 
 #vista para editar los reclamos. 
