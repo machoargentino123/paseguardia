@@ -142,10 +142,21 @@ class ListaView3():
         lista10 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         #listapreuba = CsvImportado1.objects.all().annotate()
         fecha = date.today()
+
+        for a in lista1:
+            for b in lista2:
+                if b.id == a.id: 
+                    if e.grupo_asignado != i.grupo_asignado:
+                        x.append(a.id)
+                    elif e.estado != i.estado:
+                        x.append(a.id)
+                    else:
+                        pass
+        
         context = {'lista1':lista1,
                    'fecha' : fecha,
                   }
-        print(context)
+        print(x)
 
         return render(request,'celula.html',context)
 
