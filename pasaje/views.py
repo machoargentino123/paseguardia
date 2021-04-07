@@ -1,5 +1,5 @@
 from datetime import date, datetime
-
+from itertools import chain
 from django_q.tasks import async_task
 from csv_export.views import CSVExportView
 from django.shortcuts import render,redirect
@@ -155,7 +155,12 @@ class ListaView3():
         
         listaa = CsvImportado1.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         listab = CsvImportado2.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista =  listaa | listab
+        
+        lista = sorted(
+                chain(listaa,listab),
+                key=attrgetter('date_created'),
+                reverse=True,
+                )
         
         context = {'lista':lista,
                    'fecha' : fecha,
