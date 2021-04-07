@@ -154,9 +154,12 @@ class ListaView3():
                         pass
         #el id__in acepta como parametro una lista
         #listaa = CsvImportado1.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        listab = CsvImportado2.objects.filter(id__in = x)
-        
-        lista = CsvImportado1.objects.annotate(reclamos = Subquery(listab.values('grupo_asignado')))
+        lista = CsvImportado1.objects.filter(id__in = x).extra(
+            select = {'bandeja anterior':'CsvImportado2.grupo_asignado'},
+            tables = ['CsvImportado2'],
+            where = ['CsvImportado1.id = CsvImportado2.id']
+
+        ).values('id','grupo_asignado','bandeja anterior')
 
 
         context = {'lista':lista,
