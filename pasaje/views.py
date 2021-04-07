@@ -14,7 +14,12 @@ from django.views.generic import (TemplateView,
                                   UpdateView,
                                   DeleteView)
 
-from .models import CsvImportado1,CsvImportado2,Tablaseguimiento
+from .models import (CsvImportado1,
+                     CsvImportado2,
+                     CsvImportado3,
+                     CsvImportado4,
+                     CsvImportado5,
+                     Tablaseguimiento)
 from .forms import TktForm
 from django.urls import reverse_lazy
 
