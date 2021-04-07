@@ -133,8 +133,17 @@ class ListaView3(ListView):
    
     def get_queryset(self):
         valor =self.kwargs['pk'] # recupera el dato del PK.
-        lista1 = CsvImportado1.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')  
-        return lista1
+        lista1 = CsvImportado1.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista2 = CsvImportado2.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')  
+        lista3 = CsvImportado3.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista4 = CsvImportado4.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista5 = CsvImportado5.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista6 = CsvImportado6.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista7 = CsvImportado7.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista8 = CsvImportado8.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista9 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista = lista1 + lista2
+        return lista
     
 
 #vista para editar los reclamos. 
