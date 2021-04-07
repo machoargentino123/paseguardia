@@ -159,9 +159,7 @@ class ListaView3():
         lista = list(chain(listaa,listab))
         print(lista[0])
 
-        context = {'lista':lista[0],
-                   'fecha' : fecha,
-                  }
+        context = lista[0]
 
         return render(request,'celula.html',context)
 
