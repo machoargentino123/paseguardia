@@ -144,15 +144,8 @@ class ListaView3():
         fecha = date.today()
 
         for a in lista1:
-            for b in lista2:
-                if b.id == a.id: 
-                    if e.grupo_asignado != i.grupo_asignado:
-                        x.append(a.id)
-                    elif e.estado != i.estado:
-                        x.append(a.id)
-                    else:
-                        pass
-        
+            x.append(a.id)
+                   
         context = {'lista1':lista1,
                    'fecha' : fecha,
                   }
