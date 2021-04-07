@@ -145,17 +145,10 @@ class ListaView3(ListView):
         lista9 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista10 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         #listapreuba = CsvImportado1.objects.all().annotate()
-        for i in lista1:
-            for e in lista2:
-                if e.id == i.id: 
-                    if e.grupo_asignado != i.grupo_asignado:
-                        x.append(e.id)
-                    elif e.estado != i.estado:
-                        x.append(e.id)
-                    else:
-                        pass
+        for a in lista1:
+            print(a.id)
+
         print(x)
-        lista1 =  CsvImportado1.objects.filter(id__in = x)
         return lista1
 
 #vista para editar los reclamos. 
