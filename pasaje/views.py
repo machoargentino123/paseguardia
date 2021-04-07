@@ -126,14 +126,10 @@ class ListaView2(ListView):
     
 #vista para visualizar los reclamos de todas las celulas. No esta linkeado a nada, pero anda
 #  
-class ListaView3(ListView):
-    context_object_name = 'lista'
-    template_name = 'celula.html'
-    paginate = 200
+class ListaView3():
    
-    def get_queryset(self):
+    def index(request):
         x = []
-        valor =self.kwargs['pk'] # recupera el dato del PK.
         lista1 = CsvImportado1.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista2 = CsvImportado2.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')  
         lista3 = CsvImportado3.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
@@ -145,11 +141,9 @@ class ListaView3(ListView):
         lista9 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista10 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         #listapreuba = CsvImportado1.objects.all().annotate()
-        for a in lista1:
-            print(a.id)
 
-        print(x)
-        return lista1
+        context = lista1
+        return render(request,'celula.html',context)
 
 #vista para editar los reclamos. 
 
