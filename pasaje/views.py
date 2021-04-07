@@ -155,7 +155,7 @@ class ListaView3():
         
         lista = CsvImportado1.objects.filter(id__in = x)
 
-        context = {'lista1':lista,
+        context = {'lista':lista,
                    'fecha' : fecha,
                   }
         print(x)
