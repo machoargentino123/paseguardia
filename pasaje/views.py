@@ -142,12 +142,9 @@ class ListaView3(ListView):
         lista7 = CsvImportado7.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista8 = CsvImportado8.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista9 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        listapreuba = CsvImportado1.objects.all().annotate()
-        if  set(lista1) == set(lista2):
-            return lista1
-        else:
+        #listapreuba = CsvImportado1.objects.all().annotate()
 
-            return set(lista1).difference(set(lista2))
+        return lista1
 
 #vista para editar los reclamos. 
 
