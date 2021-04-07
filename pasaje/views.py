@@ -142,7 +142,7 @@ class ListaView3(ListView):
         lista7 = CsvImportado7.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista8 = CsvImportado8.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista9 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista = lista1 + lista2
+        lista = lista1 | lista2
         return lista
     
 
