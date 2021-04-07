@@ -152,12 +152,15 @@ class ListaView3():
                         x.append(a.id)
                     else:
                         pass
-        
+        #el id__in acepta como parametro una lista
         listaa = CsvImportado1.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         listab = CsvImportado2.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         
         lista = list(chain(listaa,listab))
-        print(lista[0])
+
+        print(lista)
+        print(type(lista[0]))
+
 
         context = {'lista':listaa,
                    'fecha' : fecha,
