@@ -142,8 +142,8 @@ class ListaView3():
         lista10 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         #listapreuba = CsvImportado1.objects.all().annotate()
 
-        context = {'lista1':lista1}
-        
+        context = {lista1}
+
         return render(request,'celula.html',context)
 
 #vista para editar los reclamos. 
