@@ -157,8 +157,8 @@ class ListaView3():
         listab = CsvImportado2.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         
         lista = list(chain(listaa,listab))
-        
-        context = {'lista':lista,
+        print(lista)
+        context = {'lista':listaa,
                    'fecha' : fecha,
                   }
         print(x)
