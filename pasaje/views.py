@@ -130,8 +130,8 @@ class ListaView3():
    
     def index(request):
         x = []
-        lista1 = CsvImportado1.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista2 = CsvImportado2.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista1 = CsvImportado1.objects.all()
+        lista2 = CsvImportado2.objects.all()
         lista3 = CsvImportado3.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista4 = CsvImportado4.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista5 = CsvImportado5.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
@@ -153,7 +153,7 @@ class ListaView3():
                     else:
                         pass
         
-        lista = CsvImportado1.objects.filter(id__in = x)
+        lista = CsvImportado1.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
 
         context = {'lista':lista,
                    'fecha' : fecha,
