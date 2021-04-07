@@ -130,7 +130,7 @@ class ListaView3():
    
     def index(request):
         x = []
-        lista1 = CsvImportado1.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista1 = CsvImportado1.objects.all()
         lista2 = CsvImportado2.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')  
         lista3 = CsvImportado3.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista4 = CsvImportado4.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
@@ -142,7 +142,7 @@ class ListaView3():
         lista10 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         #listapreuba = CsvImportado1.objects.all().annotate()
 
-        context = {lista1}
+        context = {'lista1':lista1}
 
         return render(request,'celula.html',context)
 
