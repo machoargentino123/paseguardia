@@ -25,6 +25,7 @@ from .models import (CsvImportado1,
                      CsvImportado9,
                      CsvImportado10,
                      Tablaseguimiento)
+
 from .forms import TktForm
 from django.urls import reverse_lazy
 
@@ -133,7 +134,7 @@ class ListaView3(ListView):
     def get_queryset(self):
         valor =self.kwargs['pk'] # recupera el dato del PK.
 
-        lista = CsvImportado3.objects.filter(
+        lista = CsvImportado4.objects.filter(
             celula_n = valor, 
             )  
         return lista
