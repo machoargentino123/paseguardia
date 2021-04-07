@@ -154,7 +154,7 @@ class ListaView3():
                         pass
         #el id__in acepta como parametro una lista
         #listaa = CsvImportado1.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista = CsvImportado1.objects.filter(id__in = x).extra(
+        lista = CsvImportado1.objects.all().extra(
             select = {'bandeja anterior':'CsvImportado2.grupo_asignado'},
             tables = ['CsvImportado2'],
             where = ['CsvImportado1.id = CsvImportado2.id']
