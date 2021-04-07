@@ -148,7 +148,7 @@ class ListaView3():
                 if a.id == b.id: 
                     if a.grupo_asignado != b.grupo_asignado:
                         x.append(a.id)
-                    elif e.estado != i.estado:
+                    elif a.estado != b.estado:
                         x.append(a.id)
                     else:
                         pass
