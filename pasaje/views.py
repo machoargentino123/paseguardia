@@ -134,7 +134,7 @@ class ListaView3(ListView):
     def get_queryset(self):
         valor =self.kwargs['pk'] # recupera el dato del PK.
 
-        lista = CsvImportado9.objects.filter(
+        lista = CsvImportado10.objects.filter(
             celula_n = valor, 
             )  
         return lista
