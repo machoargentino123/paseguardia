@@ -133,7 +133,7 @@ class ListaView3(ListView):
    
     def get_queryset(self):
         valor =self.kwargs['pk'] # recupera el dato del PK.
-        lista1 = CsvImportado1.objects.only('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista1 = CsvImportado1.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista2 = CsvImportado2.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')  
         lista3 = CsvImportado3.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista4 = CsvImportado4.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
