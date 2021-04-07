@@ -4,7 +4,7 @@ from django_q.tasks import async_task
 from csv_export.views import CSVExportView
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
-
+from django.db.models import OuterRef, Subquery
 # Create your views here.
 from django.views.generic import (TemplateView, 
                                   ListView, 
@@ -153,15 +153,15 @@ class ListaView3():
                     else:
                         pass
         #el id__in acepta como parametro una lista
-        listaa = CsvImportado1.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        listab = CsvImportado2.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        #listaa = CsvImportado1.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        listab = CsvImportado2.objects.filter(id__in = x)
         
+        lista = CsvImportado1.objects.annotate(reclamos = Subquery(listab.values('grupo_asignado')))
 
 
-        context = {'listaa':listaa,
-                   'listab':listab,
+        context = {'lista':lista,
                    'fecha' : fecha,
-                  }
+                  } 
 
         return render(request,'celula.html',context)
 
