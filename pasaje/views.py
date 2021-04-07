@@ -158,7 +158,8 @@ class ListaView3():
         
         lista = chain(listaa,listab)
         print(lista)
-        context = {'lista':lista,
+
+        context = {'lista':listaa,
                    'fecha' : fecha,
                   }
 
