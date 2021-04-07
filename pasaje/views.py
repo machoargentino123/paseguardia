@@ -14,7 +14,7 @@ from django.views.generic import (TemplateView,
                                   UpdateView,
                                   DeleteView)
 
-from .models import CsvImportado1,Tablaseguimiento
+from .models import CsvImportado1,CsvImportado2,Tablaseguimiento
 from .forms import TktForm
 from django.urls import reverse_lazy
 
@@ -58,11 +58,11 @@ class PruebaView():
                    }
         return render(request,'hola.html',context) 
 
-
+#pagina de inicio
 class InicioView(TemplateView):
     template_name = 'inicio.html'
 
-
+#listado de todos los reclamos que hay.
 class ListaView(ListView):
     context_object_name = 'Tickets'
     template_name = 'lista.html'
@@ -79,7 +79,7 @@ class ListaView(ListView):
         else:
             return CsvImportado1.objects.all() 
 
-
+#listado de reclamos que hay
 class ListaView2(ListView):
     context_object_name = 'lista'
     template_name = 'guardia.html'
@@ -113,6 +113,8 @@ class ListaView2(ListView):
             print(type(lista[0]))
             return lista
     
+#vista para visualizar los reclamos de todas las celulas. No esta linkeado a nada, pero anda
+#  
 class ListaView3(ListView):
     context_object_name = 'lista'
     template_name = 'celula.html'
@@ -121,12 +123,13 @@ class ListaView3(ListView):
     def get_queryset(self):
         valor =self.kwargs['pk'] # recupera el dato del PK.
 
-        lista = CsvImportado1.objects.filter(
+        lista = CsvImportado2.objects.filter(
             celula_n = valor, 
             )  
         return lista
     
 
+#vista para editar los reclamos. 
 
 class ActualizarTkt(UpdateView):
     model = Tablaseguimiento
@@ -274,7 +277,7 @@ class ExportCSVCel4(CSVExportView):
         )
         return queryset
 
-
+#vista del panel de monitoreo.
 class PanelMonitoreo():
 
     def index(request):
