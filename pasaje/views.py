@@ -143,6 +143,7 @@ class ListaView3():
         #listapreuba = CsvImportado1.objects.all().annotate()
 
         context = {'lista1':lista1}
+        print(context)
 
         return render(request,'celula.html',context)
 
