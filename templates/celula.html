@@ -9,12 +9,12 @@ Lista de Reclamos.
 {% include 'include/header.html' %}
 <div class='grid container'>
     <div class='grid-x'>
-        <h1 class= "cell">Tabla tamaño:{{lista1.count}} tickets {{fecha}}</h1>
+        <h1 class= "cell">Tabla tamaño:{{lista.count}} tickets {{fecha}}</h1>
     </div>
 
     <div class='grid-x'>
         <div class='cell'>
-            {% render_table lista1 %}
+            {% render_table lista %}
         </div>
 </div>
 
