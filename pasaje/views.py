@@ -156,12 +156,11 @@ class ListaView3():
         listaa = CsvImportado1.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         listab = CsvImportado2.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         
-        lista = list(chain(listaa,listab))
+        lista = chain(listaa,listab)
         print(lista)
-        context = {'lista':listaa,
+        context = {'lista':lista,
                    'fecha' : fecha,
                   }
-        print(x)
 
         return render(request,'celula.html',context)
 
