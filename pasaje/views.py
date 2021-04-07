@@ -155,7 +155,7 @@ class ListaView3():
         
         listaa = CsvImportado1.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         listab = CsvImportado2.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista =  listaa + listab
+        lista =  listaa | listab
         
         context = {'lista':lista,
                    'fecha' : fecha,
