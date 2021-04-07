@@ -132,6 +132,7 @@ class ListaView3(ListView):
     paginate = 200
    
     def get_queryset(self):
+        x = []
         valor =self.kwargs['pk'] # recupera el dato del PK.
         lista1 = CsvImportado1.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista2 = CsvImportado2.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')  
@@ -142,9 +143,19 @@ class ListaView3(ListView):
         lista7 = CsvImportado7.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista8 = CsvImportado8.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista9 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
+        lista10 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         #listapreuba = CsvImportado1.objects.all().annotate()
+        for i in lista1:
+            for e in lista2:
+                if i.id == e.id: 
+                    if e.grupo_asignado != i.grupo_asignado:
+                        x.append(e.id)
+                    elif e.estado != i.estado:
+                        x.append(e.id)
+                    else:
+                        pass
 
-        return lista1
+        return CsvImportado1.objects.filter(id__in = x)
 
 #vista para editar los reclamos. 
 
