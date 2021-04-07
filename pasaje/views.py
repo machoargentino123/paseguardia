@@ -158,7 +158,7 @@ class ListaView3():
         
         lista = sorted(
                 chain(listaa,listab),
-                key=attrgetter('date_created'),
+                key=attrgetter('id'),
                 reverse=True,
                 )
         
