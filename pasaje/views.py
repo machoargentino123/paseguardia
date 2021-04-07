@@ -19,6 +19,11 @@ from .models import (CsvImportado1,
                      CsvImportado3,
                      CsvImportado4,
                      CsvImportado5,
+                     CsvImportado6,
+                     CsvImportado7,
+                     CsvImportado8,
+                     CsvImportado9,
+                     CsvImportado10,
                      Tablaseguimiento)
 from .forms import TktForm
 from django.urls import reverse_lazy
