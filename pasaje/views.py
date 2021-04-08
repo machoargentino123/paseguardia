@@ -5,7 +5,7 @@ from csv_export.views import CSVExportView
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
 from django.db.models import OuterRef, Subquery
-from django.db.models.functions import TruncDate
+from django.db.models import Value
 # Create your views here.
 from django.views.generic import (TemplateView, 
                                   ListView, 
@@ -164,7 +164,7 @@ class ListaView3():
         for i in lista:
             print(i)
 
-            
+
         context = {'lista':lista,
                    'fecha' : fecha,
                   } 
