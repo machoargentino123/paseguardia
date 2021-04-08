@@ -158,11 +158,12 @@ class ListaView3():
             select = {'bandeja_anterior':'CSV_Importado2.grupo_asignado'},
             tables = ['CSV_Importado1','CSV_Importado2'],
             where = ['CSV_Importado1.id = CSV_Importado2.id']
-         ).values('id','grupo_asignado','bandeja_anterior','status_reason_hidden'
-         ).annotate(fecha_hora = Value(fecha,CharField()))
+         ).values('id','grupo_asignado','bandeja_anterior','status_reason_hidden')
 
         for i in lista:
             print(i)
+        pritn(type(fecha))
+    
 
 
         context = {'lista':lista,
