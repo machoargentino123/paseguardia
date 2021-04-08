@@ -130,6 +130,7 @@ class ListaView3():
    
     def index(request):
         x = []
+
         lista1 = CsvImportado1.objects.all()
         lista2 = CsvImportado2.objects.all()
         lista3 = CsvImportado3.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
@@ -140,7 +141,7 @@ class ListaView3():
         lista8 = CsvImportado8.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista9 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista10 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        fecha = datetime.now().strftime("%d-%m-%Y %H:%M:%S.%f")
+        fecha = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
         for a in lista1:
             for b in lista2:
@@ -154,7 +155,9 @@ class ListaView3():
         
 
         lista = CsvImportado1.objects.filter(id__in = x).extra(
-            select = {'bandeja_anterior':'CSV_Importado2.grupo_asignado'},
+            select = {'bandeja_anterior':'CSV_Importado2.grupo_asignado',
+                      'estado_anterior':'CSV_Importado2.grupo_asignado',  
+                    },
             tables = ['CSV_Importado1','CSV_Importado2'],
             where = ['CSV_Importado1.id = CSV_Importado2.id']
          ).values('id','grupo_asignado','bandeja_anterior','status_reason_hidden')
