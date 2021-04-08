@@ -162,7 +162,7 @@ class ListaView3():
 
         for i in lista:
             print(i)
-        pritn(type(fecha))
+        print(type(fecha))
     
 
 
