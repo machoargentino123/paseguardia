@@ -161,10 +161,11 @@ class ListaView3():
         ).values('id','grupo_asignado','bandeja_anterior','status_reason_hidden')
         
         for i in lista:
-            print(i.id)
-            print(i.grupo_asignado)
-            print(i.bandeja_anterior)
-            print(i.status_reason_hidden)
+            print(i)
+                # print(i.id)
+                # print(i.grupo_asignado)
+                # print(i.bandeja_anterior)
+                # print(i.status_reason_hidden)
 
         context = {'lista':lista,
                    'fecha' : fecha,
