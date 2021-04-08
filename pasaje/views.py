@@ -157,8 +157,7 @@ class ListaView3():
         lista = CsvImportado1.objects.filter(id__in = x).extra(
             select = {'bandeja_anterior':'CSV_Importado2.grupo_asignado',
                       'estado_anterior':'CSV_Importado2.Estado',
-                       'status_anterior':'Status_Reason_Hidden',
-                    },
+                       'status_anterior':'Status_Reason_Hidden'},
             tables = ['CSV_Importado1','CSV_Importado2'],
             where = ['CSV_Importado1.id = CSV_Importado2.id']
          ).values('id','grupo_asignado','estado','status_reason_hidden','bandeja_anterior','estado_anterior','status_anterior')
