@@ -5,6 +5,7 @@ from csv_export.views import CSVExportView
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
 from django.db.models import OuterRef, Subquery
+from django.db.models.functions import TruncDate
 # Create your views here.
 from django.views.generic import (TemplateView, 
                                   ListView, 
@@ -159,7 +160,7 @@ class ListaView3():
             select = {'bandeja_anterior':'CSV_Importado2.grupo_asignado'},
             tables = ['CSV_Importado1','CSV_Importado2'],
             where = ['CSV_Importado1.id = CSV_Importado2.id']
-        ).values('id','grupo_asignado','bandeja_anterior','status_reason_hidden').annotate(fecha_hora = TruncDate('timestamp'))
+        ).values('id','grupo_asignado','bandeja_anterior','status_reason_hidden').annotate(fecha_hora = fecha)
         
         for i in lista:
             print(i)
