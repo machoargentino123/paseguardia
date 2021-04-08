@@ -158,8 +158,7 @@ class ListaView3():
             select = {'bandeja anterior':'CSV_Importado2.grupo_asignado'},
             tables = ['CSV_Importado1','CSV_Importado2'],
             where = ['CSV_Importado1.id = CSV_Importado2.id']
-        ).values('id','grupo_asignado','bandeja anterior'
-        )
+        ).values('id','grupo_asignado','bandeja anterior','status_reason_hidden')
         print(lista)
         print(type(lista))
 
