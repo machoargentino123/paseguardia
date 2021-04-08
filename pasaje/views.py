@@ -141,7 +141,7 @@ class ListaView3():
         lista9 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista10 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         #listapreuba = CsvImportado1.objects.all().annotate()
-        fecha = date.today()
+        fecha = datetime.now()
 
         for a in lista1:
             for b in lista2:
@@ -152,6 +152,7 @@ class ListaView3():
                         x.append(a.id)
                     else:
                         pass
+        
         #el id__in acepta como parametro una lista
         #listaa = CsvImportado1.objects.filter(id__in = x).values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista = CsvImportado1.objects.filter(id__in = x).extra(
