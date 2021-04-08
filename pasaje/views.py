@@ -141,7 +141,7 @@ class ListaView3():
         lista9 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         lista10 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         #listapreuba = CsvImportado1.objects.all().annotate()
-        fecha = datetime.now()
+        fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         for a in lista1:
             for b in lista2:
@@ -159,7 +159,7 @@ class ListaView3():
             select = {'bandeja_anterior':'CSV_Importado2.grupo_asignado'},
             tables = ['CSV_Importado1','CSV_Importado2'],
             where = ['CSV_Importado1.id = CSV_Importado2.id']
-        ).values('id','grupo_asignado','bandeja_anterior','status_reason_hidden').annotate(fecha_hora = datetime.now())
+        ).values('id','grupo_asignado','bandeja_anterior','status_reason_hidden').annotate(fecha_hora = fecha)
         
         for i in lista:
             print(i)
