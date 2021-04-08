@@ -159,7 +159,7 @@ class ListaView3():
             where = ['CSV_Importado1.id = CSV_Importado2.id']
          ).values('id','grupo_asignado','bandeja_anterior','status_reason_hidden')
 
-        lista = lista.annotate(fecha_hora=Value('en creacion', output_field=CharField()))
+        lista = lista.annotate(fecha_hora=Value(fecha, output_field=CharField()))
         for i in lista:
             print(i)
     
