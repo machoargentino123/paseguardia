@@ -4,8 +4,7 @@ from django_q.tasks import async_task
 from csv_export.views import CSVExportView
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
-from django.db.models import OuterRef, Subquery
-from django.db.models import Value
+from django.db.models import CharField, Value
 # Create your views here.
 from django.views.generic import (TemplateView, 
                                   ListView, 
@@ -160,7 +159,7 @@ class ListaView3():
             where = ['CSV_Importado1.id = CSV_Importado2.id']
          ).values('id','grupo_asignado','bandeja_anterior','status_reason_hidden')
 
-        lista = lista.annotate(fecha_hora= "en proceso de creacion")
+        lista = lista.annotate(fecha_hora=Value('en creacion', output_field=CharField()))
         for i in lista:
             print(i)
     
