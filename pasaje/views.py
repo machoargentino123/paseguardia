@@ -159,8 +159,12 @@ class ListaView3():
             tables = ['CSV_Importado1','CSV_Importado2'],
             where = ['CSV_Importado1.id = CSV_Importado2.id']
         ).values('id','grupo_asignado','bandeja anterior','status_reason_hidden')
-        print(lista)
-        print(type(lista))
+        
+        for i in lista:
+            print(i.id)
+            print(i.grupo_asignado)
+            print(i.bandeja anterior)
+            print(i.status_reason_hidden)
 
         context = {'lista':lista,
                    'fecha' : fecha,
