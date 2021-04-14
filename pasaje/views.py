@@ -143,8 +143,8 @@ class ActualizarTkt(UpdateView):
         return super(ActualizarTkt,self).form_valid(form)
 
 
-#vista para visualizar los reclamos de todas las celulas. No esta linkeado a nada, pero anda
-# 
+#vista Que tiene una query cruda, porque django no permite
+#hacer joins sin foreighn keys
 class ListaView3():
    
     def index(request):
@@ -176,7 +176,7 @@ class ListaView3():
         lista = CsvImportado1.objects.filter(id__in = x).extra(
             select = {'bandeja_anterior':'CSV_Importado2.grupo_asignado',
                       'estado_anterior':'CSV_Importado2.Estado',
-                       'status_anterior':'CSV_Importado2.Status_Reason_Hidden',
+                      'status_anterior':'CSV_Importado2.Status_Reason_Hidden',
                     },
             tables = ['CSV_Importado1','CSV_Importado2'],
             where = ['CSV_Importado1.id = CSV_Importado2.id']
