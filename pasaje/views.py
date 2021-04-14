@@ -217,7 +217,7 @@ class eventos(ListView):
     context_object_name = 'Tickets'
     template_name = 'lista.html'
     model = Eventostkt
-    paginate = 20
+    paginate = 100
 
 
 #exporta todo a CSV 
