@@ -66,7 +66,7 @@ class CsvImportado2(models.Model):
     celula_n = models.IntegerField(db_column='Celula_N')  # Field name made lowercase.        
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'CSV_Importado2' 
 
 class CsvImportado3(models.Model):
@@ -98,7 +98,7 @@ class CsvImportado3(models.Model):
     celula_n = models.IntegerField(db_column='Celula_N')  # Field name made lowercase.        
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'CSV_Importado3'
 
 class CsvImportado4(models.Model):
@@ -130,7 +130,7 @@ class CsvImportado4(models.Model):
     celula_n = models.IntegerField(db_column='Celula_N')  # Field name made lowercase.        
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'CSV_Importado4'
 
 class CsvImportado5(models.Model):
@@ -162,7 +162,7 @@ class CsvImportado5(models.Model):
     celula_n = models.IntegerField(db_column='Celula_N')  # Field name made lowercase.        
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'CSV_Importado5'
 
 class CsvImportado6(models.Model):
@@ -194,7 +194,7 @@ class CsvImportado6(models.Model):
     celula_n = models.IntegerField(db_column='Celula_N')  # Field name made lowercase.        
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'CSV_Importado6'
 
 class CsvImportado7(models.Model):
@@ -226,7 +226,7 @@ class CsvImportado7(models.Model):
     celula_n = models.IntegerField(db_column='Celula_N')  # Field name made lowercase.        
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'CSV_Importado7'
 
 class CsvImportado8(models.Model):
@@ -258,7 +258,7 @@ class CsvImportado8(models.Model):
     celula_n = models.IntegerField(db_column='Celula_N')  # Field name made lowercase.        
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'CSV_Importado8'
 
 class CsvImportado9(models.Model):
@@ -290,7 +290,7 @@ class CsvImportado9(models.Model):
     celula_n = models.IntegerField(db_column='Celula_N')  # Field name made lowercase.        
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'CSV_Importado9'
 
 class CsvImportado10(models.Model):
@@ -322,7 +322,7 @@ class CsvImportado10(models.Model):
     celula_n = models.IntegerField(db_column='Celula_N')  # Field name made lowercase.        
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'CSV_Importado10'
 
 
