@@ -343,6 +343,27 @@ class Tablaseguimiento(models.Model):
     def __str__(self):
         return str(self.orderid)
 
+
+class Eventostkt(models.Model):
+    sk = models.AutoField(db_column='SK', primary_key=True)  # Field name made lowercase.
+    id = models.CharField(db_column='ID', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    grupo_asignado = models.CharField(db_column='Grupo_Asignado', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    grupo_asignado_anterior = models.CharField(db_column='Grupo_Asignado_anterior', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    estado = models.CharField(db_column='Estado', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    estado_anterior = models.CharField(db_column='Estado_anterior', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    status_reason_hidden = models.CharField(db_column='Status_Reason_Hidden', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    status_reason_hidden_anterior = models.CharField(db_column='Status_Reason_Hidden_anterior', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    tipo_incidencia = models.CharField(db_column='Tipo_Incidencia', max_length=250, blank=True, null=True)  # Field name made lowercase.                   
+    tipo_incidencia_anterior = models.CharField(db_column='Tipo_Incidencia_anterior', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    fecha_envio = models.CharField(db_column='Fecha_Envio', max_length=250, blank=True, null=True)  # Field name made lowercase.                                                  
+    tiempo_acumulado = models.CharField(db_column='Tiempo_Acumulado', max_length=250, blank=True, null=True)  # Field name made lowercase.
+    horario = models.DateTimeField(db_column='Horario')  # Field name made lowercase.
+
+    class Meta:
+        managed = True
+        db_table = 'eventostkt'                                                                                                                         
+
+
 #se actaiva depues de un guardado.
 #post_save.connect(prueba_signals, sender = Tablaseguimiento)
 
