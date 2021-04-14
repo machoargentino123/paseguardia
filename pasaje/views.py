@@ -24,7 +24,8 @@ from .models import (CsvImportado1,
                      CsvImportado8,
                      CsvImportado9,
                      CsvImportado10,
-                     Tablaseguimiento)
+                     Tablaseguimiento,
+                     Eventostkt)
 
 from .forms import TktForm
 from django.urls import reverse_lazy
@@ -90,7 +91,7 @@ class ListaView(ListView):
         else:
             return CsvImportado1.objects.all() 
 
-#listado de reclamos que hay
+#Pagina de los reclamos para seguimiento
 class ListaView2(ListView):
     context_object_name = 'lista'
     template_name = 'guardia.html'
@@ -124,8 +125,26 @@ class ListaView2(ListView):
             print(type(lista[0]))
             return lista
     
+
+
+
+#vista para editar los reclamos. 
+
+class ActualizarTkt(UpdateView):
+    model = Tablaseguimiento
+    template_name = "actualizar.html"
+    fields = ['detalle', 'reactivar','reactivar_hora', 'prioridad']  
+    success_url = reverse_lazy('pasaje_app:Guardia')
+
+    #GUARDAR DESPUES DE VALIDAR
+
+    def form_valid(self,form):
+        #logica de la funcion.
+        return super(ActualizarTkt,self).form_valid(form)
+
+
 #vista para visualizar los reclamos de todas las celulas. No esta linkeado a nada, pero anda
-#  
+# 
 class ListaView3():
    
     def index(request):
@@ -176,21 +195,10 @@ class ListaView3():
 
         return render(request,'celula.html',context)
 
-#vista para editar los reclamos. 
 
-class ActualizarTkt(UpdateView):
-    model = Tablaseguimiento
-    template_name = "actualizar.html"
-    fields = ['detalle', 'reactivar','reactivar_hora', 'prioridad']  
-    success_url = reverse_lazy('pasaje_app:Guardia')
 
-    #GUARDAR DESPUES DE VALIDAR
 
-    def form_valid(self,form):
-        #logica de la funcion.
-        return super(ActualizarTkt,self).form_valid(form)
-        
-
+# Vista test
 class PruebaView():
 
     def index(request):
@@ -203,6 +211,13 @@ class PruebaView():
                    }
         return render(request,'hola.html',context) 
 
+#vista Test 2  visualizar los eventos en la tabla eventostkt
+
+class eventos(ListView):
+    context_object_name = 'Tickets'
+    template_name = 'lista.html'
+    model = Eventostkt
+    paginate = 20
 
 
 #exporta todo a CSV 
