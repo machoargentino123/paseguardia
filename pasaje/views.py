@@ -57,7 +57,7 @@ class Asincrono():
 
 
 
-class PruebaView2():
+class PruebaView():
 
     def index(request):
 
@@ -69,6 +69,11 @@ class PruebaView2():
                    'valor' : valor,
                    }
         return render(request,'hola.html',context) 
+
+
+class Pruebagraficos(TemplateView):
+    template_name = 'graficos.html'
+
 
 
 #pagina de inicio
