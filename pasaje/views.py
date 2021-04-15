@@ -57,7 +57,7 @@ class Asincrono():
 
 
 
-class PruebaView():
+class PruebaView2():
 
     def index(request):
 
@@ -69,6 +69,7 @@ class PruebaView():
                    'valor' : valor,
                    }
         return render(request,'hola.html',context) 
+
 
 #pagina de inicio
 class InicioView(TemplateView):
@@ -90,6 +91,9 @@ class ListaView(ListView):
             return lista
         else:
             return CsvImportado1.objects.all() 
+
+
+
 
 #Pagina de los reclamos para seguimiento
 class ListaView2(ListView):
@@ -218,6 +222,8 @@ class eventos(ListView):
     template_name = 'lista.html'
     model = Eventostkt
     paginate = 100
+
+
 
 
 #exporta todo a CSV 
