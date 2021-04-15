@@ -4,18 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <title>Document</title>
 </head>
 <body>
-  <h1>Hola mundo</h1>
-<h2>cambio</h2>
-
-<div>
   <canvas id="myChart">grafico</canvas>
-</div>
-
 </body>
 
 <script>
@@ -23,7 +16,7 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx,{
     type:"bar",
     data:{
-      labels: ['col1','col2','col3']
+      labels: ['col1','col2','col3'],
       datasets:[{
         label: 'Num datos',
         data:[10,9,15]
