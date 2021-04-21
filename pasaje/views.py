@@ -99,7 +99,7 @@ class ListaView(ListView):
     uno = 2
 
     def get_queryset(self):
-        lista = CsvImportado1.objects.filter(
+        lista = CsvImportado1.objects.values('celula_n').filter(
             status_reason_hidden__icontains = 'Monitoring Incident',
             celula_n__icontains = "1").annotate(count=Count('celula_n'))
         return lista
