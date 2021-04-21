@@ -71,20 +71,9 @@ class PruebaView():
         return render(request,'hola.html',context) 
 
 
-class Pruebagraficos(ListView):
-    context_object_name = 'Tickets'
+class Pruebagraficos(TemplateView):
     template_name = 'graficos.html'
-    context_object_name = 'Tickets'
 
-    def get_queryset(self):
-        palabra_clave = self.request.GET.get('kword', '')
-        if palabra_clave != '':
-            lista = CsvImportado1.objects.filter(
-                celula_n__icontains = palabra_clave,
-            ).filter( status_reason_hidden__icontains = 'Monitoring Incident')
-            return lista
-        else:
-            return CsvImportado1.objects.all() 
 
 
 #pagina de inicio
@@ -99,10 +88,14 @@ class ListaView(ListView):
     uno = 2
 
     def get_queryset(self):
-        lista = CsvImportado1.objects.values('celula_n').filter(
-            status_reason_hidden__icontains = 'Monitoring Incident',
-            celula_n__icontains = "1").annotate(count=Count('celula_n'))
-        return lista
+        palabra_clave = self.request.GET.get('kword', '')
+        if palabra_clave != '':
+            lista = CsvImportado1.objects.filter(
+                celula_n__icontains = palabra_clave,
+            ).filter( status_reason_hidden__icontains = 'Monitoring Incident')
+            return lista
+        else:
+            return CsvImportado1.objects.all() 
 
 
 
