@@ -71,8 +71,31 @@ class PruebaView():
         return render(request,'hola.html',context) 
 
 
-class Pruebagraficos(TemplateView):
-    template_name = 'graficos.html'
+class Pruebagraficos():
+    def index(request):
+
+        cel1 = CsvImportado1.objects.filter(
+            celula_n = 1
+        ).count()
+
+        cel2 = CsvImportado1.objects.filter(
+            celula_n = 2
+            ).count()
+
+        cel3 = CsvImportado1.objects.filter(
+            celula_n = 3
+        ).count()
+
+        cel4 = CsvImportado1.objects.filter(
+            celula_n = 4
+        ).count()
+
+        context = {'cel1' : cel1, 
+                   'cel2' : cel2,
+                   'cel3' : cel3,
+                   'cel3' : cel3,
+                   }
+        return render(request,'graficos.html',context) 
 
 
 

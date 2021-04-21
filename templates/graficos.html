@@ -15,10 +15,6 @@ Graficos
   
 <h1>Ejemplo</h1>
 
-{% for i in Tickets %}
-{{i.count}}
-{% endfor %}
-
 
 <div>
   <canvas id="popChart" width="600" height="400"></canvas>
@@ -34,7 +30,7 @@ var barChart = new Chart(popCanvas, {
     labels: ["celula1","Celula2","Celula3","Celula4"],
     datasets: [{
       label: 'Population',
-      data: [1379302771, 1281935911, 326625791, 260580739],
+      data: [{{cel1}},{{cel2}},{{cel3}},{{cel4}}],
       backgroundColor: [
         'rgba(255, 99, 132, 0.6)',
         'rgba(54, 162, 235, 0.6)',
