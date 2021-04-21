@@ -101,16 +101,16 @@ class ListaView(ListView):
     def get_queryset(self):
         lista1 = CsvImportado1.objects.filter(
             status_reason_hidden__icontains = 'Monitoring Incident',
-            celula_n__icontains = "1").count()
+            celula_n__icontains = "1").annotate(count=Count('celula_n'))
         lista2 = CsvImportado1.objects.filter(
             status_reason_hidden__icontains = 'Monitoring Incident',
-            celula_n__icontains = "2").count()
+            celula_n__icontains = "2").annotate(count=Count('celula_n'))
         lista3 = CsvImportado1.objects.filter(
             status_reason_hidden__icontains = 'Monitoring Incident',
-            celula_n__icontains = "3").count()            
+            celula_n__icontains = "3").annotate(count=Count('celula_n'))     
         lista4 = CsvImportado1.objects.filter(
             status_reason_hidden__icontains = 'Monitoring Incident',
-            celula_n__icontains = "4").count()
+            celula_n__icontains = "4").annotate(count=Count('celula_n'))
         lista = lista1 + lista2 + lista3 + lista4 
         return lista
 
