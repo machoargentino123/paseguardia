@@ -93,7 +93,7 @@ class Pruebagraficos():
         context = {'cel1' : cel1, 
                    'cel2' : cel2,
                    'cel3' : cel3,
-                   'cel3' : cel3,
+                   'cel4' : cel4,
                    }
         return render(request,'graficos.html',context) 
 
