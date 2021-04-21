@@ -112,7 +112,7 @@ class ListaView(ListView):
             status_reason_hidden__icontains = 'Monitoring Incident',
             celula_n__icontains = "4").count()
         lista = lista1 + lista2 + lista3 + lista4 
-            return lista
+        return lista
 
 
 
