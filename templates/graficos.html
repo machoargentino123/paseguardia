@@ -16,7 +16,10 @@ Graficos
 <h1>Ejemplo</h1>
 
 {% for i in Tickets %}
-{{i}}
+  {% for a in i %}
+  {{a}}
+  {% endfor %}
+
 {% endfor %}
 
 
