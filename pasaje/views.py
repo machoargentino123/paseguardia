@@ -71,9 +71,20 @@ class PruebaView():
         return render(request,'hola.html',context) 
 
 
-class Pruebagraficos(TemplateView):
+class Pruebagraficos(ListView):
+    context_object_name = 'Tickets'
     template_name = 'graficos.html'
+    context_object_name = 'Tickets'
 
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get('kword', '')
+        if palabra_clave != '':
+            lista = CsvImportado1.objects.filter(
+                celula_n__icontains = palabra_clave,
+            ).filter( status_reason_hidden__icontains = 'Monitoring Incident')
+            return lista
+        else:
+            return CsvImportado1.objects.all() 
 
 
 #pagina de inicio
@@ -88,14 +99,20 @@ class ListaView(ListView):
     uno = 2
 
     def get_queryset(self):
-        palabra_clave = self.request.GET.get('kword', '')
-        if palabra_clave != '':
-            lista = CsvImportado1.objects.filter(
-                celula_n__icontains = palabra_clave,
-            ).filter( status_reason_hidden__icontains = 'Monitoring Incident')
+        lista1 = CsvImportado1.objects.filter(
+            status_reason_hidden__icontains = 'Monitoring Incident',
+            celula_n__icontains = "1").count()
+        lista2 = CsvImportado1.objects.filter(
+            status_reason_hidden__icontains = 'Monitoring Incident',
+            celula_n__icontains = "2").count()
+        lista3 = CsvImportado1.objects.filter(
+            status_reason_hidden__icontains = 'Monitoring Incident',
+            celula_n__icontains = "3").count()            
+        lista4 = CsvImportado1.objects.filter(
+            status_reason_hidden__icontains = 'Monitoring Incident',
+            celula_n__icontains = "4").count()
+        lista = lista1 + lista2 + lista3 + lista4 
             return lista
-        else:
-            return CsvImportado1.objects.all() 
 
 
 
