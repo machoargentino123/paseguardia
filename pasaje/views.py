@@ -378,7 +378,7 @@ class PanelMonitoreo():
         if valor == '':
             valor = 'sin valor'
         
-        llamadas_sd = Llamadas.objects.using('avaya').all()
+        llamadas_md = Llamadas.objects.using('avaya').all()
 
         
 
@@ -393,7 +393,7 @@ class PanelMonitoreo():
                    'cela4' : cela4,
                    'fecha': fecha,
                    'valor': valor,
-                   'llamadas_sd':llamadas_sd
+                   'llamadas_md':llamadas_md
                    }
 
         return render(request,'panel.html',context) 
