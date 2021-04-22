@@ -25,7 +25,8 @@ from .models import (CsvImportado1,
                      CsvImportado9,
                      CsvImportado10,
                      Tablaseguimiento,
-                     Eventostkt)
+                     Eventostkt,
+                     Llamadas)
 
 from .forms import TktForm
 from django.urls import reverse_lazy
@@ -213,13 +214,6 @@ class ListaView3():
         return render(request,'celula.html',context)
 
 
-
-
-
-
-
-
-
 #vista Test 2  visualizar los eventos en la tabla eventostkt
 
 class eventos(ListView):
@@ -400,6 +394,8 @@ class PanelMonitoreo():
         if valor == '':
             valor = 'sin valor'
         
+        llamadas_sd = Llamadas.objects.all()
+
         
 
         context = {'total': total, 
@@ -413,6 +409,7 @@ class PanelMonitoreo():
                    'cela4' : cela4,
                    'fecha': fecha,
                    'valor': valor,
+                   'llamadas_sd':llamadas_sd,
                    }
 
 
