@@ -8,6 +8,9 @@ Panel de Monitoreo
 
 {% block content %}
 {% include 'include/header.html' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
 <div class='grid-container'>
     <div class = 'grid-x'>
         <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
@@ -22,7 +25,7 @@ Panel de Monitoreo
                 </div>
                 <div class='cell large-3'>
                     <div class="callout success ">
-
+                        <canvas id="popChart" width="300" height="100"></canvas>
                     </div>
                 </div>
                 <div class='cell large-3'>
@@ -99,6 +102,9 @@ Panel de Monitoreo
 </div>
 
 
+
+
+
 <!-- Actualizar cada 120 segundos -->
 <script language="javascript">
     setTimeout(function(){
@@ -106,5 +112,25 @@ Panel de Monitoreo
     }, 120000);
 </script>
 
+<script>
+    var popCanvas = document.getElementById("popChart").getContext("2d");
+    
+    var barChart = new Chart(popCanvas, {
+      type: 'bar',
+      data: {
+        labels: ["celula1","Celula2","Celula3","Celula4"],
+        datasets: [{
+          label: 'Reclamos',
+          data: [{{cela1}},{{cela2}},{{cela3}},{{cela4}}],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(75, 192, 192, 0.6)'
+          ]
+        }]
+      }
+    });
+</script>
 
 {% endblock content %}
