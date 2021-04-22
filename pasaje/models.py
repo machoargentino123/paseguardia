@@ -34,7 +34,7 @@ class CsvImportado1(models.Model):
     celula_n = models.IntegerField(db_column='Celula_N')  # Field name made lowercase.        
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'CSV_Importado1' 
 
 class CsvImportado2(models.Model):
