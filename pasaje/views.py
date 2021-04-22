@@ -394,7 +394,7 @@ class PanelMonitoreo():
         if valor == '':
             valor = 'sin valor'
         
-        llamadas_sd = Llamadas.objects.all()
+        llamadas_sd = Llamadas.objects.using('avaya').all()
 
         
 
