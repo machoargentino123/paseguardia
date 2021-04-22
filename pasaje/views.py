@@ -396,7 +396,6 @@ class PanelMonitoreo():
                    'llamadas_sd':llamadas_sd
                    }
 
-        print(llamadas_sd)
         return render(request,'panel.html',context) 
 
 #Lista los reclamos de cada celula labura en conjunto con la vista panelmonitoreo
