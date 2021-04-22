@@ -41,7 +41,11 @@ Panel de Monitoreo
                 </div>
                 <div class='cell large-3'>
                     <div class="callout success ">
-                        <p>Fecha de hoy: {{fecha}}</p>
+                    {% for i in llamadas_sd %}
+                        <ul><b>Llamadas en cola: </b>{{i.encola}}</ul>
+                        <ul><b>En auxiliar: </b>{{i.aux}}</ul>
+                        <ul><b>Disponibles: </b> {{i.disponibles}}</ul>
+                    {% endfor %}
                     </div>
                 </div>
 
