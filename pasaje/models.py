@@ -6,7 +6,7 @@ from django.db.models.signals import post_save,post_delete
 from .signals import prueba_signals, prueba_signals2
 
 class CsvImportado1(models.Model):
-    id = models.TextField(db_column='ID', max_length=250,primary_key=True)  # Field name made lowercase.
+    id = models.TextField(db_column='ID', max_length=255,primary_key=True)  # Field name made lowercase.
     grupo_asignado = models.TextField(db_column='Grupo_Asignado')  # Field name made lowercase. 
     estado = models.TextField(db_column='Estado')  # Field name made lowercase.
     status_reason_hidden = models.TextField(db_column='Status_Reason_Hidden')  # Field name made lowercase.
@@ -38,7 +38,7 @@ class CsvImportado1(models.Model):
         db_table = 'CSV_Importado1' 
 
 class CsvImportado2(models.Model):
-    id = models.TextField(db_column='ID', max_length=250,primary_key=True)  # Field name made lowercase.
+    id = models.TextField(db_column='ID', max_length=255,primary_key=True)  # Field name made lowercase.
     grupo_asignado = models.TextField(db_column='Grupo_Asignado')  # Field name made lowercase. 
     estado = models.TextField(db_column='Estado')  # Field name made lowercase.
     status_reason_hidden = models.TextField(db_column='Status_Reason_Hidden')  # Field name made lowercase.
