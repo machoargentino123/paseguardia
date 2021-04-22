@@ -30,11 +30,12 @@ Panel de Monitoreo
                 </div>
                 <div class='cell large-3'>
                     <div class="callout success ">
+                        <h3>Llamadas Mesa Dig.</h3>
                         <li>
                         {% for i in llamadas_sd%}
-                        <ul>{{i.encola}}</ul>
-                        <ul>{{i.aux}}</ul>
-                        <ul>{{i.disponibles}}</ul>
+                        <ul><b>Llamadas en cola:</b>>{{i.encola}}</ul>
+                        <ul><b>En auxiliar:</b>{{i.aux}}</ul>
+                        <ul><b>Disponibles:</b> {{i.disponibles}}</ul>
                         {% endfor %}
                         </li>
                     </div>
