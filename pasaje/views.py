@@ -170,14 +170,6 @@ class ListaView3():
 
         lista1 = CsvImportado1.objects.all()
         lista2 = CsvImportado2.objects.all()
-        lista3 = CsvImportado3.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista4 = CsvImportado4.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista5 = CsvImportado5.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista6 = CsvImportado6.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista7 = CsvImportado7.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista8 = CsvImportado8.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista9 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
-        lista10 = CsvImportado9.objects.all().values('id','grupo_asignado','estado','status_reason_hidden','tipo_incidencia')
         fecha = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
         for a in lista1:
