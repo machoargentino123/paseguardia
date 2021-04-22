@@ -12,14 +12,14 @@ from django.views.generic import (TemplateView,
                                   DetailView, 
                                   CreateView, 
                                   UpdateView,
-                                  DeleteView)
+                                  DeleteView,)
 
 from .models import (CsvImportado1,
                      CsvImportado2,
                      Tablaseguimiento,
                      Eventostkt,
                      Llamadas,
-                     )
+                     Llamadasssdd)
 
 from .forms import TktForm
 from django.urls import reverse_lazy
@@ -381,6 +381,7 @@ class PanelMonitoreo():
         
         llamadas_md = Llamadas.objects.using('avaya').all()
         
+        llamadas_sd = Llamadasssdd.objects.using('avaya').all()
 
         context = {'total': total, 
                    'cel1' : cel1,
@@ -394,6 +395,7 @@ class PanelMonitoreo():
                    'fecha': fecha,
                    'valor': valor,
                    'llamadas_md':llamadas_md,
+                   'llamadas_sd':llamadas_sd
                    }
 
         return render(request,'panel.html',context) 
