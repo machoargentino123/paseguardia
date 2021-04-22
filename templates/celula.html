@@ -9,44 +9,13 @@ Lista de Reclamos.
 {% include 'include/header.html' %}
 <div class='grid container'>
     <div class='grid-x'>
-        <h1 class= "cell">Tabla tamaño:{{lista.count}} tickets, horario {{fecha}}</h1>
+        <h1 class= "cell">Tabla tamaño:{{object_list.count}} tickets {{uno}}</h1>
     </div>
 
-    <div class="grid-container">
-        <div class="cell grid-x">
-            <table>
-                <thead>
-                  <tr>
-                    <th width="50">Nro Tkt</th>
-                    <th width="50">Bendeja</th>
-                    <th width="50">Estado</th>
-                    <th width="50">Status</th>
-                    <th width="50">bandeja anterior</th>
-                    <th width="50">estado anterior</th>
-                    <th width="50">status anterior</th>
-                    <th width="50">Horario</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {% for i in lista %}
-                        <tr>
-                        <td>{{ i.id }}</td>
-                        <td>{{ i.grupo_asignado }}</td>
-                        <td>{{ i.estado }}</td>
-                        <td>{{ i.status_reason_hidden }}</td>
-                        <td>{{ i.bandeja_anterior}}</td>
-                        <td>{{ i.estado_anterior}}</td>
-                        <td>{{ i.status_anterior}}</td>
-                        <td>{{ i.fecha_hora }}</td>
-                        </tr>
-                  {% endfor %}
-
-                </tbody>
-
-              </table>
+    <div class='grid-x'>
+        <div class='cell'>
+            {% render_table object_list %}
         </div>
-</div>
 </div>
 
     {% endblock content %}

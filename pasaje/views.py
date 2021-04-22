@@ -56,21 +56,6 @@ class Asincrono():
         return JsonResponse(json_payload)
 
 
-
-class PruebaView():
-
-    def index(request):
-
-        lista = Tablaseguimiento.objects.all()
-        fecha = date.today()
-        valor = 3
-        context = {'lista' : lista, 
-                   'fecha' : fecha,
-                   'valor' : valor,
-                   }
-        return render(request,'hola.html',context) 
-
-
 class Pruebagraficos():
     def index(request):
 
@@ -230,18 +215,10 @@ class ListaView3():
 
 
 
-# Vista test
-class PruebaView():
 
-    def index(request):
-        lista = Tablaseguimiento.objects.all()
-        fecha = date.today()
-        valor = 4
-        context = {'lista' : lista, 
-                   'fecha' : fecha,
-                   'valor' : valor,
-                   }
-        return render(request,'hola.html',context) 
+
+
+
 
 #vista Test 2  visualizar los eventos en la tabla eventostkt
 
@@ -424,8 +401,6 @@ class PanelMonitoreo():
             valor = 'sin valor'
         
         
-        
-
 
         context = {'total': total, 
                    'cel1' : cel1,
@@ -442,3 +417,17 @@ class PanelMonitoreo():
 
 
         return render(request,'panel.html',context) 
+
+#Lista los reclamos de cada celula labura en conjunto con la vista panelmonitoreo
+
+class ListarCel(ListView):
+    context_object_name = 'lista'
+    template_name = 'celula.html'
+    paginate = 200
+   
+    def get_queryset(self):
+        valor =self.kwargs['pk'] # recupera el dato del PK.
+        lista = CsvImportado1.objects.filter(
+               celula_n = valor, 
+            )
+        return lista
