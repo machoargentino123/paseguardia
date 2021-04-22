@@ -30,7 +30,7 @@ Panel de Monitoreo
                 </div>
                 <div class='cell large-3'>
                     <div class="callout success ">
-
+                        <canvas id="pie-chart" width="300" height="100"></canvas>
                     </div>
                 </div>
                 <div class='cell large-3'>
@@ -133,6 +133,26 @@ Panel de Monitoreo
     });
 </script>
 
+<script>
+    new Chart(document.getElementById("pie-chart"), {
+        type: 'pie',
+        data: {
+          labels: ["celula1","Celula2","Celula3","Celula4"],
+          datasets: [{
+            label: "reclamos",
+            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+            data: [{{cel3}},{{cel2}},{{cel1}},{{cel4}}]
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Reclamos en celula'
+          }
+        }
+    });
+    
+</script>
 
 
 
