@@ -19,7 +19,6 @@ from .models import (CsvImportado1,
                      Tablaseguimiento,
                      Eventostkt,
                      Llamadas,
-                     Llamadasssdd
                      )
 
 from .forms import TktForm
@@ -381,8 +380,6 @@ class PanelMonitoreo():
             valor = 'sin valor'
         
         llamadas_md = Llamadas.objects.using('avaya').all()
-
-        llamadas_sd = Llamadasssdd.objects.using('avaya').all()
         
 
         context = {'total': total, 
@@ -397,7 +394,6 @@ class PanelMonitoreo():
                    'fecha': fecha,
                    'valor': valor,
                    'llamadas_md':llamadas_md,
-                   'llamadas_sd':llamadas_sd
                    }
 
         return render(request,'panel.html',context) 

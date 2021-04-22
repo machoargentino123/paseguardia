@@ -123,6 +123,24 @@ class Llamadas(models.Model):
         db_table = 'Llamadas'
 
 
+class Llamadasssdd(models.Model):
+    id_llamadas = models.AutoField(db_column='ID_Llamadas', primary_key=True)  # Field name made lowercase.
+    encola = models.IntegerField(db_column='EnCola')  # Field name made lowercase.
+    aux = models.IntegerField(db_column='AUX')  # Field name made lowercase.
+    presentes = models.IntegerField(db_column='Presentes')  # Field name made lowercase.
+    disponibles = models.IntegerField(db_column='Disponibles')  # Field name made lowercase.
+    enllamada = models.IntegerField(db_column='EnLlamada')  # Field name made lowercase.
+    acw = models.IntegerField(db_column='ACW')  # Field name made lowercase.
+    otros = models.IntegerField(db_column='Otros')  # Field name made lowercase.
+    hora = models.TextField(db_column='Hora')  # Field name made lowercase.
+    otro = models.IntegerField()
+    ring = models.IntegerField(db_column='Ring')  # Field name made lowercase.                                                                                                                                                                                                                                                                      
+    
+    class Meta:                                                                                                                                                                 
+        managed = False                                                                                                                                                         
+        db_table = 'LlamadasSSDD' 
+
+
 #se actaiva depues de un guardado.
 #post_save.connect(prueba_signals, sender = Tablaseguimiento)
 
