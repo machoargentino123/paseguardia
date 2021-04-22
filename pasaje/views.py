@@ -19,7 +19,8 @@ from .models import (CsvImportado1,
                      Tablaseguimiento,
                      Eventostkt,
                      Llamadas,
-                     Llamadasssdd)
+                     Llamadasssdd
+                     )
 
 from .forms import TktForm
 from django.urls import reverse_lazy
