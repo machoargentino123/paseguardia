@@ -18,12 +18,13 @@ Graficos
 <h2>{{cel2}}</h2>
 <h2>{{cel3}}</h2>
 <h2>{{cel4}}</h2>
-
-
-<div>
-  <canvas id="popChart" width="600" height="400"></canvas>
+<div class='grid container'>
+  <div class='grid-x'>
+    <div class = 'cell'>
+      <canvas id="popChart" width="300" height="100"></canvas>
+    </div>
+  </div>
 </div>
-
 
 <script>
 var popCanvas = document.getElementById("popChart").getContext("2d");
@@ -33,7 +34,7 @@ var barChart = new Chart(popCanvas, {
   data: {
     labels: ["celula1","Celula2","Celula3","Celula4"],
     datasets: [{
-      label: 'Population',
+      label: 'Reclamos',
       data: [{{cel3}},{{cel2}},{{cel1}},{{cel4}}],
       backgroundColor: [
         'rgba(255, 99, 132, 0.6)',
