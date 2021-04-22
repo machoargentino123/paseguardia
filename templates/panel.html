@@ -30,7 +30,13 @@ Panel de Monitoreo
                 </div>
                 <div class='cell large-3'>
                     <div class="callout success ">
-                        <canvas id="pie-chart" width="300" height="100"></canvas>
+                        <li>
+                        {% for i in llamadas_sd%}
+                        <ul>{{i.encola}}</ul>
+                        <ul>{{i.aux}}</ul>
+                        <ul>{{i.disponibles}}</ul>
+                        {% endfor %}
+                        </li>
                     </div>
                 </div>
                 <div class='cell large-3'>
@@ -102,9 +108,7 @@ Panel de Monitoreo
 </div>
 
 
-{% for i in llamadas_sd%}
-{{i}}
-{% endfor %}
+
 
 
 
