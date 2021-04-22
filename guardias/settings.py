@@ -98,6 +98,13 @@ DATABASES = {
         'PASSWORD': 'T3l3gr4m.2020!',
         'HOST': '10.206.0.100',
         'PORT': '3306',
+        },'avaya':{
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Avaya',
+        'USER': 'guardias',
+        'PASSWORD': 'T3l3gr4m.2020!',
+        'HOST': '10.206.0.100',
+        'PORT': '3306',
         }
 }
 
