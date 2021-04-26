@@ -30,7 +30,7 @@ Panel de Monitoreo
                 </div>
                 <div class='cell large-3'>
                     <div class="callout success ">
-                        <h7>Llamadas Mesa Dig.</h7>
+                        <h7>Llamadas SD</h7>
                         {% for i in llamadas_md %}
                             <ul><b>Llamadas en cola: </b>{{i.encola}}</ul>
                             <ul><b>En auxiliar: </b>{{i.aux}}</ul>
@@ -41,7 +41,7 @@ Panel de Monitoreo
                 </div>
                 <div class='cell large-3'>
                     <div class="callout success ">
-                        <h7>Llamadas SD </h7>
+                        <h7>Llamadas Mes. Digitales </h7>
                         {% for i in llamadas_sd %}
                             <ul><b>Llamadas en cola: </b>{{i.encola}}</ul>
                             <ul><b>En auxiliar: </b>{{i.aux}}</ul>
@@ -146,25 +146,6 @@ Panel de Monitoreo
       }
     });
 </script>
-
-<script>
-    new Chart(document.getElementById("pie-chart"), {
-        type: 'pie',
-        data: {
-          labels: ["celula1","Celula2","Celula3","Celula4"],
-          datasets: [{
-            label: "reclamos",
-            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-            data: [{{cel3}},{{cel2}},{{cel1}},{{cel4}}]
-          }]
-        },
-        options: {
-          title: {
-            display: true,
-            text: 'Reclamos en celula'
-          }
-        }
-    });
     
 </script>
 
