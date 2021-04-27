@@ -103,7 +103,7 @@ class Eventostkt(models.Model):
     horario = models.DateTimeField(db_column='Horario')  # Field name made lowercase.
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'eventostkt'                                                                                                                         
 
 class Llamadas(models.Model):
