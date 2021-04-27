@@ -83,7 +83,7 @@ class Pruebagraficos():
                    'cel2' : cel2,
                    'cel3' : cel3,
                    'cel4' : cel4,
-                   'colgados': colgados
+                   'colgados': colgados,
                    'lista':lista
                    }
         return render(request,'graficos.html',context) 
