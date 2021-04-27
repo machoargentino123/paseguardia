@@ -75,7 +75,7 @@ class Pruebagraficos():
             horario__range = (datetime.now()-timedelta(minutes=20),datetime.now())  
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
-            ).distinct('id')
+            ).distinct()
         context = {'cel1' : cel1, 
                    'cel2' : cel2,
                    'cel3' : cel3,
