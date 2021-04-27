@@ -78,7 +78,7 @@ class Pruebagraficos():
             ).distinct()
         
         lista = colgados.objects.values('id')
-        
+        valor = 2
         context = {'cel1' : cel1, 
                    'cel2' : cel2,
                    'cel3' : cel3,
