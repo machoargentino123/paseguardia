@@ -78,7 +78,10 @@ class Pruebagraficos():
             ).distinct()
         
         lista  = CsvImportado2.objects.values('id','celula_n').all()
-        
+
+        for i in range(lista):
+            print(i[0],i[1])
+            
         
         context = {'cel1' : cel1, 
                    'cel2' : cel2,
