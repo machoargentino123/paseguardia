@@ -72,7 +72,7 @@ class Pruebagraficos():
 
         colgados = Eventostkt.objects.values('id','horario','estado').filter( 
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-            horario__range = (datetime.now()-timdelta(minutes=120),datetime.now())  
+            horario__range = (datetime.now()-datetime.timedelta(minutes=120),datetime.now())  
             ).distinct()
 
         context = {'cel1' : cel1, 
