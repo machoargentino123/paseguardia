@@ -16,7 +16,7 @@ Graficos
   {% for b in lista %}
     {% if a.id == b.id  %}
       <ul>
-      {{a.id}},{{a.estado}},{{a.grupo_asignado}},{{ b.celula_n }}
+      {{a.id}},{{a.estado}},{{a.grupo_asignado}}, Cel: {{ b.celula_n }}
       </ul>
     {% endif %}
   {% endfor %}
