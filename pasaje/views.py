@@ -80,7 +80,7 @@ class Pruebagraficos():
         lista  = list(CsvImportado2.objects.values('id','celula_n').all())
 
         for i in range(len(lista)):
-            print(lista[i])
+            print(lista[i][0])
               
           
         context = {'cel1' : cel1, 
