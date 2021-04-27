@@ -79,7 +79,7 @@ class Pruebagraficos():
         
         lista  = CsvImportado2.objects.values('id','celula_n').all()
 
-        for i in range(lista):
+        for i in len(lista):
             print(i[0],i[1])
             
         
