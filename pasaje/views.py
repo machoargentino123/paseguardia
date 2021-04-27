@@ -79,7 +79,9 @@ class Pruebagraficos():
         
         lista  = list(CsvImportado2.objects.values('id','celula_n').all())
 
-        lista = set(colgados.intersection(lista))
+        lista_set = set(lista)
+        colgados_set = set(colgados)
+        lista = colgados_set.intersection(lista_set)
                       
           
         context = {'cel1' : cel1, 
