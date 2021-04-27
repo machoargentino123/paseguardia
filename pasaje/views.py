@@ -70,19 +70,15 @@ class Pruebagraficos():
         ).count()
         
 
-        colgados = list(Eventostkt.objects.values('id','grupo_asignado','horario','estado').filter( 
+        colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado').filter( 
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             horario__range = (datetime.now()-timedelta(minutes=20),datetime.now())  
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
-            ).distinct())
+            ).distinct()
         
-        lista  = list(CsvImportado2.objects.values('id','celula_n').all())
+        lista  = CsvImportado2.objects.values('id','celula_n').all()
 
-        lista_set = set(lista)
-        colgados_set = set(colgados)
-        lista = colgados_set.intersection(lista_set)
-                      
           
         context = {'cel1' : cel1, 
                    'cel2' : cel2,

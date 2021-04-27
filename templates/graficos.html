@@ -12,16 +12,14 @@ Graficos
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 <h4>Reclamos colgados: {{colgados.count}} </h4>
-{% for i in colgados %}
-<ul>
-{{i.id}},{{i.estado}},{{i.horario}},{{i.grupo_asignado}}
-</ul>
-{% endfor %}
-
-{% for i in lista %}
-<ul>
-{{i}}
-</ul>
+{% for a in colgados %}
+  {% for b in lista %}
+    {% if a.id == b.id  %}
+      <ul>
+      {{a.id}},{{a.estado}},{{a.grupo_asignado}},{{ b.celula_n }}
+      </ul>
+    {% endif %}
+  {% endfor %}
 {% endfor %}
 
 <div class='grid container'>
