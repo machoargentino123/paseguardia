@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from itertools import chain
 from django_q.tasks import async_task
 from csv_export.views import CSVExportView
