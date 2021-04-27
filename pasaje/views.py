@@ -79,9 +79,8 @@ class Pruebagraficos():
         
         lista  = list(CsvImportado2.objects.values('id','celula_n').all())
 
-        for i in lista:
-            print(type(i))
-              
+        lista = set(colgados.intersection(lista))
+                      
           
         context = {'cel1' : cel1, 
                    'cel2' : cel2,
