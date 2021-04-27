@@ -12,12 +12,10 @@ Graficos
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 
-  
-<h1>Ejemplo</h1>
-<h2>{{cel1}}</h2>
-<h2>{{cel2}}</h2>
-<h2>{{cel3}}</h2>
-<h2>{{cel4}}</h2>
+{% for i in colgados %}
+{{i.id}}
+{% endfor %}
+
 
 <div class='grid container'>
   <div class='grid-x'>

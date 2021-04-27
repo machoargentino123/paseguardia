@@ -4,7 +4,7 @@ from django_q.tasks import async_task
 from csv_export.views import CSVExportView
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
-from django.db.models import CharField, Value
+from django.db.models import CharField, Value, Q
 # Create your views here.
 from django.views.generic import (TemplateView, 
                                   ListView, 
@@ -68,11 +68,19 @@ class Pruebagraficos():
         cel4 = CsvImportado1.objects.filter(
             celula_n = 4
         ).count()
+        
+
+        colgados = Eventostkt.objects.values('id','horario','estado').filter( 
+            Q(estado = 'Asignado') | Q(estado = 'En Curso'),
+            horario__lt = datetime.now()  
+            )
+
 
         context = {'cel1' : cel1, 
                    'cel2' : cel2,
                    'cel3' : cel3,
                    'cel4' : cel4,
+                   'colgados': colgados
                    }
         return render(request,'graficos.html',context) 
 
@@ -382,6 +390,7 @@ class PanelMonitoreo():
         llamadas_md = Llamadas.objects.using('avaya').all()
         
         llamadas_sd = Llamadasssdd.objects.using('avaya').all()
+
 
         context = {'total': total, 
                    'cel1' : cel1,
