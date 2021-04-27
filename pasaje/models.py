@@ -90,7 +90,7 @@ class Tablaseguimiento(models.Model):
 class Eventostkt(models.Model):
     sk = models.AutoField(db_column='SK', primary_key=True)  # Field name made lowercase.
     id = models.CharField(db_column='ID', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    idfk = models.ForeignKey('CsvImportado1',on_delete=models.CASCADE, db_contraint=False)
+    idfk = models.ForeignKey('CsvImportado1',on_delete=models.CASCADE)
     grupo_asignado = models.CharField(db_column='Grupo_Asignado', max_length=250, blank=True, null=True)  # Field name made lowercase.
     grupo_asignado_anterior = models.CharField(db_column='Grupo_Asignado_anterior', max_length=250, blank=True, null=True)  # Field name made lowercase.
     estado = models.CharField(db_column='Estado', max_length=250, blank=True, null=True)  # Field name made lowercase.
