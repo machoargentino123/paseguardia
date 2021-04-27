@@ -76,11 +76,15 @@ class Pruebagraficos():
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             ).distinct()
+        
+        lista = colgados.objects.values('id')
+        
         context = {'cel1' : cel1, 
                    'cel2' : cel2,
                    'cel3' : cel3,
                    'cel4' : cel4,
                    'colgados': colgados
+                   'lista':lista
                    }
         return render(request,'graficos.html',context) 
 
@@ -397,7 +401,7 @@ class PanelMonitoreo():
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             ).distinct().count()
-        
+
         context = {'total': total, 
                    'cel1' : cel1,
                    'cel2' : cel2,
