@@ -99,7 +99,7 @@ class InicioView(TemplateView):
 class ListaView(ListView):
     context_object_name = 'Tickets'
     template_name = 'lista.html'
-    paginate = 20
+    paginate = 200
     uno = 2
 
     def get_queryset(self):
