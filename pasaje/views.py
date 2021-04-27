@@ -77,8 +77,8 @@ class Pruebagraficos():
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             ).distinct()
         
-        lista = colgados.values('id')
-        valor = 2
+        lista  = CsvImportado2.objects.values('id','celula_n').all()
+        
         context = {'cel1' : cel1, 
                    'cel2' : cel2,
                    'cel3' : cel3,
