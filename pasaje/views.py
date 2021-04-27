@@ -77,7 +77,7 @@ class Pruebagraficos():
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             ).distinct()
         
-        lista = colgados.objects.values('id')
+        lista = colgados.values('id')
         valor = 2
         context = {'cel1' : cel1, 
                    'cel2' : cel2,
