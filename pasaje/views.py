@@ -79,8 +79,8 @@ class Pruebagraficos():
         
         lista  = list(CsvImportado2.objects.values('id','celula_n').all())
 
-        for i in range(len(lista)):
-            print(type(i[0]))
+        for i in lista:
+            print(type(i))
               
           
         context = {'cel1' : cel1, 
