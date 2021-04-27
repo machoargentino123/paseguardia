@@ -70,7 +70,7 @@ class Pruebagraficos():
         ).count()
         
 
-        colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado').filter( 
+        colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado','idfk__id').filter( 
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             horario__range = (datetime.now()-timedelta(minutes=20),datetime.now())  
             ).filter(
