@@ -106,7 +106,7 @@ class ListaView(ListView):
         palabra_clave = self.request.GET.get('kword', '')
         if palabra_clave != '':
             lista = CsvImportado1.objects.filter(
-                celula_n__icontains = palabra_clave,
+                id__icontains = palabra_clave,
             ).filter( status_reason_hidden__icontains = 'Monitoring Incident')
             return lista
         else:
