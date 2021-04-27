@@ -78,6 +78,8 @@ class Pruebagraficos():
             ).distinct()
         
         lista  = CsvImportado2.objects.values('id','celula_n').all()
+
+        lista = set(colgados) == set(lista)
         
         context = {'cel1' : cel1, 
                    'cel2' : cel2,
