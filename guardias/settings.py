@@ -13,7 +13,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 from unipath import Path
+import pymysql
+
+
+
 BASE_DIR = Path(__file__).ancestor(2)
+
+pymysql.install_as_MySQLdb()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
