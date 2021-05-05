@@ -217,9 +217,17 @@ class ListaView3():
 class eventos(ListView):
     context_object_name = 'Tickets'
     template_name = 'lista.html'
-    model = Eventostkt
-    paginate = 100
+    paginate = 500
 
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get('kword', '')
+        if palabra_clave != '':
+            lista = CsvImportado1.objects.filter(
+                id__icontains = palabra_clave,
+            )
+            return lista
+        else:
+            return Eventostkt.objects.all() 
 
 
 
@@ -434,3 +442,8 @@ class ListarCel(ListView):
                celula_n = valor, 
             )
         return lista
+#listar reclamos colgados de + de 20 minutos.
+
+class ListarColgados(ListView):
+    context_object_name = 'lista'
+    template_name = 'colgados.html'
