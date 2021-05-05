@@ -222,7 +222,7 @@ class eventos(ListView):
     def get_queryset(self):
         palabra_clave = self.request.GET.get('kword', '')
         if palabra_clave != '':
-            lista = CsvImportado1.objects.filter(
+            lista = Eventostkt.objects.filter(
                 id__icontains = palabra_clave,
             )
             return lista
