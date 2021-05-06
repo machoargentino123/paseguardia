@@ -493,7 +493,7 @@ class ListarColgados():
             sk__in = sk
         )
 
-        context = {'lista' : colgados}
+        context = {'colgados' : colgados}
 
         return render(request,'colgados.html',context)
 
