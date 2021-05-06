@@ -409,7 +409,7 @@ class PanelMonitoreo():
             horario__range = (datetime.now()-timedelta(minutes=120),datetime.now())  
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
-            ).distinct().count()
+            ).distinct()
 
         context = {'total': total, 
                    'cel1' : cel1,
@@ -446,4 +446,14 @@ class ListarCel(ListView):
 
 class ListarColgados(ListView):
     context_object_name = 'lista'
-    template_name = 'colgados.html'
+    template_name = 'celula.html'
+    paginate = 200
+
+    def get_queryset(self):
+        colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado').filter( 
+            Q(estado = 'Asignado') | Q(estado = 'En Curso'),
+            horario__range = (datetime.now()-timedelta(minutes=120),datetime.now())  
+            ).filter(
+                Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
+            ).distinct()
+        return colgados
