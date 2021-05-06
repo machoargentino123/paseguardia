@@ -416,8 +416,8 @@ class PanelMonitoreo():
         id = []
 
         for i in colgados:
-            id.append(i['id']).
-        
+            id.append(i['id'])
+     
         id = list(set(id))
 
         colgados = id.count()
