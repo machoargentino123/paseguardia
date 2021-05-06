@@ -495,6 +495,6 @@ class ListarColgados():
 
         context = {'lista' : colgados}
 
-        return render(request,'celula.html',context)
+        return render(request,'colgados.html',context)
 
 
