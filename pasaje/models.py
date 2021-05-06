@@ -141,6 +141,11 @@ class Llamadasssdd(models.Model):
         db_table = 'LlamadasSSDD' 
 
 
+class Eventostest(models.Model):
+    sk = models.AutoField(db_column='SK', primary_key=True)
+    importado = models.ForeignKey(CsvImportado1,on_delete = models.CASCADE)
+    evento = models.ManyToManyField(Eventostkt,on_delete = models.CASCADE)
+
 #se actaiva depues de un guardado.
 #post_save.connect(prueba_signals, sender = Tablaseguimiento)
 

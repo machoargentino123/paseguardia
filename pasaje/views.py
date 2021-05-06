@@ -19,7 +19,8 @@ from .models import (CsvImportado1,
                      Tablaseguimiento,
                      Eventostkt,
                      Llamadas,
-                     Llamadasssdd)
+                     Llamadasssdd,
+                     Eventostest,)
 
 from .forms import TktForm
 from django.urls import reverse_lazy
@@ -491,22 +492,9 @@ class ListarColgados(ListView):
                     pass
             sk.append(a)
         
-        '''
+    
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk
-        ).union(
-            CsvImportado1.objects.all().values_list(
-                'id', 'celula_n'
-            )
-        )
-    '''
-        colgados = Eventostkt.objects.all().values_list(
-            'id'
-        ).union(
-            CsvImportado1.objects.all().values_list(
-                'id'
-            )
-
         )
 
         return colgados
