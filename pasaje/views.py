@@ -468,8 +468,5 @@ class ListarColgados(ListView):
                 if i[1] == b[1]:
                     if i[0] != b[0]:
                         print(i)
-                    else:
-                        pass
-        
                         
         return colgados
