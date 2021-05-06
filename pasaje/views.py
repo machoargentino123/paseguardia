@@ -420,7 +420,7 @@ class PanelMonitoreo():
      
         id = list(set(id))
 
-        colgados = id.count()
+        colgados = len(id)
 
         
 
