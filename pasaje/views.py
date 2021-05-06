@@ -409,7 +409,9 @@ class PanelMonitoreo():
             horario__range = (datetime.now()-timedelta(minutes=120),datetime.now())  
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
-            ).count()
+            )
+        
+        colgados = list(set(res))
 
 
         context = {'total': total, 
