@@ -18,7 +18,7 @@ urlpatterns = [
     #Panel de la tarde
     path('panel/',views.PanelMonitoreo.index, name="panel"),
     path('celula/<int:pk>',views.ListarCel.as_view(), name="celula"),
-    path('colgados/',views.ListarColgados.as_view(), name="colgados"),
+    path('colgados/',views.ListarColgados.index, name="colgados"),
     
     #Listas para pruebas varias.
     #prueba para chart.js

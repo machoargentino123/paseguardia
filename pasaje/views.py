@@ -76,8 +76,7 @@ class Pruebagraficos():
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             ).distinct()
-        
-        lista  = Eventostest.objects.all()
+    
 
           
         context = {'cel1' : cel1, 
@@ -458,12 +457,10 @@ class ListarCel(ListView):
 
 
 #listar reclamos colgados de + de 20 minutos.
-class ListarColgados(ListView):
-    context_object_name = 'lista'
-    template_name = 'celula.html'
-    paginate = 200
+class ListarColgados():
 
-    def get_queryset(self):
+    def index(request):
+
         colgados = Eventostkt.objects.values('sk','id').filter( 
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             horario__range = (datetime.now()-timedelta(minutes=120),datetime.now())  
@@ -497,6 +494,8 @@ class ListarColgados(ListView):
             sk__in = sk
         )
 
-        return colgados
+        context = {'lista' : colgados}
+
+        return render(request,'celula.html',context)
 
 
