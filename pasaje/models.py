@@ -101,7 +101,7 @@ class Eventostkt(models.Model):
     fecha_envio = models.CharField(db_column='Fecha_Envio', max_length=250, blank=True, null=True)  # Field name made lowercase.                                                  
     tiempo_acumulado = models.CharField(db_column='Tiempo_Acumulado', max_length=250, blank=True, null=True)  # Field name made lowercase.
     horario = models.DateTimeField(db_column='Horario')  # Field name made lowercase.
-    tkt = models.ForeignKey('CsvImportado1',on_delete = models.CASCADE, db_constraint=False, related_name='tkt')
+    
 
     class Meta:
         managed = False
