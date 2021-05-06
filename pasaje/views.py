@@ -464,11 +464,26 @@ class ListarColgados(ListView):
         
         print('tamaño de lsita de ids sin filtrar repetidos: ',len(id))
 
+        #remuevo valores repetidos de id
         id = list(set(id))
 
         print('tamaño de list sin repetidos: ',len(id))
+        
+        sk = []
         for i in id:
+            a = 0
+            for b in list(colgados):
+                if i == b['id']:
+                    if b['sk'] > a:
+                        a = b['sk']
+                else:
+                    pass
+            sk.append([a,i])
+        
+        for i in sk:
             print(i)
+        
+
 
 
               
