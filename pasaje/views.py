@@ -404,7 +404,7 @@ class PanelMonitoreo():
         
         llamadas_sd = Llamadasssdd.objects.using('avaya').all()
 
-        # Listo los colgados
+        # Listo los colgados que estan en curso desde hace 120 minutos
 
         colgados = Eventostkt.objects.values('id').filter( 
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
@@ -443,8 +443,7 @@ class PanelMonitoreo():
 
         return render(request,'panel.html',context) 
 
-#Lista los reclamos de cada celula labura en conjunto con la vista panelmonitoreo
-
+#Lista los reclamos de cada celula labura en conjunto con la vista panel monitoreo
 class ListarCel(ListView):
     context_object_name = 'lista'
     template_name = 'celula.html'
@@ -456,8 +455,9 @@ class ListarCel(ListView):
                celula_n = valor, 
             )
         return lista
-#listar reclamos colgados de + de 20 minutos.
 
+
+#listar reclamos colgados de + de 20 minutos.
 class ListarColgados(ListView):
     context_object_name = 'lista'
     template_name = 'celula.html'
@@ -494,6 +494,12 @@ class ListarColgados(ListView):
         
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk
+        ).union(
+            CsvImportado1.objects.all().values_list(
+                'id', 'celula_n'
+            )
         )
+
+        colagados = colgados.objects.all()
 
         return colgados
