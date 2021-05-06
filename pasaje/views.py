@@ -458,6 +458,6 @@ class ListarColgados(ListView):
             ).distinct()
         
         for i in colgados:
-            print(i.sk)
+            print(i[0])
 
         return colgados
