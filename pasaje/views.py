@@ -455,9 +455,13 @@ class ListarColgados(ListView):
             horario__range = (datetime.now()-timedelta(minutes=120),datetime.now())  
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
-            ).distinct()
+            )
         
+        #buscar el SK mas nuevo terminar.
+        sk = []
         for i in list(colgados):
-            print(i['sk'])
+            sk.append(i['sk'])
 
+        print(sk)
+        
         return colgados
