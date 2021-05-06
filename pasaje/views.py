@@ -460,8 +460,9 @@ class ListarColgados(ListView):
         #buscar el SK mas nuevo terminar.
         sk = []
         for i in list(colgados):
-            sk.append(i['sk'])
+            sk.append([i['sk'],i['id']])
 
-        print(sk)
-        
+        for i in sk:
+            print(i)
+
         return colgados
