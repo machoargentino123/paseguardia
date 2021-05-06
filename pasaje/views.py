@@ -456,4 +456,8 @@ class ListarColgados(ListView):
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             ).distinct()
+        
+        for i in colgados:
+            print(i.sk)
+
         return colgados
