@@ -411,7 +411,7 @@ class PanelMonitoreo():
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             )
         
-        colgados = list(set(res))
+        colgados = list(set(colgados))
 
 
         context = {'total': total, 
