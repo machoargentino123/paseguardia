@@ -462,9 +462,13 @@ class ListarColgados(ListView):
         for i in list(colgados):
             id.append(i['id'])
         
+        print('tamaño de lsita de ids sin filtrar repetidos: ',len(id))
+
         id = [id[i] for i in range(len(id)) if not i == id.index(id[i])]
 
-        print(id)
+        print('tamaño de list sin repetidos: ',len(id))
+        for i in id:
+            print(i)
 
 
               
