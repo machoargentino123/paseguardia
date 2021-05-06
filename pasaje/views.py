@@ -404,6 +404,8 @@ class PanelMonitoreo():
         
         llamadas_sd = Llamadasssdd.objects.using('avaya').all()
 
+        # Listo los colgados
+
         colgados = Eventostkt.objects.values('id').filter( 
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             horario__range = (datetime.now()-timedelta(minutes=120),datetime.now())  
@@ -411,7 +413,16 @@ class PanelMonitoreo():
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             )
         
-        colgados = list(set(colgados))
+        id = []
+
+        for i in colgados:
+            id.append(i['id']).
+        
+        id = list(set(id))
+
+        colgados = id.count()
+
+        
 
 
         context = {'total': total, 
