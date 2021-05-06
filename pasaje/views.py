@@ -458,15 +458,16 @@ class ListarColgados(ListView):
             )
         
         #buscar el SK mas nuevo terminar.
-        sk = []
+        id = []
         for i in list(colgados):
-            sk.append([i['sk'],i['id']])
-        sk2 = []
+            id.append([i['id']])
         
-        for i in sk:
-            for b in sk:
-                if i[1] == b[1]:
-                    if i[0] > b[0]:
-                        print(b)
-                        
+        id = [id[i] for i in range(len(id)) if not i == id.index(id[i])]
+
+        print(id)
+        
+
+              
+
+
         return colgados
