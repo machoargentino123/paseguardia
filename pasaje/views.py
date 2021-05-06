@@ -457,18 +457,15 @@ class ListarColgados(ListView):
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             )
         
-        #buscar el SK mas nuevo terminar.
+        #creo una lista con id's.
         id = []
         for i in list(colgados):
             id.append(i['id'])
         
-        print('tamaño de lsita de ids sin filtrar repetidos: ',len(id))
-
-        #remuevo valores repetidos de id
+        # Remuevo valores repetidos de id
         id = list(set(id))
 
-        print('tamaño de list sin repetidos: ',len(id))
-        
+        # busco el sk mas alto y almo una lista con el id y el tkt.
         sk = []
         for i in id:
             a = 0
@@ -478,11 +475,12 @@ class ListarColgados(ListView):
                         a = b['sk']
                 else:
                     pass
-            sk.append([a,i])
+            sk.append(a)
         
-        for i in sk:
-            print(i)
         
+        colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
+            sk__in = sk
+        )
 
 
 
