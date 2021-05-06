@@ -461,8 +461,12 @@ class ListarColgados(ListView):
         sk = []
         for i in list(colgados):
             sk.append([i['sk'],i['id']])
-
+        sk2 = []
         for i in sk:
-            print(i)
-
+            for b in sk:
+                if i[1] == b[1]:
+                    if i[0] > b[0]:
+                        print(i)
+        
+                        
         return colgados
