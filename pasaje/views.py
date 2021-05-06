@@ -404,13 +404,14 @@ class PanelMonitoreo():
         
         llamadas_sd = Llamadasssdd.objects.using('avaya').all()
 
-        colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado').filter( 
+        colgados = Eventostkt.objects.values('id').filter( 
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             horario__range = (datetime.now()-timedelta(minutes=120),datetime.now())  
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
-            ).distinct()
+            )
 
+        
         context = {'total': total, 
                    'cel1' : cel1,
                    'cel2' : cel2,
@@ -481,10 +482,5 @@ class ListarColgados(ListView):
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk
         )
-
-
-
-              
-
 
         return colgados
