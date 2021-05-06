@@ -504,7 +504,7 @@ class ListarColgados(ListView):
             'id'
         ).union(
             CsvImportado1.objects.all().values_list(
-                'id', 'celula_n'
+                'id'
             )
 
         )
