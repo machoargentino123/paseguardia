@@ -491,7 +491,7 @@ class ListarColgados(ListView):
                     pass
             sk.append(a)
         
-        
+        '''
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk
         ).union(
@@ -499,7 +499,14 @@ class ListarColgados(ListView):
                 'id', 'celula_n'
             )
         )
+    '''
+        colgados = Eventostkt.objects.all().values_list(
+            'id'
+        ).union(
+            CsvImportado1.objects.all().values_list(
+                'id', 'celula_n'
+            )
 
-        colagados = colgados.all()
+        )
 
         return colgados
