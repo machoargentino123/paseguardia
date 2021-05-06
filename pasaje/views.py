@@ -500,6 +500,6 @@ class ListarColgados(ListView):
             )
         )
 
-        colagados = colgados.objects.all()
+        colagados = colgados.all()
 
         return colgados
