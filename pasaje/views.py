@@ -466,7 +466,7 @@ class ListarColgados(ListView):
         # Remuevo valores repetidos de id
         id = list(set(id))
 
-        # busco el sk mas alto y almo una lista con el id y el tkt.
+        # busco el sk mas alto y armo una lista con el id y el tkt.
         sk = []
         for i in id:
             a = 0
