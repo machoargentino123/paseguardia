@@ -492,7 +492,8 @@ class ListarColgados():
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk
         )
-
+        palabra_clave = self.request.GET.get('kword', '')
+        print(palabra_clave)
         context = {'colgados' : colgados}
 
         return render(request,'colgados.html',context)
