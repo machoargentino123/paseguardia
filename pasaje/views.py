@@ -492,7 +492,8 @@ class ListarColgados(ListView):
                     pass
             sk.append(a)
         
-    
+
+
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk
         )

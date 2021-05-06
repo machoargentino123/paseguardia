@@ -101,6 +101,7 @@ class Eventostkt(models.Model):
     fecha_envio = models.CharField(db_column='Fecha_Envio', max_length=250, blank=True, null=True)  # Field name made lowercase.                                                  
     tiempo_acumulado = models.CharField(db_column='Tiempo_Acumulado', max_length=250, blank=True, null=True)  # Field name made lowercase.
     horario = models.DateTimeField(db_column='Horario')  # Field name made lowercase.
+    tkt = models.OneToOneField(CsvImportado1,on_delete = models.CASCADE, related_name='tkt')
 
     class Meta:
         managed = False
@@ -140,11 +141,6 @@ class Llamadasssdd(models.Model):
         managed = False                                                                                                                                                         
         db_table = 'LlamadasSSDD' 
 
-
-class Eventostest(models.Model):
-    sk = models.AutoField(db_column='SK', primary_key=True)
-    importado = models.ForeignKey(CsvImportado1,on_delete = models.CASCADE)
-    evento = models.ManyToManyField(Eventostkt)
 
 #se actaiva depues de un guardado.
 #post_save.connect(prueba_signals, sender = Tablaseguimiento)
