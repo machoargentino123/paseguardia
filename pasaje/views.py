@@ -466,7 +466,7 @@ class ListarColgados(ListView):
         for i in sk:
             for b in sk:
                 if i[1] == b[1]:
-                    if i[0] != b[0]:
-                        print(i)
+                    if i[0] > b[0]:
+                        print(b)
                         
         return colgados
