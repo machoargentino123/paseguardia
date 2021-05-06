@@ -78,7 +78,7 @@ class Pruebagraficos():
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             ).distinct()
         
-        lista  = CsvImportado2.objects.values('id','celula_n').all()
+        lista  = Eventostest.objects.all()
 
           
         context = {'cel1' : cel1, 
@@ -498,3 +498,5 @@ class ListarColgados(ListView):
         )
 
         return colgados
+
+
