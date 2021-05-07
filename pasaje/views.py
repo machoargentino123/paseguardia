@@ -459,7 +459,8 @@ class ListarCel(ListView):
 class ListarColgados():
 
     def index(request):
-        
+        celula = []
+
         palabra_clave = request.GET.get('kword', '')
 
         colgados = Eventostkt.objects.values('sk','id').filter( 
@@ -479,8 +480,10 @@ class ListarColgados():
 
         if palabra_clave != '':
             celula = CsvImportado1.objects.values('id').filter(
-               celula_n = palabra_clave, 
+               celula_n = palabra_clave
             )
+        else:
+            pass 
 
         print(celula)
         
