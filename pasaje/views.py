@@ -491,8 +491,8 @@ class ListarColgados():
             print('Tamaño de lista',len(lista))
             print('Tamaño de id',len(id))
 
-            #id = [x for x in lista + id if x in id]
-            id = lista.intersection(id)
+            id = [x for x in lista + id if x in id]
+            #id = lista.intersection(id)
             print('Tamaño de id',len(id))
 
         else:
