@@ -422,8 +422,8 @@ class PanelMonitoreo():
 
 
         for i in list(colgados):
-            if i['horario'] > start:
-                if i['horario'] < end:
+            if i['horario'] < end:
+                if i['horario'] > start:
                     print('entro a el if')
                     id.append(i['id'])
      
