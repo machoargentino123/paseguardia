@@ -485,9 +485,10 @@ class ListarColgados():
             )
 
             for i in list(celula):
-                print(i)
+                lista.append(i['id'])
 
-
+            for i in lista:
+                print(lista)
 
         else:
             pass 
