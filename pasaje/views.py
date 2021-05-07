@@ -419,11 +419,14 @@ class PanelMonitoreo():
         print('start',end)
         if end > start:
             print('datetime anda')
+
         for i in list(colgados):
             if i['horario'] < end:
                 print('entro a el if 1')
         
-        
+        for i in list(colgados):
+            if i['horario'] > start:
+                print('entro a el if 2')
         
 
         for i in list(colgados):
