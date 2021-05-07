@@ -416,7 +416,7 @@ class PanelMonitoreo():
         id = []
 
         for i in list(colgados):
-            if i['horario'] > start and i['horario'] < start:
+            if i['horario'] > start and i['horario'] < end:
                 id.append(i['id'])
      
         id = list(set(id))
