@@ -221,9 +221,10 @@ class eventos(ListView):
         palabra_clave = self.request.GET.get('kword', '')
         if palabra_clave != '':
             lista = Eventostkt.objects.filter(
-                id__icontains = palabra_clave,
-                Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-            )
+                    Q(estado = 'Asignado') | Q(estado = 'En Curso'),
+                    id__icontains = palabra_clave
+                    )   
+            
             return lista
         else:
             return Eventostkt.objects.all() 
