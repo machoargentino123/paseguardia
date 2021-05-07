@@ -491,7 +491,9 @@ class ListarColgados():
             print('Tamaño de id',len(id))
 
             id = [x for x in lista + id if x in id]
+            id = list(set(id))
             print('Tamaño de id',len(id))
+
         else:
             pass 
 
