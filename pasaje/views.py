@@ -412,13 +412,12 @@ class PanelMonitoreo():
         colgados = Eventostkt.objects.values('sk','id','horario').filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
-            horario__range = (start,end)
             )
         id = []
 
         for i in list(colgados):
-            if i['horario'] >= start and i['horario'] <= end:
-                id.append(i['id'])
+            print(i['horario'])
+            id.append(i['id'])
      
         id = list(set(id))
         
