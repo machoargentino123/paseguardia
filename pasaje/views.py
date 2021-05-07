@@ -479,13 +479,21 @@ class ListarColgados():
         id = list(set(id))
 
         if palabra_clave != '':
+            lista = []
             celula = CsvImportado1.objects.values('id').filter(
                celula_n = palabra_clave
             )
+
+            for i in lista(celula):
+                print(i)
+
+
+
         else:
             pass 
 
-        print(celula)
+        
+            
         
         # busco el sk mas alto y armo una lista con el id y el tkt.
         sk = []
