@@ -224,7 +224,6 @@ class eventos(ListView):
             lista = Eventostkt.objects.filter(
                     Q(estado = 'Asignado') | Q(estado = 'En Curso'),
                     Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
-                    horario__range = (datetime.now()-timedelta(minutes=120),datetime.now()),
                     id__icontains = palabra_clave,
                     )
             
