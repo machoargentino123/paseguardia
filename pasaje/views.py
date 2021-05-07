@@ -484,7 +484,7 @@ class ListarColgados():
                celula_n = palabra_clave
             )
 
-            for i in lista(celula):
+            for i in list(celula):
                 print(i)
 
 
