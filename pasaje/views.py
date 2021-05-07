@@ -481,7 +481,8 @@ class ListarColgados():
         if palabra_clave != '':
             lista = []
             celula = CsvImportado1.objects.values('id').filter(
-               celula_n = palabra_clave
+               celula_n = palabra_clave,
+               tipo_incidencia = 'User Service Restoration',
             )
 
             for i in list(celula):
@@ -490,8 +491,8 @@ class ListarColgados():
             print('Tamaño de lista',len(lista))
             print('Tamaño de id',len(id))
 
-            id = [x for x in lista + id if x in id]
-            id = list(set(id))
+            #id = [x for x in lista + id if x in id]
+            id = lista.intersection(id)
             print('Tamaño de id',len(id))
 
         else:
