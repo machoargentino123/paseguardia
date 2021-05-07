@@ -222,6 +222,7 @@ class eventos(ListView):
         if palabra_clave != '':
             lista = Eventostkt.objects.filter(
                 id__icontains = palabra_clave,
+                Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             )
             return lista
         else:
