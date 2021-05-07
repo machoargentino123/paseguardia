@@ -223,7 +223,9 @@ class eventos(ListView):
             lista = Eventostkt.objects.filter(
                     Q(estado = 'Asignado') | Q(estado = 'En Curso'),
                     id__icontains = palabra_clave
-                    )   
+                    ).filter(
+                        Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
+                    )
             
             return lista
         else:
