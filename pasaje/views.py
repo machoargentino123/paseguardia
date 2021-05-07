@@ -488,7 +488,7 @@ class ListarColgados():
                 lista.append(i['id'])
 
             for i in lista:
-                print(lista)
+                print(i)
 
         else:
             pass 
