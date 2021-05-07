@@ -220,7 +220,9 @@ class eventos(ListView):
     def get_queryset(self):
         palabra_clave = self.request.GET.get('kword', '')
         if palabra_clave != '':
-
+            start = datetime.now()-timedelta(minutes=120)
+            end = datetime.now()    
+            print('Tiempo', start,end)
             lista = Eventostkt.objects.filter(
                     Q(estado = 'Asignado') | Q(estado = 'En Curso'),
                     Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
