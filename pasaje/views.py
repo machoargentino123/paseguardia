@@ -419,7 +419,7 @@ class PanelMonitoreo():
         id = []
 
         for i in list(colgados):
-            print(i)
+            print(i['id'])
             #id.append(i['id'])
      
         #id = list(set(id))
