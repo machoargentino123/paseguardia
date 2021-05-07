@@ -416,7 +416,7 @@ class PanelMonitoreo():
         id = []
 
         for i in list(colgados):
-            print(i['horario'])
+            print(type(i['horario']))
             id.append(i['id'])
      
         id = list(set(id))
