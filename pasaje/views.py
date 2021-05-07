@@ -417,6 +417,8 @@ class PanelMonitoreo():
         id = []
 
         for i in list(colgados):
+            a = i['horario'] - timedelta(minutes=120)
+            print(a)
             id.append(i['id'])
      
         id = list(set(id))
