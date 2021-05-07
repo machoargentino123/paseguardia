@@ -468,9 +468,13 @@ class ListarColgados():
 
         palabra_clave = request.GET.get('kword', '')
 
+        start = datetime.now()-timedelta(minutes=120)
+        end = datetime.now()
+
+
         colgados = Eventostkt.objects.values('sk','id').filter( 
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-            horario__range = (datetime.now()-timedelta(minutes=120),datetime.now())  
+            horario__range = (start,end)  
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             )
