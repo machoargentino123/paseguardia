@@ -420,15 +420,12 @@ class PanelMonitoreo():
         if end > start:
             print('datetime anda')
 
-        for i in list(colgados):
-            if i['horario'] < end:
-                print(i['horario'])
-
 
         for i in list(colgados):
-            if i['horario'] > start and i['horario'] < end:
-                print('entro a el if')
-                id.append(i['id'])
+            if i['horario'] > start:
+                if i['horario'] < end:
+                    print('entro a el if')
+                    id.append(i['id'])
      
         id = list(set(id))
         
