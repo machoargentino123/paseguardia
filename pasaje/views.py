@@ -414,9 +414,13 @@ class PanelMonitoreo():
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             )
         id = []
+        
+        print(start)
+        print(end)
 
         for i in list(colgados):
             if i['horario'] > start and i['horario'] < end:
+                print('entro a el if')
                 id.append(i['id'])
      
         id = list(set(id))
