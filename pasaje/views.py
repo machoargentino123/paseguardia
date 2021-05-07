@@ -220,14 +220,10 @@ class eventos(ListView):
     def get_queryset(self):
         palabra_clave = self.request.GET.get('kword', '')
         if palabra_clave != '':
-            start = datetime.now()-timedelta(minutes=120)
-            end = datetime.now()    
+     
             print('Tiempo', start,end)
             lista = Eventostkt.objects.filter(
-                    Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-                    Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
                     id__icontains = palabra_clave,
-                    horario__range = (start,end)
                     )
             
 
@@ -411,13 +407,16 @@ class PanelMonitoreo():
         llamadas_sd = Llamadasssdd.objects.using('avaya').all()
 
         # Listo los colgados que estan en curso desde hace 120 minutos
+        start = datetime.now()-timedelta(minutes=120)
+        end = datetime.now()
 
-        colgados = Eventostkt.objects.values('id').filter( 
+        colgados = Eventostkt.objects.filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-            horario__range = (datetime.now()-timedelta(minutes=120),datetime.now())  
-            ).filter(
-                Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
+            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
+            id__icontains = palabra_clave,
+            horario__range = (start,end)
             )
+            
         
         id = []
 
