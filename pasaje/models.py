@@ -69,24 +69,6 @@ class CsvImportado2(models.Model):
         managed = False
         db_table = 'CSV_Importado2' 
 
-class Tablaseguimiento(models.Model):
-    ATENCION = (('0','URGENTE'),('1','PRIORITARIO'),('2','NORMAL'))
-    
-    orderid = models.AutoField(db_column='OrderId',primary_key=True)  # Field name made lowercase.
-    detalle = models.CharField(max_length=200, blank=True, null=True, default='')
-    reactivar = models.DateField(blank=True, null=True, default=None)
-    reactivar_hora = models.TimeField(blank=True,null=True)
-    prioridad = models.CharField(max_length=100, blank=True, null=True, choices = ATENCION, default = '2')
-    tkt = models.OneToOneField(CsvImportado1,on_delete = models.CASCADE, related_name='tkt')
-
-    class Meta:                                                                     
-        managed = True
-        db_table = 'TablaSeguimiento'
-
-    def __str__(self):
-        return str(self.orderid)
-
-
 class Eventostkt(models.Model):
     sk = models.AutoField(db_column='SK', primary_key=True)  # Field name made lowercase.
     id = models.CharField(db_column='ID', max_length=250, blank=True, null=True)  # Field name made lowercase.
@@ -140,6 +122,30 @@ class Llamadasssdd(models.Model):
     class Meta:                                                                                                                                                                 
         managed = False                                                                                                                                                         
         db_table = 'LlamadasSSDD' 
+
+
+
+class Tablaseguimiento(models.Model):
+    ATENCION = (('0','URGENTE'),('1','PRIORITARIO'),('2','NORMAL'))
+    
+    orderid = models.AutoField(db_column='OrderId',primary_key=True)  # Field name made lowercase.
+    detalle = models.CharField(max_length=200, blank=True, null=True, default='')
+    reactivar = models.DateField(blank=True, null=True, default=None)
+    reactivar_hora = models.TimeField(blank=True,null=True)
+    prioridad = models.CharField(max_length=100, blank=True, null=True, choices = ATENCION, default = '2')
+    tkt = models.OneToOneField(CsvImportado1,on_delete = models.CASCADE, related_name='tkt')
+
+    class Meta:                                                                     
+        managed = True
+        db_table = 'TablaSeguimiento'
+
+    def __str__(self):
+        return str(self.orderid)
+
+
+
+
+
 
 
 #se actaiva depues de un guardado.
