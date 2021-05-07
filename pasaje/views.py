@@ -459,6 +459,8 @@ class ListarCel(ListView):
 class ListarColgados():
 
     def index(request):
+        
+        palabra_clave = request.GET.get('kword', '')
 
         colgados = Eventostkt.objects.values('sk','id').filter( 
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
@@ -475,6 +477,16 @@ class ListarColgados():
         # Remuevo valores repetidos de id
         id = list(set(id))
 
+        if palabra_clave != '':
+            celula = CsvImportado1.objects.values('id').filter(
+            celula_n = palabra_clave
+            )
+        else:
+            pass
+        
+        
+        print(celula)
+        
         # busco el sk mas alto y armo una lista con el id y el tkt.
         sk = []
         for i in id:
@@ -493,7 +505,8 @@ class ListarColgados():
             sk__in = sk
         )
         palabra_clave = request.GET.get('kword', '')
-        print(palabra_clave)
+
+
         context = {'colgados' : colgados}
 
         return render(request,'colgados.html',context)
