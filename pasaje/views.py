@@ -487,12 +487,11 @@ class ListarColgados():
             for i in list(celula):
                 lista.append(i['id'])
 
-            print('Largo de lista',len(lista))
-            lista = list(set(lista))
-            print('Largo de lista',len(lista))
-            for i in lista:
-                print(i)
+            print('Tamaño de lista',len(lista))
+            print('Tamaño de id',len(id))
 
+            id = [x for x in lista + id if x in id]
+            print('Tamaño de id',len(id))
         else:
             pass 
 
