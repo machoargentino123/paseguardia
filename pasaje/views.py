@@ -415,14 +415,15 @@ class PanelMonitoreo():
             horario__range = (start,end)
             )
             
-        '''
+
         id = []
 
         for i in list(colgados):
-            id.append(i['id'])
+            print(i)
+            #id.append(i['id'])
      
-        id = list(set(id))
-        '''
+        #id = list(set(id))
+        
         colgados = len(colgados)
 
         
