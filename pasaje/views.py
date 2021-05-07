@@ -409,17 +409,21 @@ class PanelMonitoreo():
         start = datetime.now()-timedelta(minutes=120)
         end = datetime.now()
 
-        colgados = Eventostkt.objects.all()
+        colgados = Eventostkt.objects.filter(
+            Q(estado = 'Asignado') | Q(estado = 'En Curso'),
+            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
+            horario__range = (start,end)
+            )
             
-        
+        '''
         id = []
 
         for i in list(colgados):
             id.append(i['id'])
      
         id = list(set(id))
-
-        colgados = len(id)
+        '''
+        colgados = len(colgados)
 
         
 
