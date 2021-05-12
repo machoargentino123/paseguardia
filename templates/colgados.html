@@ -86,9 +86,43 @@ Lista de Reclamos.
             </table>
           </div>
 
-          <div class='cell auto'>
-            <h1>Pasados a resueltos en la ultima hora.</h1>
-  
+          <div class='cell large-6'>
+              <table>
+                  <thead>
+                    <tr>
+                      <th width="25">SK</th>
+                      <th width="25">ID</th>
+                      <th width="25">Grupo_Asginado</th>
+                      <th width="25">Estado</th>
+                      <th width="25">Tiempo Acumulado</th>
+                      <th width="25">Horario</th>
+                      <th width="25">Celula</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                      <!--Listado con variable por defecto object_list.</strong>-->
+                    {% for i in colgados %}
+                      {% for b in celulas %}
+                        {% if i.id == b.id %}
+                              <tr>
+                              <td>{{ i.sk }}</td>
+                              <td>{{ i.id}}</td>
+                              <td>{{ i.grupo_asignado }}</td>
+                              <td>{{ i.estado }}</td>
+                              <td>{{ i.tiempo_acumulado }}</td>
+                              <td>{{ i.horario }}</td>
+                              <td>{{ b.celula_n }}</td>
+                              <td><a href="http://remedyaverias:47085/arsys/forms/remedyaverias/SHR%3ALandingConsole/Default+Administrator+View/?mode=search&F304255500=HPD%3AHelp+Desk&F1000000076=FormOpen&F303647600=SearchTicketWithQual&F304255610=%271000000161%27%3D%22{{i.id}}%22&server=remedyaverias" target="_blank"  class="warning button" >tkt remedy</td>
+                              </tr>
+                        {% endif %}
+                      {% endfor %} 
+                    {% endfor %}
+
+                  </tbody>
+
+              </table>
+      
           </div>
       </div>
 </div>
