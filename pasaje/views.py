@@ -503,8 +503,6 @@ class ListarColgados():
                 if i == e['sk']: 
                         if e['sk'] > i:                    
                             print('No cumple condicion: ', i['id'])
-                        else:
-                            pass
                 else:
                     pass
 
