@@ -485,19 +485,31 @@ class ListarColgados():
                
         print('Cumplen la condicion los tickets:',len(id))
 
+        # busco el sk mas alto y armo una lista con el id y el tkt.
+        sk = []
+        for i in id:
+            a = 0
+            for b in list(colgados):
+                if i == b['id']:
+                    if b['sk'] > a:
+                        a = b['sk']
+                else:
+                    pass
+            sk.append(a)
 
-        for i in list(colgados):
+        for i in sk:
             for e in list(eventos):
-                if i['id'] == e['id']:
-                        if e['sk'] > i['sk']:                    
+                if i == e['id']: 
+                        if e['sk'] > i:                    
                             print('No cumple condicion: ', i['id'])
+                        else:
+                            pass
                 else:
                     pass
 
-
         print(len(id))
         print(id)
-
+'''
         #Si Hay palabra clave Selecciono los tkt de la celula
         if palabra_clave != '':
             lista = []
@@ -525,7 +537,7 @@ class ListarColgados():
                     pass
             sk.append(a)
 
-
+'''
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk
         )
