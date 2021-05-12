@@ -475,14 +475,24 @@ class ListarColgados():
         
         eventos = Eventostkt.objects.values('sk','id')
 
-        #creo una lista con id's.
         id = []
 
         for i in list(colgados):
             id.append(i['id'])
-        
+
         # Remuevo valores repetidos de id
         id = list(set(id))
+
+        for i in list(colgados):
+            a = 0
+            for e in list(eventos):
+                if i['id'] == e['id']:
+                    if e['sk'] > i['sk']:
+                        a = i['id']
+                else:
+                    pass
+            id.remove(a)
+        
 
         #Si Hay palabra clave Selecciono los tkt de la celula
         if palabra_clave != '':
@@ -491,9 +501,10 @@ class ListarColgados():
                celula_n = palabra_clave,
                tipo_incidencia = 'User Service Restoration',
             )
-            # Saco los id de 
+            # creo lista con los id 
             for i in list(celula):
                 lista.append(i['id'])
+            #comparo comparo solo los id de la lista id contra lista. Si esta en ambas crea una nueva lista llamada id
             id = [x for x in id if x in lista]
         else:
             pass 
@@ -509,7 +520,7 @@ class ListarColgados():
                 else:
                     pass
             sk.append(a)
-        
+
 
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk
