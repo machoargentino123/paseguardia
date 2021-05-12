@@ -407,7 +407,7 @@ class PanelMonitoreo():
 
         # Listo los colgados que estan en curso desde hace 120 minutos
         start = datetime.now()+timedelta(minutes=-120)
-        end = datetime.now()
+        ahora = datetime.now()+timdelta()
 
         colgados = Eventostkt.objects.values('sk','id','horario').filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
