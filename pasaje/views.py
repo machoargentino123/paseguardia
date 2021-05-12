@@ -487,17 +487,10 @@ class ListarColgados():
                celula_n = palabra_clave,
                tipo_incidencia = 'User Service Restoration',
             )
-
+            # Saco los id de 
             for i in list(celula):
                 lista.append(i['id'])
-
-            print('Tamaño de lista',len(lista))
-            print('Tamaño de id',len(id))
-
             id = [x for x in id if x in lista]
-            #id = lista.intersection(id)
-            print('Tamaño de id',len(id))
-
         else:
             pass 
 
@@ -522,8 +515,12 @@ class ListarColgados():
             sk__in = sk
         )
 
+        celulas = CsvImportado1.objects.values('id','celula_n')
+        print(celulas)
 
-        context = {'colgados' : colgados}
+        context = {'colgados' : colgados,
+                   'celulas' : celulas
+                }
 
         return render(request,'colgados.html',context)
 
