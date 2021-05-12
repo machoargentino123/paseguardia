@@ -462,7 +462,7 @@ class ListarCel(ListView):
 class ListarColgados():
 
     def index(request):
-        celula = []
+
 
         palabra_clave = request.GET.get('kword', '')
 
@@ -471,9 +471,10 @@ class ListarColgados():
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
-            )
+            )   
         
-                
+        eventos = Eventostkt.objects.values('sk','id')
+
         #creo una lista con id's.
         id = []
 
