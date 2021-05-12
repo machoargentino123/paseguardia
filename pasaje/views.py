@@ -515,11 +515,11 @@ class ListarColgados():
         )
 
         celulas = CsvImportado1.objects.values('id','celula_n')
-        print(celulas)
+
 
         #pasados a resueltos en las ultimas 2 horas.
 
-        
+
 
         context = {'colgados' : colgados,
                    'celulas' : celulas
