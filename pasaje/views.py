@@ -487,6 +487,7 @@ class ListarColgados():
 
         # busco el sk mas alto y armo una lista con el id y el tkt.
         sk = []
+
         for i in id:
             a = 0
             for b in list(colgados):
@@ -509,35 +510,6 @@ class ListarColgados():
 
         print(len(id))
         print(id)
-'''
-        #Si Hay palabra clave Selecciono los tkt de la celula
-        if palabra_clave != '':
-            lista = []
-            celula = CsvImportado1.objects.values('id').filter(
-               celula_n = palabra_clave,
-               tipo_incidencia = 'User Service Restoration',
-            )
-            # creo lista con los id 
-            for i in list(celula):
-                lista.append(i['id'])
-            #comparo comparo solo los id de la lista id contra lista. Si esta en ambas crea una nueva lista llamada id
-            id = [x for x in id if x in lista]
-        else:
-            pass 
-
-        # busco el sk mas alto y armo una lista con el id y el tkt.
-        sk = []
-        for i in id:
-            a = 0
-            for b in list(colgados):
-                if i == b['id']:
-                    if b['sk'] > a:
-                        a = b['sk']
-                else:
-                    pass
-            sk.append(a)
-
-'''
        
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk,
@@ -555,5 +527,3 @@ class ListarColgados():
                 }
 
         return render(request,'colgados.html',context)
-
-
