@@ -487,10 +487,12 @@ class ListarColgados():
             for e in list(eventos):
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
-                        id.remove(i['id'])
+                        if i['id'] in id:
+                            id.remove(i['id'])
                 else:
                     pass
-        
+        print(len(id))
+        print(id)
 
         #Si Hay palabra clave Selecciono los tkt de la celula
         if palabra_clave != '':
