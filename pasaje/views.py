@@ -500,7 +500,7 @@ class ListarColgados():
 
         for i in sk:
             for e in list(eventos):
-                if i == e['id']: 
+                if i == e['sk']: 
                         if e['sk'] > i:                    
                             print('No cumple condicion: ', i['id'])
                         else:
@@ -509,7 +509,6 @@ class ListarColgados():
                     pass
 
         print(len(id))
-        print(id)
        
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk,
