@@ -466,19 +466,16 @@ class ListarColgados():
 
         palabra_clave = request.GET.get('kword', '')
 
-
+        #muestro aquellos tkt que esten en curso hace mas de 20 minutos y menos de 2 horas.
         colgados = Eventostkt.objects.values('sk','id').filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
             )
         
-        
-
-        
+                
         #creo una lista con id's.
         id = []
-
 
         for i in list(colgados):
             id.append(i['id'])
@@ -486,6 +483,7 @@ class ListarColgados():
         # Remuevo valores repetidos de id
         id = list(set(id))
 
+        #Si Hay palabra clave Selecciono los tkt de la celula
         if palabra_clave != '':
             lista = []
             celula = CsvImportado1.objects.values('id').filter(
@@ -499,9 +497,6 @@ class ListarColgados():
         else:
             pass 
 
-        
-            
-        
         # busco el sk mas alto y armo una lista con el id y el tkt.
         sk = []
         for i in id:
@@ -515,13 +510,16 @@ class ListarColgados():
             sk.append(a)
         
 
-
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk
         )
 
         celulas = CsvImportado1.objects.values('id','celula_n')
         print(celulas)
+
+        #pasados a resueltos en las ultimas 2 horas.
+
+        
 
         context = {'colgados' : colgados,
                    'celulas' : celulas
