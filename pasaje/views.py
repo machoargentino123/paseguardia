@@ -410,10 +410,11 @@ class PanelMonitoreo():
         colgados = Eventostkt.objects.values('sk','id','horario').filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
-            horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30)
+            horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
             )
+        
+
         id = []
-    
 
         for i in list(colgados):
             id.append(i['id'])
@@ -471,10 +472,14 @@ class ListarColgados():
             horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30)  
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
-            )
+                )
+        
+
         
         #creo una lista con id's.
         id = []
+
+
         for i in list(colgados):
             id.append(i['id'])
         
