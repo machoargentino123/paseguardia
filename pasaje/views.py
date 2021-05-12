@@ -406,7 +406,7 @@ class PanelMonitoreo():
         llamadas_sd = Llamadasssdd.objects.using('avaya').all()
 
         # Listo los colgados que estan en curso desde hace 120 minutos
-        start = datetime.now()-timedelta(minutes=120)
+        start = datetime.now()+timedelta(minutes=-120)
         end = datetime.now()
 
         colgados = Eventostkt.objects.values('sk','id','horario').filter(
@@ -417,19 +417,11 @@ class PanelMonitoreo():
         
         print('end',start)
         print('start',end)
-        if end > start:
-            print('datetime anda')
 
-
-        for i in list(colgados):
-            if i['horario'] > start:
-                print('entro a el if 2')
-        
 
         for i in list(colgados):
             if i['horario'] < end:
                 if i['horario'] > start:
-                    print('entro a el if')
                     id.append(i['id'])
      
         id = list(set(id))
