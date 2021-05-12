@@ -406,23 +406,19 @@ class PanelMonitoreo():
         llamadas_sd = Llamadasssdd.objects.using('avaya').all()
 
         # Listo los colgados que estan en curso desde hace 120 minutos
-        start = datetime.now()+timedelta(minutes=-120)
-        end = datetime.now()
 
         colgados = Eventostkt.objects.values('sk','id','horario').filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
-            horario__range = (start,end)
+            horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now())
             )
-        
-        print(start)
-        print(end)
-
         id = []
     
 
         for i in list(colgados):
-            id.append(i['id'])
+            if i['horario'] < end:
+                if i['horario'] > start:
+                    id.append(i['id'])
      
         id = list(set(id))
         
@@ -477,7 +473,7 @@ class ListarColgados():
 
         colgados = Eventostkt.objects.values('sk','id').filter( 
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-            horario__range = (start,end)  
+            horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now())  
             ).filter(
                 Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
             )
