@@ -482,16 +482,19 @@ class ListarColgados():
 
         # Remuevo valores repetidos de id
         id = list(set(id))
+               
+        print('Cumplen la condicion los tickets:',len(id))
+
 
         for i in list(colgados):
             for e in list(eventos):
                 if i['id'] == e['id']:
-                    if i['id'] in id:
                         if e['sk'] > i['sk']:                    
-                            id.remove(i['id'])
+                            print('No cumple condicion: ', i['id'])
                 else:
                     pass
-                
+
+
         print(len(id))
         print(id)
 
