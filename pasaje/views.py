@@ -538,9 +538,10 @@ class ListarColgados():
             sk.append(a)
 
 '''
+       
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
-            sk__in = sk
-        )
+            sk__in = sk,
+            )
 
         celulas = CsvImportado1.objects.values('id','celula_n')
 
