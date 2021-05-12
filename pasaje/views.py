@@ -416,9 +416,7 @@ class PanelMonitoreo():
     
 
         for i in list(colgados):
-            if i['horario'] < end:
-                if i['horario'] > start:
-                    id.append(i['id'])
+            id.append(i['id'])
      
         id = list(set(id))
         
@@ -466,9 +464,6 @@ class ListarColgados():
         celula = []
 
         palabra_clave = request.GET.get('kword', '')
-
-        start = datetime.now()-timedelta(minutes=120)
-        end = datetime.now()
 
 
         colgados = Eventostkt.objects.values('sk','id').filter( 
