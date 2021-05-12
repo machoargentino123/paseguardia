@@ -482,12 +482,24 @@ class ListarColgados():
 
         # Remuevo valores repetidos de id
         id = list(set(id))
-               
-        print('Cumplen la condicion los tickets:',len(id))
+
+         #Si Hay palabra clave Selecciono los tkt de la celula
+        if palabra_clave != '':
+            lista = []
+            celula = CsvImportado1.objects.values('id').filter(
+               celula_n = palabra_clave,
+               tipo_incidencia = 'User Service Restoration',
+            )
+            # creo lista con los id 
+            for i in list(celula):
+                lista.append(i['id'])
+            #comparo comparo solo los id de la lista id contra lista. Si esta en ambas crea una nueva lista llamada id
+            id = [x for x in id if x in lista]
+        else:
+            pass 
 
         # busco el sk mas alto y armo una lista con el id y el tkt.
         sk = []
-
         for i in id:
             a = 0
             for b in list(colgados):
@@ -497,15 +509,6 @@ class ListarColgados():
                 else:
                     pass
             sk.append(a)
-
-        for i in sk:
-            for e in list(eventos):
-                if i == e['sk']: 
-                        if e['sk'] > i:                    
-                            print('No cumple condicion: ', i)
-                else:
-                    pass
-
 
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk,
