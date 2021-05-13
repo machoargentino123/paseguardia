@@ -483,7 +483,7 @@ class ListarColgados():
 
         # Remuevo valores repetidos de id
         id = list(set(id))
-
+        #===================No hace nada====================================================
         borrar = []
 
         for i in list(colgados):
@@ -500,12 +500,27 @@ class ListarColgados():
 
         [borrar2.append(x) for x in borrar if x not in borrar2] 
 
+        borrar = []
+
         for i in borrar2:
+            a = 0
+            for e in eventos:
+                if i['id'] == e['id']:
+                    if e['sk'] > i['sk']:
+                        a = e
+                    else:
+                        pass
+            borrar.append(a)
+        
+        limpio = []
+
+        [limpio.append(x) for x in borrar2 if x not in borrar] 
+
+        for i in limpio:
             print(i)
+        #===================No hace nada====================================================
 
-
-
-         #Si Hay palabra clave Selecciono los tkt de la celula
+        #Si Hay palabra clave Selecciono los tkt de la celula
         
         if palabra_clave != '':
             lista = []
