@@ -499,7 +499,7 @@ class ListarColgados():
         borrar2 = []
 
         [borrar2.append(x) for x in borrar if x not in borrar2] 
-
+        '''
         borrar = []
         
         for i in borrar2:
@@ -515,9 +515,9 @@ class ListarColgados():
         limpio = []
 
         [limpio.append(x) for x in borrar2 if x not in borrar] 
-
-        for i in limpio:
-            print(i)
+        '''
+        for i in borrar2:
+            print(i['sk'],i['id'])
         #===================No hace nada====================================================
 
         #Si Hay palabra clave Selecciono los tkt de la celula
