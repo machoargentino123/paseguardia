@@ -527,15 +527,28 @@ class ListarColgados():
 
         if palabra_clave != '':
             lista = []
+
             celula = CsvImportado1.objects.values('id').filter(
                celula_n = palabra_clave,
                tipo_incidencia = 'User Service Restoration',
             )
             # creo lista con los id 
-            for i in list(celula):
-                lista.append(i)
+            
+            for i in limpio:
+                a = 0
+                for e in list(celula):
+                    if i['id'] == e['id']:
+                        a = i
+                    else:
+                        pass
+                if a != 0:
+                    lista.append(a)
+            
+            limpio = []
+
+            [limpio.append(x) for x in lista if x not in limpio]
             #comparo comparo solo los id de la lista id contra lista. Si esta en ambas crea una nueva lista llamada id
-            limpio = [x for x in limpio if x in lista]
+            
         else:
             pass 
 
@@ -544,7 +557,7 @@ class ListarColgados():
             print(i['sk'])
         print('==============finalizo===================')
 
-        
+
         sk = []
         for i in limpio:
             sk.append(i['sk'])
