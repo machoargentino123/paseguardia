@@ -502,15 +502,27 @@ class ListarColgados():
         #altos para cada tkt.
 
         borrar = borrar2
-        print('Copio borrar y borrar2', len(borrar), len(borrar2))
-        
+        print('Reclamos colgados:',len(borrar2), len(borrar2)) 
+
         for i in borrar2:
             for e in list(eventos):
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
-                        borrar.remove(i)
+                        if i in borrar:
+                            borrar.remove(i)
                     else:
                         pass
+
+        borrar2 = borrar
+        print('Reclamos colgados:',len(borrar2), len(borrar2)) 
+        for i in borrar:
+            for e in list(eventos):
+                if i['id'] == e['id']:
+                    if e['sk'] > i['sk']:
+                        if i in borrar2:
+                            borrar2.remove(i)
+                    else:
+                        pass        
 
         print('La lista limpia debera tener entonces: ',len(borrar))
 
