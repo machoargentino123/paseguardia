@@ -475,7 +475,7 @@ class ListarColgados():
         
         eventos = Eventostkt.objects.filter().order_by('sk').last()
 
-        print('largo de eventos tkt',len(list(eventos)))
+        print('largo de eventos tkt', eventos)
 
         #Voy a crear una lista con los SK mas altos de cada tkt de la query colgados.
         borrar = []
