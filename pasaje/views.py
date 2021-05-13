@@ -485,14 +485,22 @@ class ListarColgados():
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
                         a = e
+                else:
+                    pass
             if a != 0:
                 borrar.append(a)
         
         #elimino elementos repetidos de borrar y lo guardo en borrar2
+        for i in borrar:
+            print(i)
+
         borrar2 = []
 
         #en borrar 2 ya no hay elementos repetidos
         [borrar2.append(x) for x in borrar if x not in borrar2] 
+        print('+++++++++++++limpio++++++++++++++')
+        for i in borrar2:
+            print(i)
         
 
         #limpio borrar para crear una lista donde vere si en eventos hay SK mas 
@@ -506,7 +514,8 @@ class ListarColgados():
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
                         a = e
-
+                    else:
+                        pass
             if a != 0:
                 borrar.append(a)
 
@@ -552,18 +561,10 @@ class ListarColgados():
                     lista.append(a)
             
             limpio = []
-
+            #Saco los repetidos
             [limpio.append(x) for x in lista if x not in limpio]
-            #comparo comparo solo los id de la lista id contra lista. Si esta en ambas crea una nueva lista llamada id
             
-        else:
-            pass 
-
-        print('==============se ejecuto===================')
-        for i in limpio:
-            print(i['sk'])
-        print('==============finalizo===================')
-
+            
 
         sk = []
         for i in limpio:
