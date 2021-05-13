@@ -496,7 +496,11 @@ class ListarColgados():
                     pass
             borrar.append(a)
         
-        for i in borrar:
+        borrar2 = []
+
+        [borrar2.append(x) for x in borrar if x['id'] not in borrar] 
+
+        for i in borrar2:
             print(i)
 
 
