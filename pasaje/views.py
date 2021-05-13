@@ -520,7 +520,7 @@ class ListarColgados():
 
         limpio = []
 
-        [limpio.append(x) for x in borrar2 if x in borrar] 
+        [limpio.append(x) for x in borrar if x in borrar2] 
         
 
 
