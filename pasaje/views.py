@@ -508,8 +508,7 @@ class ListarColgados():
             for e in list(eventos):
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
-                        if i in borrar:
-                            borrar.remove(i)
+                        borrar.remove(i)
                     else:
                         pass
 
