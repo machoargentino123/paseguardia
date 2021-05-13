@@ -473,7 +473,7 @@ class ListarColgados():
             horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
             )   
         
-        eventos = Eventostkt.objects.filter().order_by('id').first()
+        eventos = Eventostkt.objects.filter().order_by('sk').last()
 
         print('largo de eventos tkt',len(list(eventos)))
 
