@@ -475,6 +475,7 @@ class ListarColgados():
         
         eventos = Eventostkt.objects.values('sk','id')
 
+
         id = []
 
         for i in list(colgados):
@@ -483,7 +484,25 @@ class ListarColgados():
         # Remuevo valores repetidos de id
         id = list(set(id))
 
+        borrar = []
+
+        for i in list(colgados):
+            a = 0
+            for e in list(colgados):
+                if i['id'] == e['id']:
+                    if e['sk'] > i['sk']:
+                        a = e
+                else:
+                    pass
+            borrar.append(a)
+        
+        for i in borrar:
+            print(i)
+
+
+
          #Si Hay palabra clave Selecciono los tkt de la celula
+        
         if palabra_clave != '':
             lista = []
             celula = CsvImportado1.objects.values('id').filter(
@@ -499,6 +518,8 @@ class ListarColgados():
             pass 
 
         # busco el sk mas alto y armo una lista con el id y el tkt.
+        
+
         sk = []
         for i in id:
             a = 0
@@ -509,6 +530,7 @@ class ListarColgados():
                 else:
                     pass
             sk.append(a)
+
 
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sk,
