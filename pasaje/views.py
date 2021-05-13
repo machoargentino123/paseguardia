@@ -522,23 +522,20 @@ class ListarColgados():
         #Rn borrar estan todos los reclamos que tiene Sk mayor eventos que en colgados.
 
         limpio = []
-
-        for i in borrar:
+        '''
+        for i in borrar2:
             a = 0 
-            for e in borrar2:
+            for e in borrar:
                 if i['id'] == e['id']:
-                    if i['sk'] > e['sk']:
+                    if e['sk'] > i['sk']:
                         a = 0
-                    else:
-                        print('cumple condicion')
-                        a = e
             if a != 0:
                 limpio.append(a)
+        '''
 
- 
+
+        [limpio.append(x) for x in borrar2 if x not in borrar]
         print('Lista limpio: ', len(limpio))
-        
-
 
 
         if palabra_clave != '':
