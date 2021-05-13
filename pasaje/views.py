@@ -495,13 +495,26 @@ class ListarColgados():
 
         #en borrar 2 ya no hay elementos repetidos
         [borrar2.append(x) for x in borrar if x not in borrar2] 
-        print('Reclamos colgados:', len(borrar2)) 
-        borrar = borrar2
-        print('Reclamos colgados:', len(borrar),len(borrar2))     
 
+        borrar = borrar2   
 
-        #limpio borrar para crear una lista donde vere si en eventos hay SK mas 
+        #purgamos eventos, con el tkt que tiene el sk mas alto.
         
+        tktevento = []
+
+        for i in list(eventos):
+            a = 0
+            for e in list(eventos):
+                if e['id'] == i['id']:
+                    if e['sk'] > i['sk']:
+                        a = e
+                    else:
+                        pass
+            if a != 0 :
+                tktevento.append(a)
+
+        for i in tktevento:
+            print(i)
 
         limpio = borrar
 
