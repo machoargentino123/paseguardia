@@ -497,10 +497,13 @@ class ListarColgados():
             if a != 0:
                 borrar.append(a)
         
+        #elimino elementos repetidos
+
         borrar2 = []
 
         [borrar2.append(x) for x in borrar if x not in borrar2] 
-        '''
+         #en borrar 2 ya no hay elementos repetidos
+         
         borrar = []
         
         for i in borrar2:
@@ -511,13 +514,16 @@ class ListarColgados():
                         a = e
                     else:
                         pass
-            borrar.append(a)
-        
+
+            if a != 0:
+                borrar.append(a)
+
+
         limpio = []
 
         [limpio.append(x) for x in borrar2 if x not in borrar] 
-        '''
-        for i in borrar2:
+
+        for i in limpio:
             print(i)
 
 
