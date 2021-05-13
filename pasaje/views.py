@@ -494,7 +494,8 @@ class ListarColgados():
                         a = e
                 else:
                     pass
-            borrar.append(a)
+            if a != 0:
+                borrar.append(a)
         
         borrar2 = []
 
