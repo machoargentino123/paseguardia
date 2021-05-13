@@ -473,9 +473,7 @@ class ListarColgados():
             horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
             )   
         
-        eventos = Eventostkt.objects.raw(
-            'SELECT sk, id FROM eventostkt WHERE sk = (SELECT MAX(sk) FROM eventostkt)'
-        )
+        eventos = Eventostkt.objects.filter().order_by('id').first()
 
         print('largo de eventos tkt',len(eventos))
 
@@ -498,6 +496,7 @@ class ListarColgados():
 
         #en borrar 2 ya no hay elementos repetidos
         [tktcolgado.append(x) for x in borrar if x not in tktcolgado] 
+
         print('Tamaño de tktcolgado',len(tktcolgado))
 
         #purgamos eventos, con el tkt que tiene el sk mas alto.
