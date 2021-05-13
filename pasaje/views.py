@@ -517,7 +517,7 @@ class ListarColgados():
         [limpio.append(x) for x in borrar2 if x not in borrar] 
         '''
         for i in borrar2:
-            print(i[0],i[1])
+            print(i['sk'],i['id'])
 
 
         #===================No hace nada====================================================
