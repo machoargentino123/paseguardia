@@ -508,8 +508,6 @@ class ListarColgados():
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
                         a = e
-                        if e['id'] == 'INC000080614711':
-                            print('lo encontro',a)
                     else:
                         pass
 
@@ -522,7 +520,7 @@ class ListarColgados():
 
         limpio = []
 
-        [limpio.append(x) for x in borrar if x not in borrar2] 
+        [limpio.append(x) for x in borrar2 if x not in borrar] 
         
 
 
