@@ -474,7 +474,7 @@ class ListarColgados():
             )   
         
         eventos = Eventostkt.objects.raw(
-            'SELECT id, MAX(sk) FROM Eventostkt GROUP BY id'
+            'SELECT id, MAX(sk) FROM eventostkt GROUP BY id'
         )
 
         print('largo de eventos tkt',len(eventos))
