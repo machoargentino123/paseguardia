@@ -491,12 +491,11 @@ class ListarColgados():
                 borrar.append(a)
         
 
-        borrar2 = []
+        tktcolgado = []
 
         #en borrar 2 ya no hay elementos repetidos
-        [borrar2.append(x) for x in borrar if x not in borrar2] 
+        [tktcolgado.append(x) for x in borrar if x not in tktcolgado] 
 
-        borrar = borrar2   
 
         #purgamos eventos, con el tkt que tiene el sk mas alto.
         
@@ -513,10 +512,10 @@ class ListarColgados():
             if a != 0 :
                 tktevento.append(a)
 
-        for i in tktevento:
-            print(i)
+        print('Tamaño de tktevento',len(tktevento))
 
-        limpio = borrar
+
+        limpio = tktcolgado
 
 
         if palabra_clave != '':
