@@ -490,18 +490,13 @@ class ListarColgados():
             if a != 0:
                 borrar.append(a)
         
-        #elimino elementos repetidos de borrar y lo guardo en borrar2
-        for i in borrar:
-            print(i)
 
         borrar2 = []
 
         #en borrar 2 ya no hay elementos repetidos
         [borrar2.append(x) for x in borrar if x not in borrar2] 
-        print('+++++++++++++limpio++++++++++++++')
-        for i in borrar2:
-            print(i)
-        
+
+        print('Reclamos colgados:' len(borrar2))     
 
         #limpio borrar para crear una lista donde vere si en eventos hay SK mas 
         #altos para cada tkt.
@@ -536,7 +531,7 @@ class ListarColgados():
                 limpio.append(a)
 
  
-
+        print(limpio)
         
 
 
