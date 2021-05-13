@@ -476,14 +476,7 @@ class ListarColgados():
         eventos = Eventostkt.objects.values('sk','id')
 
 
-        id = []
-
-        for i in list(colgados):
-            id.append(i['id'])
-
-        # Remuevo valores repetidos de id
-        id = list(set(id))
-        #===================No hace nada====================================================
+        #Voy a crear una lista con los SK mas altos de cada tkt de la query colgados.
         borrar = []
 
         for i in list(colgados):
@@ -497,12 +490,15 @@ class ListarColgados():
             if a != 0:
                 borrar.append(a)
         
-        #elimino elementos repetidos
-
+        #elimino elementos repetidos de borrar y lo guardo en borrar2
         borrar2 = []
 
-        [borrar2.append(x) for x in borrar if x not in borrar2] 
          #en borrar 2 ya no hay elementos repetidos
+        [borrar2.append(x) for x in borrar if x not in borrar2] 
+        
+
+        #limpio borrar para crear una lista donde vere si en eventos hay SK mas 
+        #altos para cada tkt.
 
         borrar = []
         
@@ -518,19 +514,17 @@ class ListarColgados():
             if a != 0:
                 borrar.append(a)
 
+        #Ahora comparo borrar2 que tiene los reclamos de colgados y lo comparo con
+        #borrar que tiene los SK mas altos para los tickets que aparecen en borrar2,
+        #si no aparece en borrar2 significa que es el ultimo sk y por lo tanto aun no se movio.
 
         limpio = []
 
         [limpio.append(x) for x in borrar2 if x not in borrar] 
-
-        for i in limpio:
-            print(i['sk'])
-
-
-        #===================No hace nada====================================================
-
-        #Si Hay palabra clave Selecciono los tkt de la celula
         
+
+
+
         if palabra_clave != '':
             lista = []
             celula = CsvImportado1.objects.values('id').filter(
@@ -539,25 +533,21 @@ class ListarColgados():
             )
             # creo lista con los id 
             for i in list(celula):
-                lista.append(i['id'])
+                lista.append(i)
             #comparo comparo solo los id de la lista id contra lista. Si esta en ambas crea una nueva lista llamada id
-            id = [x for x in id if x in lista]
+            limpio = [x for x in limpio if x in lista]
         else:
             pass 
 
-        # busco el sk mas alto y armo una lista con el id y el tkt.
-        
+        print('==============se ejecuto===================')
+        for i in limpio:
+            print(i['sk'])
+        print('==============finalizo===================')
 
+        
         sk = []
-        for i in id:
-            a = 0
-            for b in list(colgados):
-                if i == b['id']:
-                    if b['sk'] > a:
-                        a = b['sk']
-                else:
-                    pass
-            sk.append(a)
+        for i in limpio:
+            sk.append(i['sk'])
 
 
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
