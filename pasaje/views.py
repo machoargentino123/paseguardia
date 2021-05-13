@@ -515,10 +515,6 @@ class ListarColgados():
                 borrar.append(a)
 
         print('Reclamos en colgados que tienen una sk mas nuevo', len(borrar))
-        limpio = []
-        [limpio.append(x) for x in borrar if x not in limpio]
-        borrar = limpio
-        print('Reclamos en colgados que tienen una sk mas nuevo', len(borrar))
         resultado = len(borrar)-len(borrar2)
         print('La lista limpia debera tener entonces: ',resultado)
 
@@ -534,7 +530,8 @@ class ListarColgados():
                     if i['sk'] > e['sk']:
                         a = 0
                     else:
-                        a = i
+                        print('cumple condicion')
+                        a = e
             if a != 0:
                 limpio.append(a)
 
