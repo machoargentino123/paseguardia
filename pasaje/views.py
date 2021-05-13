@@ -473,8 +473,11 @@ class ListarColgados():
             horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
             )   
         
-        eventos = Eventostkt.objects.values('sk','id')
+        eventos = Eventostkt.objects.raw(
+            'SELECT id, MAX(sk) FROM Eventostkt GROUP BY id'
+        )
 
+        print('largo de eventos tkt',len(eventos))
 
         #Voy a crear una lista con los SK mas altos de cada tkt de la query colgados.
         borrar = []
@@ -498,22 +501,7 @@ class ListarColgados():
         print('Tamaño de tktcolgado',len(tktcolgado))
 
         #purgamos eventos, con el tkt que tiene el sk mas alto.
-        '''
-        tktevento = []
 
-        for i in list(eventos):
-            a = 0
-            for e in list(eventos):
-                if e['id'] == i['id']:
-                    if e['sk'] > i['sk']:
-                        a = e
-                    else:
-                        pass
-            if a != 0 :
-                tktevento.append(a)
-
-        print('Tamaño de tktevento',len(tktevento))
-        '''
 
         limpio = tktcolgado
 
