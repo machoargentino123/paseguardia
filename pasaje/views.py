@@ -496,7 +496,7 @@ class ListarColgados():
         #en borrar 2 ya no hay elementos repetidos
         [borrar2.append(x) for x in borrar if x not in borrar2] 
 
-        print('Reclamos colgados:' len(borrar2))     
+        print('Reclamos colgados:', len(borrar2))     
 
         #limpio borrar para crear una lista donde vere si en eventos hay SK mas 
         #altos para cada tkt.
@@ -513,6 +513,9 @@ class ListarColgados():
                         pass
             if a != 0:
                 borrar.append(a)
+        print('Reclamos en colgados que tienen una sk mas nuevo', len(borrar))
+        resultado = len(borrar)-len(borrar2)
+        print('La lista limpia debera tener entonces: ',resultado)
 
         #En borrar2 estan todos los reclamos de colgados filtrados
         #Rn borrar estan todos los reclamos que tiene Sk mayor eventos que en colgados.
@@ -531,7 +534,7 @@ class ListarColgados():
                 limpio.append(a)
 
  
-        print(limpio)
+        print('Lista limpio: ', len(limpio))
         
 
 
