@@ -484,10 +484,7 @@ class ListarColgados():
             for e in list(colgados):
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
-                        if e not in borrar:
-                            a = e
-                else:
-                    pass
+                        a = e
             if a != 0:
                 borrar.append(a)
         
@@ -508,10 +505,8 @@ class ListarColgados():
             for e in list(eventos):
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
-                        if e not in borrar:
-                            a = e
-                    else:
-                        pass
+                        a = e
+
             if a != 0:
                 borrar.append(a)
 
