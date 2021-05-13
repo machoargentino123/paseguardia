@@ -501,10 +501,10 @@ class ListarColgados():
         [borrar2.append(x) for x in borrar if x not in borrar2] 
 
         borrar = []
-
+        
         for i in borrar2:
             a = 0
-            for e in eventos:
+            for e in list(eventos):
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
                         a = e
