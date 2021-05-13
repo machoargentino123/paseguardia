@@ -501,18 +501,16 @@ class ListarColgados():
         #limpio borrar para crear una lista donde vere si en eventos hay SK mas 
         #altos para cada tkt.
 
-        borrar = []
+        borrar = borrar2
         
         for i in borrar2:
             a = 0
             for e in list(eventos):
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
-                        a = e
+                        borrar.remove(e)
                     else:
                         pass
-            if a != 0:
-                borrar.append(a)
 
         print('Reclamos en colgados que tienen una sk mas nuevo', len(borrar))
         resultado = len(borrar)-len(borrar2)
@@ -521,7 +519,7 @@ class ListarColgados():
         #En borrar2 estan todos los reclamos de colgados filtrados
         #Rn borrar estan todos los reclamos que tiene Sk mayor eventos que en colgados.
 
-        limpio = []
+        limpio = borrar
         '''
         for i in borrar2:
             a = 0 
@@ -532,11 +530,6 @@ class ListarColgados():
             if a != 0:
                 limpio.append(a)
         '''
-
-
-        [limpio.append(x) for x in borrar if x not in borrar2]
-        print('Lista limpio: ', len(limpio))
-
 
         if palabra_clave != '':
             lista = []
