@@ -502,6 +502,7 @@ class ListarColgados():
         #altos para cada tkt.
 
         borrar = borrar2
+        print('Copio borrar y borrar2', len(borrar), len(borrar2))
         
         for i in borrar2:
             for e in list(eventos):
@@ -512,24 +513,13 @@ class ListarColgados():
                     else:
                         pass
 
-        print('Reclamos en colgados que tienen una sk mas nuevo', len(borrar))
-        resultado = len(borrar)-len(borrar2)
-        print('La lista limpia debera tener entonces: ',resultado)
+        print('La lista limpia debera tener entonces: ',len(borrar))
 
         #En borrar2 estan todos los reclamos de colgados filtrados
         #Rn borrar estan todos los reclamos que tiene Sk mayor eventos que en colgados.
 
         limpio = borrar
-        '''
-        for i in borrar2:
-            a = 0 
-            for e in borrar:
-                if i['id'] == e['id']:
-                    if e['sk'] > i['sk']:
-                        a = 0
-            if a != 0:
-                limpio.append(a)
-        '''
+
 
         if palabra_clave != '':
             lista = []
