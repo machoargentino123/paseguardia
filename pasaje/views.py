@@ -503,7 +503,7 @@ class ListarColgados():
 
         [borrar2.append(x) for x in borrar if x not in borrar2] 
          #en borrar 2 ya no hay elementos repetidos
-         
+
         borrar = []
         
         for i in borrar2:
@@ -524,7 +524,7 @@ class ListarColgados():
         [limpio.append(x) for x in borrar2 if x not in borrar] 
 
         for i in limpio:
-            print(i)
+            print(i['sk'])
 
 
         #===================No hace nada====================================================
