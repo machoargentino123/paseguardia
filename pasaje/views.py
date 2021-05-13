@@ -512,19 +512,27 @@ class ListarColgados():
                             a = e
                     else:
                         pass
-
             if a != 0:
                 borrar.append(a)
 
-        #Ahora comparo borrar2 que tiene los reclamos de colgados y lo comparo con
-        #borrar que tiene los SK mas altos para los tickets que aparecen en borrar2,
-        #si no aparece en borrar2 significa que es el ultimo sk y por lo tanto aun no se movio.
+        #En borrar2 estan todos los reclamos de colgados filtrados
+        #Rn borrar estan todos los reclamos que tiene Sk mayor eventos que en colgados.
 
         limpio = []
 
-        for x in borrar2: 
-            if x not in borrar:
-                limpio.append(x) 
+        for i in borrar2:
+            a = 0 
+            for e in borrar:
+                if i['id'] == e['id']:
+                    if e['sk'] > i['sk']:
+                        a = 0
+                    else:
+                        a = i
+            if a != 0:
+                limpio.append(a)
+
+ 
+
         
 
 
