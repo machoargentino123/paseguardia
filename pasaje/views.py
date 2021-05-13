@@ -522,8 +522,8 @@ class ListarColgados():
 
         limpio = []
 
-        for x in borrar: 
-            if x not in borrar2:
+        for x in borrar2: 
+            if x not in borrar:
                 limpio.append(x) 
         
 
