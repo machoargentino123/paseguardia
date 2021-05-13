@@ -484,7 +484,8 @@ class ListarColgados():
             for e in list(colgados):
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
-                        a = e
+                        if e not in borrar:
+                            a = e
                 else:
                     pass
             if a != 0:
@@ -493,7 +494,7 @@ class ListarColgados():
         #elimino elementos repetidos de borrar y lo guardo en borrar2
         borrar2 = []
 
-         #en borrar 2 ya no hay elementos repetidos
+        #en borrar 2 ya no hay elementos repetidos
         [borrar2.append(x) for x in borrar if x not in borrar2] 
         
 
@@ -507,7 +508,8 @@ class ListarColgados():
             for e in list(eventos):
                 if i['id'] == e['id']:
                     if e['sk'] > i['sk']:
-                        a = e
+                        if e not in borrar:
+                            a = e
                     else:
                         pass
 
