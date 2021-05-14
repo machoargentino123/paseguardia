@@ -490,9 +490,9 @@ class ListarColgados():
                         a = i 
                     else:
                         pass
-                if a != 0:
-                    if a in aux:
-                        aux.remove(a)
+            if a != 0:
+                if a in aux:
+                    aux.remove(a)
 
         #purgamos eventos, con el tkt que tiene el sk mas alto.
 
