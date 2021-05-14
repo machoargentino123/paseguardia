@@ -478,18 +478,26 @@ class ListarColgados():
 
         print('Tamaño de colgado',len(list(colgados)))
         tktcolgado = list(colgados)
+        eventos = list(eventos)
 
-        #tktcolgado = []
+        aux = tktcolgado
 
-        #en borrar 2 ya no hay elementos repetidos
-        #[tktcolgado.append(x) for x in list(colgados) if x not in tktcolgado] 
-
-        print('Tamaño de tktcolgado',len(tktcolgado))
+        for i in tktcolgado:
+            a = 0
+            for e in eventos:
+                if e['id'] == i['id']:
+                    if e['sk'] > i['sk']:
+                        a = i 
+                    else:
+                        pass
+                if a != 0:
+                    if a in aux:
+                        aux.remove(a)
 
         #purgamos eventos, con el tkt que tiene el sk mas alto.
 
 
-        limpio = tktcolgado
+        limpio = aux
 
 
         if palabra_clave != '':
