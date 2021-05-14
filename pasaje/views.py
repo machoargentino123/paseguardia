@@ -496,7 +496,7 @@ class ListarColgados():
 
         #purgamos eventos, con el tkt que tiene el sk mas alto.
 
-
+        print('Tamaño de AUX', len(aux))
         limpio = aux
 
 
