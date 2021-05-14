@@ -488,8 +488,10 @@ class ListarColgados():
             a = 0
             for e in eventos:
                 if e['id'] == i['id']:
-                    if e['sk'] > i['sk']:
+                    if e['sk'] > i['sk']:.
+                        print('cumplio el del sk')
                         if e['horario'] > i['horario']:
+                            print('cumplio el del horario')
                             a = i
                     else:
                         pass
