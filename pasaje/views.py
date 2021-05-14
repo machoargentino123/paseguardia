@@ -465,17 +465,19 @@ class ListarColgados():
 
 
         palabra_clave = request.GET.get('kword', '')
-
+        start = datetime.now()+timedelta(minutes=-120)
+        end = datetime.now()+timedelta(minutes=-30)
         #muestro aquellos tkt que esten en curso hace mas de 20 minutos y menos de 2 horas.
         colgados = Eventostkt.objects.values('id').filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
-            horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
+            horario__range = (start,end)
             ).annotate(sk = Max('sk'))
         
         #eventos = Eventostkt.objects.filter().order_by('sk','id').last()+
         eventos = Eventostkt.objects.values('id').annotate(sk = Max('sk'))
-
+        print('Horario de comienzo',start)
+        print('Horario de final',start)
         print('Tamaño de colgado',len(list(colgados)))
         tktcolgado = list(colgados)
         eventos = list(eventos)
@@ -487,7 +489,8 @@ class ListarColgados():
             for e in eventos:
                 if e['id'] == i['id']:
                     if e['sk'] > i['sk']:
-                        a = i 
+                        pr
+                        a = i
                     else:
                         pass
             if a != 0:
