@@ -477,11 +477,12 @@ class ListarColgados():
         eventos = Eventostkt.objects.values('id').annotate(sk = Max('sk'))
 
         print('Tamaño de colgado',len(list(colgados)))
-        
-        tktcolgado = []
+        tktcolgado = list(colgados)
+
+        #tktcolgado = []
 
         #en borrar 2 ya no hay elementos repetidos
-        [tktcolgado.append(x) for x in list(colgados) if x not in tktcolgado] 
+        #[tktcolgado.append(x) for x in list(colgados) if x not in tktcolgado] 
 
         print('Tamaño de tktcolgado',len(tktcolgado))
 
