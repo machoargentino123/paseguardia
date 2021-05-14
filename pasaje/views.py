@@ -494,6 +494,7 @@ class ListarColgados():
                         pass
             if a != 0:
                 if a in aux:
+                    print(a)
                     aux.remove(a)
 
         #purgamos eventos, con el tkt que tiene el sk mas alto.
