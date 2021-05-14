@@ -476,28 +476,12 @@ class ListarColgados():
         #eventos = Eventostkt.objects.filter().order_by('sk','id').last()+
         eventos = Eventostkt.objects.values('id').annotate(sk = Max('sk'))
 
-        for i in list(eventos):
-            print(i)
-
-        #Voy a crear una lista con los SK mas altos de cada tkt de la query colgados.
-        borrar = []
-
-        for i in list(colgados):
-            a = 0
-            for e in list(colgados):
-                if i['id'] == e['id']:
-                    if e['sk'] > i['sk']:
-                        a = e
-                else:
-                    pass
-            if a != 0:
-                borrar.append(a)
+        print('Tamaño de colgado',len(list(colgados)))
         
-
         tktcolgado = []
 
         #en borrar 2 ya no hay elementos repetidos
-        [tktcolgado.append(x) for x in borrar if x not in tktcolgado] 
+        [tktcolgado.append(x) for x in list(colgados) if x not in tktcolgado] 
 
         print('Tamaño de tktcolgado',len(tktcolgado))
 
