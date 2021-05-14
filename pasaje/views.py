@@ -475,7 +475,7 @@ class ListarColgados():
             ).annotate(sk = Max('sk'))
         
         #eventos = Eventostkt.objects.filter().order_by('sk','id').last()+
-        eventos = Eventostkt.objects.values('id').annotate(sk = Max('sk'))
+        eventos = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
         print('Horario de comienzo',start)
         print('Horario de final',end)
         print('Tamaño de colgado',len(list(colgados)))
@@ -489,7 +489,8 @@ class ListarColgados():
             for e in eventos:
                 if e['id'] == i['id']:
                     if e['sk'] > i['sk']:
-                        a = i
+                        if e['horario'] > i['horario']:
+                            a = i
                     else:
                         pass
             if a != 0:
