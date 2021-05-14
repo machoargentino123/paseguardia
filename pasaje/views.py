@@ -4,7 +4,7 @@ from django_q.tasks import async_task
 from csv_export.views import CSVExportView
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
-from django.db.models import CharField, Value, Q
+from django.db.models import CharField, Value, Q, Max, Value
 # Create your views here.
 from django.views.generic import (TemplateView, 
                                   ListView, 
@@ -473,10 +473,11 @@ class ListarColgados():
             horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
             )   
         
-        eventos = Eventostkt.objects.filter().order_by('sk','id').last()
+        #eventos = Eventostkt.objects.filter().order_by('sk','id').last()+
+        eventos = Eventostkt.objects.values('id').annotate(maxsk = Max('sk'))
 
         for i in list(eventos):
-            print(i['id'],i['sk'])
+            print(i)
 
         #Voy a crear una lista con los SK mas altos de cada tkt de la query colgados.
         borrar = []
