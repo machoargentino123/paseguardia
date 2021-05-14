@@ -490,6 +490,8 @@ class ListarColgados():
                 if e['id'] == i['id']:
                     if e['sk'] > i['sk']:
                         if e['horario'] > i['horario']:
+                            print('Se cumple la condicion',e['sk'],i['sk'])
+                            print('Se cumple la condicion',e['horario'],i['horario'])
                             a = i
                     else:
                         pass
