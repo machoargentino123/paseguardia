@@ -214,7 +214,7 @@ class ListaView3():
 
 class eventos(ListView):
     context_object_name = 'lista'
-    template_name = 'test.html'
+    template_name = 'lista.html'
     paginate = 500
 
     def get_queryset(self):
@@ -223,13 +223,13 @@ class eventos(ListView):
      
             lista = Eventostkt.objects.values('id').filter(
                     id__icontains = palabra_clave   
-                    ).annotate(sk=Max('sk'))
+                    )
             
 
             return lista
         else:
             #return Eventostkt.objects.values('id').annotate(sk=Max('sk'))
-            return Eventostkt.objects.values('id').annotate(sk=Max('sk'))
+            return Eventostkt.objects.all()
 
 
 #exporta todo a CSV 
@@ -472,13 +472,10 @@ class ListarColgados():
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             horario__range = (start,end)
-            ).order_by('-horario').distinct()
+            ).annotate(sk = Max('sk'))
         
-        #eventos = Eventostkt.objects.filter().order_by('sk','id').last()+
-        eventos = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
-        print('Horario de comienzo',start)
-        print('Horario de final',end)
-        print('Tamaño de colgado',len(list(colgados)))
+        eventos = Eventostkt.objects.values('id').annotate(sk = Max('sk'))
+
         tktcolgado = list(colgados)
         eventos = list(eventos)
 
@@ -489,7 +486,6 @@ class ListarColgados():
             for e in eventos:
                 if e['id'] == i['id']:
                     if e['sk'] > i['sk']:
-                        if e['horario'] > i['horario']:
                             print('Se cumple la condicion',e['sk'],i['sk'])
                             print('Se cumple la condicion',e['horario'],['horario'])
                             a = i
