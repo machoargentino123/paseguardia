@@ -214,7 +214,7 @@ class ListaView3():
 
 class eventos(ListView):
     context_object_name = 'Tickets'
-    template_name = 'lista.html'
+    template_name = 'test.html'
     paginate = 500
 
     def get_queryset(self):

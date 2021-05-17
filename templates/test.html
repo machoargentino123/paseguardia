@@ -32,13 +32,13 @@ Lista de Reclamos.
                   {% for i in lista %}
                         <tr>
                         <td>{{ i.id }}</td>
-                        <td>{{ i.grupo_asignado }}</td>
-                        <td>{{ i.estado }}</td>
+                        <td>{{ i.sk }}</td>
+                        <td>{{ i.sk2}}</td>
                         <td>{{ i.status_reason_hidden }}</td>
                         <td>{{ i.bandeja_anterior}}</td>
                         <td>{{ i.estado_anterior}}</td>
                         <td>{{ i.status_anterior}}</td>
-                        <td>{{ i.fecha_hora }}</td>
+                        <td>{{ i.horario}}</td>
                         </tr>
                   {% endfor %}
 
