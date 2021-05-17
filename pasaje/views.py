@@ -221,7 +221,7 @@ class eventos(ListView):
         palabra_clave = self.request.GET.get('kword', '')
         if palabra_clave != '':
      
-            lista = Eventostkt.objects.values('id').filter(
+            lista = Eventostkt.objects.filter(
                     id__icontains = palabra_clave   
                     )
             
