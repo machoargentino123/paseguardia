@@ -472,7 +472,7 @@ class ListarColgados():
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             horario__range = (start,end)
-            ).annotate(sk = Max('sk'))
+            ).annotate(sk = Max('sk')).order_by('-sk')
         
         eventos = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
 
@@ -481,11 +481,12 @@ class ListarColgados():
 
         aux = tktcolgado
         print('Tamaño de aux', len(aux))
-
+        
         for i in tktcolgado:
             a = 0
             for e in eventos:
                 if e['id'] == i['id']:
+                    print('tkt: ', e['id'], i['id'])
                     if e['sk'] > i['sk']:
                         a = i                            
                     else:
@@ -498,6 +499,7 @@ class ListarColgados():
         #purgamos eventos, con el tkt que tiene el sk mas alto.
 
         print('Tamaño de AUX', len(aux))
+
         limpio = aux
 
         '''
