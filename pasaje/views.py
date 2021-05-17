@@ -213,7 +213,7 @@ class ListaView3():
 #vista Test 2  visualizar los eventos en la tabla eventostkt
 
 class eventos(ListView):
-    context_object_name = 'Tickets'
+    context_object_name = 'lista'
     template_name = 'test.html'
     paginate = 500
 
