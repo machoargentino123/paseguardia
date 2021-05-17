@@ -528,7 +528,7 @@ class ListarColgados():
 
         sklist = []
         for i in limpio:
-            sk.append(i['sk'])
+            sklist.append(i['sk'])
 
 
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
