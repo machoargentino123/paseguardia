@@ -223,12 +223,12 @@ class eventos(ListView):
      
             lista = Eventostkt.objects.filter(
                     id__icontains = palabra_clave
-                    )
+                    ).annotate(sk2=Max('sk'))
             
 
             return lista
         else:
-            return Eventostkt.objects.all() 
+            return Eventostkt.objects.all().annotate(sk2=Max('sk'))
 
 
 
@@ -496,7 +496,6 @@ class ListarColgados():
                     else:
                         pass
             if a != 0:
-                print(a)
                 aux.remove(a)
 
         #purgamos eventos, con el tkt que tiene el sk mas alto.
