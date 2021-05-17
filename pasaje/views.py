@@ -474,7 +474,7 @@ class ListarColgados():
             horario__range = (start,end)
             ).annotate(sk = Max('sk'))
         
-        eventos = Eventostkt.objects.values('id').annotate(sk = Max('sk'))
+        eventos = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
 
         tktcolgado = list(colgados)
         eventos = list(eventos)
@@ -483,12 +483,17 @@ class ListarColgados():
         print('Tamaño de aux', len(aux))
 
         for i in tktcolgado:
+            a = 0
             for e in eventos:
                 if e['id'] == i['id']:
                     if e['sk'] > i['sk']:
-                            aux.remove(i)
+                        i = a                            
                     else:
                         pass
+            if a != 0:
+                if i in aux:
+                    aux.remove(i)
+                 
 
         #purgamos eventos, con el tkt que tiene el sk mas alto.
 
@@ -521,13 +526,13 @@ class ListarColgados():
         '''
             
 
-        sk = []
+        sklist = []
         for i in limpio:
             sk.append(i['sk'])
 
 
         colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
-            sk__in = sk,
+            sk__in = sklist,
             )
 
         celulas = CsvImportado1.objects.values('id','celula_n')
