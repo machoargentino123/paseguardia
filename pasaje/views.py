@@ -229,7 +229,7 @@ class eventos(ListView):
             return lista
         else:
             #return Eventostkt.objects.values('id').annotate(sk=Max('sk'))
-            return Eventostkt.objects.raw('SELECT SK, ID, min(Horario) FROM `eventostkt` GROUP BY SK,ID')
+            return Eventostkt.objects.values('id').annotate(sk=Max('sk'))
 
 
 #exporta todo a CSV 
