@@ -221,9 +221,9 @@ class eventos(ListView):
         palabra_clave = self.request.GET.get('kword', '')
         if palabra_clave != '':
      
-            lista = Eventostkt.objects.values('id')filter(
+            lista = Eventostkt.objects.filter(
                     id__icontains = palabra_clave
-                    ).annotate(sk = Max('sk'))
+                    )
             
 
             return lista
@@ -472,7 +472,7 @@ class ListarColgados():
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             horario__range = (start,end)
-            ).annotate(sk = Max('sk'))
+            ).order_by('-horario').distinct('id')
         
         #eventos = Eventostkt.objects.filter().order_by('sk','id').last()+
         eventos = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
@@ -491,7 +491,7 @@ class ListarColgados():
                     if e['sk'] > i['sk']:
                         if e['horario'] > i['horario']:
                             print('Se cumple la condicion',e['sk'],i['sk'])
-                            print('Se cumple la condicion',e['horario'],i['horario'])
+                            print('Se cumple la condicion',e['horario'],['horario'])
                             a = i
                     else:
                         pass
@@ -504,7 +504,7 @@ class ListarColgados():
         print('Tamaño de AUX', len(aux))
         limpio = aux
 
-
+        '''
         if palabra_clave != '':
             lista = []
 
@@ -527,7 +527,7 @@ class ListarColgados():
             limpio = []
             #Saco los repetidos
             [limpio.append(x) for x in lista if x not in limpio]
-            
+        '''
             
 
         sk = []
