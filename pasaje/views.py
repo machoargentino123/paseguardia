@@ -478,14 +478,14 @@ class ListarColgados():
 
         tktcolgado = list(colgados)
         eventos = list(eventos)
+        print('Tamaño de tktcolgado', len(tktcolgado))
+        print('Tamaño de eventos', len(eventos))
 
-        
         aux = []
         for i in tktcolgado:
             a = 0
             for e in eventos:
                 if e['id'] == i['id']:
-                    print('tkt: ', e['id'], i['id'])
                     if e['sk'] > i['sk']:
                         a = i                            
                     else:
@@ -499,10 +499,10 @@ class ListarColgados():
         [limpio.append(x) for x in tktcolgado if x not in aux]
         
         #purgamos eventos, con el tkt que tiene el sk mas alto.
-        print('Tamaño de limpio', len(aux))
+        print('Tamaño de aux', len(aux))
         print('Tamaño de limpio', len(limpio))
 
-        '''
+        
         if palabra_clave != '':
             lista = []
 
@@ -525,7 +525,7 @@ class ListarColgados():
             limpio = []
             #Saco los repetidos
             [limpio.append(x) for x in lista if x not in limpio]
-        '''
+        
             
 
         sklist = []
