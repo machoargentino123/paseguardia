@@ -472,7 +472,7 @@ class ListarColgados():
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             horario__range = (start,end)
-            ).order_by('-horario').distinct('id')
+            ).order_by('-horario').distinct()
         
         #eventos = Eventostkt.objects.filter().order_by('sk','id').last()+
         eventos = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
