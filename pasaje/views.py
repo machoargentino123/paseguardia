@@ -221,14 +221,14 @@ class eventos(ListView):
         palabra_clave = self.request.GET.get('kword', '')
         if palabra_clave != '':
      
-            lista = Eventostkt.objects.values('sk','id').filter(
+            lista = Eventostkt.objects.values('sk','id','grupo_asignado').filter(
                     id__icontains = palabra_clave
                     ).annotate(sk2=Max('sk'))
             
 
             return lista
         else:
-            return Eventostkt.objects.values('sk','id').annotate(sk2=Max('sk'))
+            return Eventostkt.objects.values('sk','id','grupo_asignado').annotate(sk2=Max('sk'))
 
 
 
