@@ -480,19 +480,15 @@ class ListarColgados():
         eventos = list(eventos)
 
         aux = tktcolgado
+        print('Tamaño de aux', len(aux))
 
         for i in tktcolgado:
-            a = 0
             for e in eventos:
                 if e['id'] == i['id']:
                     if e['sk'] > i['sk']:
-                            print('Se cumple la condicion',e['sk'],i['sk'])
-                            print('Se cumple la condicion',e['horario'],['horario'])
-                            a = i
+                            aux.remove(i)
                     else:
                         pass
-            if a != 0:
-                aux.remove(a)
 
         #purgamos eventos, con el tkt que tiene el sk mas alto.
 
