@@ -479,9 +479,10 @@ class ListarColgados():
         tktcolgado = list(colgados)
         eventos = list(eventos)
 
-        aux = tktcolgado
-        print('Tamaño de aux', len(aux))
         
+        print('Tamaño de aux', len(aux))
+        aux = []
+
         for i in tktcolgado:
             a = 0
             for e in eventos:
@@ -493,14 +494,16 @@ class ListarColgados():
                         pass
             if a != 0:
                 if i in aux:
-                    aux.remove(i)
-                 
+                    aux.append(a)
+        
 
+        limpio = []
+
+        [limpio.append(x) for x in tktcolgado if x not in aux]
+        
         #purgamos eventos, con el tkt que tiene el sk mas alto.
-
-        print('Tamaño de AUX', len(aux))
-
-        limpio = aux
+        print('Tamaño de limpio', len(aux))
+        print('Tamaño de limpio', len(limpio))
 
         '''
         if palabra_clave != '':
