@@ -222,14 +222,14 @@ class eventos(ListView):
         if palabra_clave != '':
      
             lista = Eventostkt.objects.values('id').filter(
-                    id__icontains = palabra_clave
+                    id__icontains = palabra_clave   
                     ).annotate(sk=Max('sk'))
             
 
             return lista
         else:
-            return Eventostkt.objects.values('id').annotate(sk=Max('sk'))
-
+            #return Eventostkt.objects.values('id').annotate(sk=Max('sk'))
+            return Eventostkt.objects.raw('SELECT ID, max(SK) FROM `eventostkt` GROUP BY ID')
 
 
 #exporta todo a CSV 
