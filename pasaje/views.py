@@ -480,8 +480,6 @@ class ListarColgados():
         eventos = list(eventos)
 
         
-        print('Tamaño de aux', len(aux))
-        
         aux = []
         for i in tktcolgado:
             a = 0
