@@ -487,7 +487,7 @@ class ListarColgados():
             for e in eventos:
                 if e['id'] == i['id']:
                     if e['sk'] > i['sk']:
-                        i = a                            
+                        a = i                            
                     else:
                         pass
             if a != 0:
