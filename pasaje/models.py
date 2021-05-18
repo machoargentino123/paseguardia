@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models.signals import post_save,post_deletes
 # Create your models here.
 
-from .signals import prueba_signals, prueba_signals2
+#from .signals import prueba_signals, prueba_signals2
 
 class CsvImportado1(models.Model):
     id = models.TextField(db_column='ID', max_length=255,primary_key=True)  # Field name made lowercase.
