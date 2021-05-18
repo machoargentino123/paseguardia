@@ -465,6 +465,8 @@ class ListarCel(ListView):
 #listar reclamos colgados de + de 20 minutos.
 class ListarColgados():
 
+
+
     def index(request):
 
 
@@ -518,8 +520,8 @@ class ListarColgados():
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             tipo_incidencia = 'User Service Restoration',
             horario__range = (start,end)
-            )
-        
+            ).annotate( tiempo_acumulado = (datetime.now() + 'horario') )
+
         celulas = CsvImportado1.objects.values('id','celula_n')
 
 
@@ -532,3 +534,4 @@ class ListarColgados():
                 }
 
         return render(request,'colgados.html',context)
+
