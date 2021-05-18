@@ -472,42 +472,7 @@ class ListarColgados():
         print('horario comienzo', end)
 
         #muestro aquellos tkt que esten en curso hace mas de 20 minutos y menos de 2 horas.
-        '''
-        colgados = Eventostkt.objects.values('id','horario').filter(
-            Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
-            horario__range = (start,end)
-            ).annotate(sk = Max('sk')).order_by('-sk')
-        
-        eventos = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
 
-        tktcolgado = list(colgados)
-        eventos = list(eventos)
-        print('Tamaño de tktcolgado', len(tktcolgado))
-        print('Tamaño de eventos', len(eventos))
-
-        aux = []
-        for i in tktcolgado:
-            a = 0
-            for e in eventos:
-                if e['id'] == i['id']:
-                    if e['sk'] > i['sk']:
-                        a = i                            
-                    else:
-                        pass
-            if a != 0:
-                aux.append(a)
-        
-
-        limpio = []
-
-        [limpio.append(x) for x in tktcolgado if x not in aux]
-        
-        #purgamos eventos, con el tkt que tiene el sk mas alto.
-        print('Tamaño de aux', len(aux))
-        print('Tamaño de limpio', len(limpio))
-
-        '''
         
         '''
         limpio = colgados.filter(
@@ -545,21 +510,6 @@ class ListarColgados():
             pass
             
         '''
-        '''
-        limpio = Eventostkt.objects.values('id').annotate(sk = Max('sk')).annotate(horario = Min('horario'))
-        print(limpio.query)
-
-              
-
-        sklist = []
-        for i in limpio:
-            sklist.append(i['sk'])
-
-
-        colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado').filter(
-            sk__in = sklist
-            )
-        '''
 
         with connection.cursor() as cursor:
             cursor.execute("SELECT ID, max(sk) AS sk ,min(Horario) AS horario FROM `eventostkt` GROUP BY ID")
@@ -578,7 +528,6 @@ class ListarColgados():
             ).filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
-            horario__range = (start,end)
         ).order_by('-horario')
 
 
