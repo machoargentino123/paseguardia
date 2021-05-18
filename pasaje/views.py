@@ -544,13 +544,17 @@ class ListarColgados():
             pass
             
         '''
-        '''
+
+        limpio = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
+
         sklist = []
         for i in limpio:
             sklist.append(i['sk'])
-        '''
 
-        colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado').annotate(sk = Max('sk'))
+
+        colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado').filter(
+            sk__in = sklist
+            )
 
         celulas = CsvImportado1.objects.values('id','celula_n')
 
