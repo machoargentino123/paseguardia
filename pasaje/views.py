@@ -1,5 +1,6 @@
 from datetime import date, datetime, timedelta
 from itertools import chain
+from django.db import connection
 from django_q.tasks import async_task
 from csv_export.views import CSVExportView
 from django.shortcuts import render,redirect
@@ -544,17 +545,11 @@ class ListarColgados():
             pass
             
         '''
-
+        '''
         limpio = Eventostkt.objects.values('id').annotate(sk = Max('sk')).annotate(horario = Min('horario'))
         print(limpio.query)
-        
-        limpio.filter(
-            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
-        ).filter(Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-        ).filter(
-            horario__range = (start,end)
-        )
-        
+
+              
 
         sklist = []
         for i in limpio:
@@ -564,6 +559,13 @@ class ListarColgados():
         colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado').filter(
             sk__in = sklist
             )
+        '''
+
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT ID, max(sk),min(Horario) FROM `eventostkt` GROUP BY ID")
+            colgados = cursor.fetchall()
+        
+    
 
         celulas = CsvImportado1.objects.values('id','celula_n')
 
