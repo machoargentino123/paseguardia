@@ -1,6 +1,6 @@
 from datetime import date
 from django.db import models
-from django.db.models.signals import post_save,post_deletes
+#from django.db.models.signals import post_save,post_deletes
 # Create your models here.
 
 #from .signals import prueba_signals, prueba_signals2
