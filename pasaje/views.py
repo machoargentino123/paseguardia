@@ -473,14 +473,12 @@ class ListarColgados():
 
         #muestro aquellos tkt que esten en curso hace mas de 20 minutos y menos de 2 horas.
 
-        
-        '''
-        limpio = colgados.filter(
-            Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
-            horario__range = (start,end)
-        ).order_by('-horario')
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT ID, max(sk) AS sk ,min(Horario) AS horario FROM `eventostkt` GROUP BY ID")
+            colgados = cursor.fetchall()
 
+
+        limpio = list(colgados)
 
 
         if palabra_clave != '':
@@ -495,7 +493,7 @@ class ListarColgados():
             for i in limpio:
                 a = 0
                 for e in list(celula):
-                    if i['id'] == e['id']:
+                    if i[0] == e['id']:
                         a = i
                     else:
                         pass
@@ -509,15 +507,9 @@ class ListarColgados():
         else: 
             pass
             
-        '''
 
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT ID, max(sk) AS sk ,min(Horario) AS horario FROM `eventostkt` GROUP BY ID")
-            colgados = cursor.fetchall()
 
-        print('Tipo de elemento',type(colgados))
-        limpio = list(colgados)
-        print('Cantidad de elementos',len(limpio))
+
 
         sklist = []
         for i in limpio:
@@ -530,7 +522,7 @@ class ListarColgados():
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             horario__range = (start,end)
             )
-
+        
         celulas = CsvImportado1.objects.values('id','celula_n')
 
 
