@@ -546,12 +546,14 @@ class ListarColgados():
         '''
 
         limpio = Eventostkt.objects.values('id').annotate(sk = Max('sk')).annotate(horario = Min('horario'))
+        print(limpio.query)
         
         limpio.filter(
-            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
-            Q(estado = 'Asignado') | Q(estado = 'En Curso'),
+            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA')
+        ).filter(Q(estado = 'Asignado') | Q(estado = 'En Curso'),
+        ).filter(
             horario__range = (start,end)
-        ).order_by('-horario')
+        )
         
 
         sklist = []
