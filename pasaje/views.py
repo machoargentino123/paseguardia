@@ -408,21 +408,24 @@ class PanelMonitoreo():
 
         # Listo los colgados que estan en curso desde hace 120 minutos
 
-        colgados = Eventostkt.objects.values('sk','id','horario').filter(
-            Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
-            horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
-            )
-        
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT ID, max(sk) AS sk ,min(Horario) AS horario FROM `eventostkt` GROUP BY ID")
+            colgados = cursor.fetchall()
 
-        id = []
+        sklist = []
 
         for i in list(colgados):
-            id.append(i['id'])
-     
-        id = list(set(id))
+            sklist.append(i[1])
+
+        colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
+            sk__in = sklist
+            ).filter(
+            Q(estado = 'Asignado') | Q(estado = 'En Curso'),
+            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
+            tipo_incidencia = 'User Service Restoration',
+            horario__range = (start,end)
+            ).count()
         
-        colgados = len(id)
 
         
 
@@ -468,9 +471,6 @@ class ListarColgados():
         palabra_clave = request.GET.get('kword', '')
         start = datetime.now()+timedelta(minutes=-120)
         end = datetime.now()+timedelta(minutes=-30)
-        print('horario comienzo', start)
-        print('horario comienzo', end)
-
         #muestro aquellos tkt que esten en curso hace mas de 20 minutos y menos de 2 horas.
 
         with connection.cursor() as cursor:
