@@ -423,7 +423,7 @@ class PanelMonitoreo():
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             tipo_incidencia = 'User Service Restoration',
-            horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
+            horario__range = (datetime.now()+timedelta(minutes=-180),datetime.now()+timedelta(minutes=-30))
             ).count()
         
 
@@ -471,7 +471,7 @@ class ListarColgados():
 
 
         palabra_clave = request.GET.get('kword', '')
-        start = datetime.now()+timedelta(minutes=-120)
+        start = datetime.now()+timedelta(minutes=-180)
         end = datetime.now()+timedelta(minutes=-30)
         #muestro aquellos tkt que esten en curso hace mas de 20 minutos y menos de 2 horas.
 
