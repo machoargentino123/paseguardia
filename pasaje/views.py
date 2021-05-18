@@ -468,6 +468,7 @@ class ListarColgados():
         start = datetime.now()+timedelta(minutes=-120)
         end = datetime.now()+timedelta(minutes=-30)
         #muestro aquellos tkt que esten en curso hace mas de 20 minutos y menos de 2 horas.
+        '''
         colgados = Eventostkt.objects.values('id','horario').filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
@@ -502,7 +503,17 @@ class ListarColgados():
         print('Tamaño de aux', len(aux))
         print('Tamaño de limpio', len(limpio))
 
+        '''
+        colgados = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
+
+        limpio = colgados.filter(
+            Q(estado = 'Asignado') | Q(estado = 'En Curso'),
+            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
+            horario__range = (start,end)
+        )
+
         
+
         if palabra_clave != '':
             lista = []
 
@@ -526,6 +537,8 @@ class ListarColgados():
             #Saco los repetidos
             [limpio.append(x) for x in lista if x not in limpio]
         
+        else: 
+            pass
             
 
         sklist = []
