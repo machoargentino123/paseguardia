@@ -545,7 +545,7 @@ class ListarColgados():
             
         '''
 
-        limpio = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
+        limpio = Eventostkt.objects.values('id').annotate(sk = Max('sk'))
 
         sklist = []
         for i in limpio:
