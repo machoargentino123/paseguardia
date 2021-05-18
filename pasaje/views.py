@@ -423,7 +423,7 @@ class PanelMonitoreo():
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             tipo_incidencia = 'User Service Restoration',
-            horario__range = (start,end)
+            horario__range = (datetime.now()+timedelta(minutes=-120),datetime.now()+timedelta(minutes=-30))
             ).count()
         
 
