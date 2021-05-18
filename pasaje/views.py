@@ -527,10 +527,9 @@ class ListarColgados():
             sk__in = sklist
             ).filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
-            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),.
+            Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             horario__range = (start,end)
-        ).order_by('-horario')
-
+            )
 
         celulas = CsvImportado1.objects.values('id','celula_n')
 
