@@ -467,6 +467,9 @@ class ListarColgados():
         palabra_clave = request.GET.get('kword', '')
         start = datetime.now()+timedelta(minutes=-120)
         end = datetime.now()+timedelta(minutes=-30)
+        print('horario comienzo', start)
+        print('horario comienzo', end)
+
         #muestro aquellos tkt que esten en curso hace mas de 20 minutos y menos de 2 horas.
         '''
         colgados = Eventostkt.objects.values('id','horario').filter(
@@ -504,15 +507,15 @@ class ListarColgados():
         print('Tamaño de limpio', len(limpio))
 
         '''
-        colgados = Eventostkt.objects.values('id','horario').annotate(sk = Max('sk'))
-
+        
+        '''
         limpio = colgados.filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
             horario__range = (start,end)
-        )
+        ).order_by('-horario')
 
-        
+
 
         if palabra_clave != '':
             lista = []
@@ -540,15 +543,14 @@ class ListarColgados():
         else: 
             pass
             
-
+        '''
+        '''
         sklist = []
         for i in limpio:
             sklist.append(i['sk'])
+        '''
 
-
-        colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
-            sk__in = sklist,
-            )
+        colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado').annotate(sk = Max('sk'))
 
         celulas = CsvImportado1.objects.values('id','celula_n')
 
