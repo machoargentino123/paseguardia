@@ -4,7 +4,7 @@ from django_q.tasks import async_task
 from csv_export.views import CSVExportView
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
-from django.db.models import CharField, Value, Q, Max, Value
+from django.db.models import CharField, Value, Q, Max, Value, Min
 # Create your views here.
 from django.views.generic import (TemplateView, 
                                   ListView, 
@@ -545,7 +545,7 @@ class ListarColgados():
             
         '''
 
-        limpio = Eventostkt.objects.values('id').annotate(sk = Max('sk'))
+        limpio = Eventostkt.objects.values('id').annotate(sk = Max('sk')).annotate(horario = Min('horario'))
         
         limpio.filter(
             Q(grupo_asignado = 'SERVICE DESK') | Q(grupo_asignado = 'SERVICE INCIDENT RESOLUTION') | Q(grupo_asignado__icontains = 'UNIDAD OPERATIVA'),
