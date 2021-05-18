@@ -562,7 +562,7 @@ class ListarColgados():
         '''
 
         with connection.cursor() as cursor:
-            cursor.execute("SELECT ID, max(sk),min(Horario) FROM `eventostkt` GROUP BY ID")
+            cursor.execute("SELECT ID, max(sk) AS sk ,min(Horario) AS horario FROM `eventostkt` GROUP BY ID")
             colgados = cursor.fetchall()
 
         for i in list(colgados): 
