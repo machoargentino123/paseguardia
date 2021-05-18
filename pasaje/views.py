@@ -523,7 +523,7 @@ class ListarColgados():
         for i in limpio:
             sklist.append(i[1])
 
-        colgados = Eventostkt.objects.values('id','grupo_asignado','horario','estado').filter(
+        colgados = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
             sk__in = sklist
             ).filter(
             Q(estado = 'Asignado') | Q(estado = 'En Curso'),
