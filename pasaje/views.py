@@ -516,8 +516,8 @@ class ListarColgados():
             colgados = cursor.fetchall()
 
         print('Tipo de elemento',type(colgados))
-        valor = list(colgados)
-        print('Cantidad de elementos',len(valor))
+        limpio = list(colgados)
+        print('Cantidad de elementos',len(limpio))
 
         sklist = []
         for i in limpio:
