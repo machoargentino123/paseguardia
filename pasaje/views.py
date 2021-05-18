@@ -565,9 +565,10 @@ class ListarColgados():
             cursor.execute("SELECT ID, max(sk) AS sk ,min(Horario) AS horario FROM `eventostkt` GROUP BY ID")
             colgados = cursor.fetchall()
 
-        for i in list(colgados): 
-            print(i)
-            
+        print('Tipo de elemento',type(colgados))
+        valor = list(colgados)
+        print('Cantidad de elementos',count(valor))
+
 
         celulas = CsvImportado1.objects.values('id','celula_n')
 
