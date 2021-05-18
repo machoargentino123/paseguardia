@@ -567,7 +567,8 @@ class ListarColgados():
 
         print('Tipo de elemento',type(colgados))
         valor = list(colgados)
-        print('Cantidad de elementos',count(valor))
+        print('Cantidad de elementos',len(valor))
+
 
 
         celulas = CsvImportado1.objects.values('id','celula_n')
