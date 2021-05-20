@@ -589,7 +589,7 @@ class ListarDevueltos():
                 ).filter(
                     estado = 'Resolved',
                 ).filter(
-                    Q(grupo_asignado_anterior__icontains = 'OPERACION') | Q(grupo_asignado_anterior__icontains = 'OP TRANSITO') | Q(grupo_asignado_anterior__icontains = 'AOP') | Q(grupo_asignado_anterior = 'GRIP') | Q(grupo_asignado_anterior = 'SECURITY OPERATION CENTER') | Q(grupo_asignado_anterior = 'NOA') | Q(grupo_asignado_anterior = 'NEA'),
+                    Q(grupo_asignado_anterior__icontains = 'OPERACION') | Q(grupo_asignado_anterior__icontains = 'OP TRANSITO') | Q(grupo_asignado_anterior__icontains = 'AOP') | Q(grupo_asignado_anterior = 'GRIP') | Q(grupo_asignado_anterior = 'SECURITY OPERATION CENTER') | Q(grupo_asignado_anterior__icontains = 'NOA') | Q(grupo_asignado_anterior__icontains = 'NEA'),
                     horario__range = (start,end)
                 )
 
