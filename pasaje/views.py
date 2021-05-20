@@ -535,3 +535,37 @@ class ListarColgados():
 
         return render(request,'colgados.html',context)
 
+
+class ListarDevueltos():
+
+    def index(request):
+        palabra_clave = request.GET.get('kword', '')
+        start = datetime.now()+timedelta(minutes=-180)
+        end = datetime.now()
+
+        print('Palabra clave', palabra_clave)
+
+
+        start = datetime.now()+timedelta(minutes=-180)
+        end = datetime.now()
+        
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT ID, max(sk) AS sk ,min(Horario) AS horario FROM `eventostkt` GROUP BY ID")
+            ultimos = cursor.fetchall()
+        
+        sklist = []
+        
+        for i in ultimos:
+            sklist.append(i[1])
+
+        ultimos = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
+                sk__in = sklist
+                ).filter(
+                    Q(estado = 'Resuelto') | Q(estado = 'Asignado'),
+                    horario__range = (start,end)
+                )
+
+
+        context = {'colgados' : ultimos}
+
+    return render(request,'colgados.html',context)
