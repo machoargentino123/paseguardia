@@ -565,7 +565,11 @@ class ListarDevueltos():
                     horario__range = (start,end)
                 )
 
+        celulas = CsvImportado1.objects.values('id','celula_n')
 
-        context = {'colgados' : ultimos}
+        context = {
+            'colgados' : ultimos,
+            'celulas' : celulas
+        }
 
         return render(request,'colgados.html',context)
