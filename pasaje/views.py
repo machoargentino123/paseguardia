@@ -561,7 +561,7 @@ class ListarDevueltos():
         ultimos = Eventostkt.objects.values('sk','id','grupo_asignado','horario','estado').filter(
                 sk__in = sklist
                 ).filter(
-                    estado = 'Resuelto',
+                    estado = 'Resolved',
                     horario__range = (start,end)
                 )
 
