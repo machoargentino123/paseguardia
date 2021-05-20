@@ -20,17 +20,11 @@ urlpatterns = [
     path('celula/<int:pk>',views.ListarCel.as_view(), name="celula"),
     path('colgados/',views.ListarColgados.index, name="colgados"),
     path('resueltos/',views.ListarDevueltos.index, name="resueltos"),
-    
-
-
-
     #Listas para pruebas varias.
     #prueba para chart.js
     path('graficos/',views.Pruebagraficos.index, name= "graficos"),
     #prueba para hacer joins sin foreign key
     path('test/',views.ListaView3.index, name="test"),
     #tareas asincronas.
-    path('hola2/',views.Asincrono.index, name="hola2"),
-    
-       
+    path('hola2/',views.Asincrono.index, name="hola2"),      
 ]   
