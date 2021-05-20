@@ -577,8 +577,8 @@ class ListarDevueltos():
                     else:
                         pass
                 if a != 0:
-                    print(a)
-                    lista.append('tkt: ',a)
+                    print('tkt',a)
+                    lista.append(a)
             ultimos = []
 
             [ultimos.append(x) for x in lista if x not in ultimos]
