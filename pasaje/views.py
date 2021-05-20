@@ -545,6 +545,8 @@ class ListarColgados():
 
         return render(request,'colgados.html',context)
 
+#lista los resueltos.
+
 
 class ListarDevueltos():
 
@@ -552,9 +554,6 @@ class ListarDevueltos():
         palabra_clave = request.GET.get('kword', '')
         start = datetime.now()+timedelta(minutes=-180)
         end = datetime.now()
-
-        print('Palabra clave', palabra_clave)
-
 
         start = datetime.now()+timedelta(minutes=-90)
         end = datetime.now()
@@ -599,7 +598,7 @@ class ListarDevueltos():
                 ).filter(
                     estado = 'Resolved',
                 ).filter(
-                    Q(grupo_asignado_anterior__icontains = 'OPERACION') | Q(grupo_asignado_anterior__icontains = 'OP TRANSITO') | Q(grupo_asignado_anterior__icontains = 'AOP') | Q(grupo_asignado_anterior = 'GRIP') | Q(grupo_asignado_anterior = 'SECURITY OPERATION CENTER') | Q(grupo_asignado_anterior__icontains = 'NOA') | Q(grupo_asignado_anterior__icontains = 'NEA'),
+                    Q(grupo_asignado_anterior__icontains = 'OPERACION') | Q(grupo_asignado_anterior__icontains = 'OP TRANSITO') | Q(grupo_asignado_anterior__icontains = 'AOP') | Q(grupo_asignado_anterior = 'GRIP') | Q(grupo_asignado_anterior = 'SECURITY OPERATION CENTER') | Q(grupo_asignado_anterior__icontains = 'NOA') | Q(grupo_asignado_anterior__icontains = 'NEA')| Q(grupo_asignado_anterior__icontains = 'NEA')| Q(grupo_asignado_anterior__icontains = 'RED'),
                     horario__range = (start,end)
                 )
 
