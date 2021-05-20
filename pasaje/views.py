@@ -546,7 +546,7 @@ class ListarDevueltos():
         print('Palabra clave', palabra_clave)
 
 
-        start = datetime.now()+timedelta(minutes=-180)
+        start = datetime.now()+timedelta(minutes=-90)
         end = datetime.now()
         
         with connection.cursor() as cursor:
