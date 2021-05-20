@@ -553,6 +553,32 @@ class ListarDevueltos():
             cursor.execute("SELECT ID, max(sk) AS sk FROM `eventostkt` GROUP BY ID")
             ultimos = cursor.fetchall()
         
+
+        if palabra_clave != '':
+
+            celula = CsvImportado1.objects.values('id').filter(
+               celula_n = palabra_clave,
+               tipo_incidencia = 'User Service Restoration',
+            )
+
+            lista = []
+            for i in ultimos:
+                a = 0
+                for e in list(celula):
+                    if i[0] == e['id']:
+                        a = i
+                    else:
+                        pass
+                if a != 0:
+                    lista.append(a)
+            ultimos = []
+
+            [ultimos.append(x) for x in lista if x not in ultimos]
+            
+        else:
+            pass
+
+
         sklist = []
         
         for i in ultimos:
