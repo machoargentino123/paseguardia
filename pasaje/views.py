@@ -565,7 +565,6 @@ class ListarDevueltos():
             print('Palabras clave', palabra_clave)
             celula = CsvImportado1.objects.values('id').filter(
                celula_n = palabra_clave,
-               tipo_incidencia = 'User Service Restoration',
             )   
 
             lista = []
@@ -577,16 +576,18 @@ class ListarDevueltos():
                     else:
                         pass
                 if a != 0:
-                    print('tkt',a)
                     lista.append(a)
+
             ultimos = []
 
             [ultimos.append(x) for x in lista if x not in ultimos]
-            print('Tamaño de ultimos',len(ultimos))
+
+            
         else:
             pass
 
-
+        print('Tamaño de ultimos',len(ultimos))
+        
         sklist = []
         
         for i in ultimos:
