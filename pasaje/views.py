@@ -552,8 +552,6 @@ class ListarDevueltos():
 
     def index(request):
         palabra_clave = request.GET.get('kword', '')
-        start = datetime.now()+timedelta(minutes=-180)
-        end = datetime.now()
 
         start = datetime.now()+timedelta(minutes=-90)
         end = datetime.now()
