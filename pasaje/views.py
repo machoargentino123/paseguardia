@@ -588,7 +588,7 @@ class ListarDevueltos():
                 sk__in = sklist
                 ).filter(
                     estado = 'Resolved',
-                ),filter(
+                ).filter(
                     Q(grupo_asignado_anterior__icontains = 'OPERACION') | Q(grupo_asignado_anterior__icontains = 'OP TRANSITO') | Q(grupo_asignado_anterior__icontains = 'AOP') | Q(grupo_asignado_anterior = 'GRIP') | Q(grupo_asignado_anterior = 'SECURITY OPERATION CENTER') | Q(grupo_asignado_anterior = 'NOA') | Q(grupo_asignado_anterior = 'NEA'),
                     horario__range = (start,end)
                 )
