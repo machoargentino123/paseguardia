@@ -574,7 +574,7 @@ class ListarDevueltos():
             ultimos = []
 
             [ultimos.append(x) for x in lista if x not in ultimos]
-            
+
         else:
             pass
 
@@ -598,4 +598,4 @@ class ListarDevueltos():
             'celulas' : celulas
         }
 
-        return render(request,'colgados.html',context)
+        return render(request,'resueltos.html',context)
