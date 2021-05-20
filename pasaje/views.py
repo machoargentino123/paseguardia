@@ -598,7 +598,7 @@ class ListarDevueltos():
                 ).filter(
                     estado = 'Resolved',
                 ).filter(
-                    Q(grupo_asignado_anterior__icontains = 'OPERACION') | Q(grupo_asignado_anterior__icontains = 'OP TRANSITO') | Q(grupo_asignado_anterior__icontains = 'AOP') | Q(grupo_asignado_anterior = 'GRIP') | Q(grupo_asignado_anterior = 'SECURITY OPERATION CENTER') | Q(grupo_asignado_anterior__icontains = 'NOA') | Q(grupo_asignado_anterior__icontains = 'NEA')| Q(grupo_asignado_anterior__icontains = 'NEA')| Q(grupo_asignado_anterior__icontains = 'RED') | Q(grupo_asignado_anterior__icontains = 'OPER'), 
+                    Q(grupo_asignado_anterior__icontains = 'OPERACION') | Q(grupo_asignado_anterior__icontains = 'OP TRANSITO') | Q(grupo_asignado_anterior__icontains = 'AOP') | Q(grupo_asignado_anterior = 'GRIP') | Q(grupo_asignado_anterior = 'SECURITY OPERATION CENTER') | Q(grupo_asignado_anterior__icontains = 'NOA') | Q(grupo_asignado_anterior__icontains = 'NEA')| Q(grupo_asignado_anterior__icontains = 'NEA')| Q(grupo_asignado_anterior__icontains = 'RED') | Q(grupo_asignado_anterior__icontains = 'OPER BACKBONE') | Q(grupo_asignado_anterior__icontains = 'OPERCLIENTE') | Q(grupo_asignado_anterior = 'GESTION PABX'), 
                     horario__range = (start,end)
                 )
 
