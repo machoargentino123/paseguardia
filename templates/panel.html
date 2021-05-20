@@ -110,15 +110,15 @@ Panel de Monitoreo
 
                 <div class="cell large-3">
                     <div class="callout success ">
-                        <h5>reclamos en curso o asignados mas de 120 minutos: </h5>
+                        <h5>reclamos en curso o asignados mas de 30 minutos: </h5>
                         <a href="{% url 'pasaje_app:colgados' %}" target="_blank" >{{colgados}}</a>
                     </div>
                 </div>               
             
                 <div class="cell large-3">
                     <div class="callout success ">
-                        <h5>a determinar: </h5>
-                        <a href="{% url 'pasaje_app:celula' 2 %}" target="_blank" >{{cela2}}</a>
+                        <h5>Pasados a resueltos: </h5>
+                        <a href="{% url 'pasaje_app:resueltos'%}" target="_blank" >{{resueltos}}</a>
                     </div>
                 </div>               
 

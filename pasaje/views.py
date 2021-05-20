@@ -427,7 +427,15 @@ class PanelMonitoreo():
             ).count()
         
 
-        
+        resueltos = Eventostkt.objects.values('sk','id','grupo_asignado','grupo_asignado_anterior','horario','estado').filter(
+                sk__in = sklist
+                ).filter(
+                    estado = 'Resolved',
+                ).filter(
+                    Q(grupo_asignado_anterior__icontains = 'OPERACION') | Q(grupo_asignado_anterior__icontains = 'OP TRANSITO') | Q(grupo_asignado_anterior__icontains = 'AOP') | Q(grupo_asignado_anterior = 'GRIP') | Q(grupo_asignado_anterior = 'SECURITY OPERATION CENTER') | Q(grupo_asignado_anterior__icontains = 'NOA') | Q(grupo_asignado_anterior__icontains = 'NEA'),
+                    horario__range = (datetime.now()+timedelta(minutes=-90),datetime.now())
+                ).count()
+
 
 
         context = {'total': total, 
@@ -443,7 +451,8 @@ class PanelMonitoreo():
                    'valor': valor,
                    'llamadas_md':llamadas_md,
                    'llamadas_sd':llamadas_sd,
-                   'colgados':colgados
+                   'colgados':colgados,
+                   'resueltos': resueltos
                    }
 
         return render(request,'panel.html',context) 
@@ -522,6 +531,7 @@ class ListarColgados():
             horario__range = (start,end)
             )
 
+
         celulas = CsvImportado1.objects.values('id','celula_n')
 
 
@@ -559,7 +569,7 @@ class ListarDevueltos():
             celula = CsvImportado1.objects.values('id').filter(
                celula_n = palabra_clave,
                tipo_incidencia = 'User Service Restoration',
-            )
+            )   
 
             lista = []
             for i in ultimos:
