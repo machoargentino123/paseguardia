@@ -562,7 +562,7 @@ class ListarDevueltos():
         
 
         if palabra_clave != '':
-
+            print('Palabras clave', palabra_clave)
             celula = CsvImportado1.objects.values('id').filter(
                celula_n = palabra_clave,
                tipo_incidencia = 'User Service Restoration',
@@ -577,11 +577,12 @@ class ListarDevueltos():
                     else:
                         pass
                 if a != 0:
-                    lista.append(a)
+                    print(a)
+                    lista.append('tkt: ',a)
             ultimos = []
 
             [ultimos.append(x) for x in lista if x not in ultimos]
-
+            print('Tamaño de ultimos',len(ultimos))
         else:
             pass
 
@@ -596,7 +597,7 @@ class ListarDevueltos():
                 ).filter(
                     estado = 'Resolved',
                 ).filter(
-                    Q(grupo_asignado_anterior__icontains = 'OPERACION') | Q(grupo_asignado_anterior__icontains = 'OP TRANSITO') | Q(grupo_asignado_anterior__icontains = 'AOP') | Q(grupo_asignado_anterior = 'GRIP') | Q(grupo_asignado_anterior = 'SECURITY OPERATION CENTER') | Q(grupo_asignado_anterior__icontains = 'NOA') | Q(grupo_asignado_anterior__icontains = 'NEA')| Q(grupo_asignado_anterior__icontains = 'NEA')| Q(grupo_asignado_anterior__icontains = 'RED'),
+                    Q(grupo_asignado_anterior__icontains = 'OPERACION') | Q(grupo_asignado_anterior__icontains = 'OP TRANSITO') | Q(grupo_asignado_anterior__icontains = 'AOP') | Q(grupo_asignado_anterior = 'GRIP') | Q(grupo_asignado_anterior = 'SECURITY OPERATION CENTER') | Q(grupo_asignado_anterior__icontains = 'NOA') | Q(grupo_asignado_anterior__icontains = 'NEA')| Q(grupo_asignado_anterior__icontains = 'NEA')| Q(grupo_asignado_anterior__icontains = 'RED') | Q(grupo_asignado_anterior__icontains = 'OPER'), 
                     horario__range = (start,end)
                 )
 
