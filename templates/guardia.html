@@ -108,7 +108,12 @@ Lista de Reclamos.
                         <td>{{ i.tkt.ci }}</td>
                         <td>{{ i.tkt.estado }}</td>
                         <td>{{ i.reactivar }} {{i.reactivar_hora}}</td>
-                        <td>{{ i.get_prioridad_display }}</td>
+                        <td>{% if i.get_prioridad_display == 'URGENTE'%}
+                             <b>{{ i.get_prioridad_display }}</b>
+                            {% else %}
+                              {{ i.get_prioridad_display }}
+                            {% endif %}
+                        </td>
                         <td>{{ i.detalle }}</td>
                         <td><a href="{% url 'pasaje_app:actualizar' i.orderid %}" class="success button ">Editar</td>
                         <td><a href="http://remedyaverias:47085/arsys/forms/remedyaverias/SHR%3ALandingConsole/Default+Administrator+View/?mode=search&F304255500=HPD%3AHelp+Desk&F1000000076=FormOpen&F303647600=SearchTicketWithQual&F304255610=%271000000161%27%3D%22{{i.tkt.id}}%22&server=remedyaverias" target="_blank"  class="warning button" >tkt remedy</td>
