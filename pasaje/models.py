@@ -126,7 +126,7 @@ class Llamadasssdd(models.Model):
 
 
 class Tablaseguimiento(models.Model):
-    ATENCION = (('0','URGENTE'),('1','PRIORITARIO'),('2','NORMAL'))
+    ATENCION = (('0','CRITICA'),('1','ALTA'),('2','MEDIA'),('3','BAJA'))
     
     orderid = models.AutoField(db_column='OrderId',primary_key=True)  # Field name made lowercase.
     detalle = models.CharField(max_length=200, blank=True, null=True, default='')
