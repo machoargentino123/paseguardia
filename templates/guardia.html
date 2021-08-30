@@ -108,7 +108,7 @@ Lista de Reclamos.
                         <td>{{ i.tkt.ci }}</td>
                         <td>{{ i.tkt.estado }}</td>
                         <td>{{ i.reactivar }} {{i.reactivar_hora}}</td>
-                        <td>{% if i.get_prioridad_display == 'URGENTE'%}
+                        <td>{% if i.get_prioridad_display == 'CRITICA'%}
                              <b>{{ i.get_prioridad_display }}</b>
                             {% else %}
                               {{ i.get_prioridad_display }}
